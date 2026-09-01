@@ -1,0 +1,21 @@
+# entornos
+.venv/
+.venv312/
+__pycache__/
+*.pyc
+
+# datos (pesados, se regeneran con los scripts)
+data/**
+!data/**/.gitkeep
+
+# artefactos
+logs/
+models/
+downloaded_files/
+soccerdata/
+
+# jupyter
+.ipynb_checkpoints/
+
+# secretos
+.env
