@@ -1,6 +1,7 @@
 # entornos
 .venv/
 .venv312/
+.venv.v312
 __pycache__/
 *.pyc
 

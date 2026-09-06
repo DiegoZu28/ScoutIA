@@ -1,6 +1,7 @@
 """Funciones auxiliares para el proyecto de valuación de futbolistas."""
 
 import pandas as pd
+import unicodedata, re
 
 
 def aplanar(cols):
@@ -47,3 +48,10 @@ def limpiar_df(df):
     df['Comp'] = limpiar_competicion(df['Comp'])
     df = df.drop(columns = 'Matches')
     return df
+
+def normalizar(s):
+    s = unicodedata.normalize('NFKD', str(s))
+    s = ''.join(c for c in s if not unicodedata.combining(c))
+    s = s.replace('đ','d').replace('Đ','D').replace('ł','l').replace('ø','o')
+    s = re.sub(r'[^a-z ]', '', s.lower())
+    return re.sub(r'\s+', ' ', s).strip()
