@@ -1,0 +1,30 @@
+<div class="relative">
+  <input
+    type="text"
+    [ngModel]="query()"
+    (ngModelChange)="onInput($event)"
+    placeholder="Buscar jugador… (ej. Mbappé, Haaland)"
+    class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm shadow-sm focus:border-indigo-500 focus:outline-none"
+  />
+
+  @if (resultados().length > 0) {
+    <ul
+      class="absolute z-10 mt-1 w-full rounded-lg border border-slate-200 bg-white shadow-lg"
+    >
+      @for (jugador of resultados(); track jugador.player_id) {
+        <li>
+          <button
+            type="button"
+            (click)="seleccionar(jugador)"
+            class="flex w-full items-center justify-between px-4 py-2 text-left text-sm hover:bg-slate-50"
+          >
+            <span class="font-medium text-slate-800">{{ jugador.nombre }}</span>
+            <span class="text-xs text-slate-500"
+              >{{ jugador.club }} · {{ jugador.posicion }}</span
+            >
+          </button>
+        </li>
+      }
+    </ul>
+  }
+</div>

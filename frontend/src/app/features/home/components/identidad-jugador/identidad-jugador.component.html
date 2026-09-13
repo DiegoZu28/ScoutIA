@@ -1,0 +1,53 @@
+<div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+  <div class="flex flex-wrap items-baseline justify-between gap-2">
+    <h2 class="text-xl font-semibold text-slate-900">{{ estadisticas().nombre }}</h2>
+    <span class="text-sm text-slate-500">{{ estadisticas().temporada }}</span>
+  </div>
+  <p class="mt-1 text-sm text-slate-600">
+    {{ estadisticas().club }} · {{ estadisticas().liga }} ·
+    {{ estadisticas().posicion_detallada }} · {{ estadisticas().nacionalidad }}
+  </p>
+
+  <dl class="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-6">
+    <div>
+      <dt class="text-xs text-slate-500">Edad</dt>
+      <dd class="text-base font-medium text-slate-900">{{ estadisticas().edad }}</dd>
+    </div>
+    <div>
+      <dt class="text-xs text-slate-500">Minutos</dt>
+      <dd class="text-base font-medium text-slate-900">{{ estadisticas().minutos_jugados }}</dd>
+    </div>
+    <div>
+      <dt class="text-xs text-slate-500">Goles</dt>
+      <dd class="text-base font-medium text-slate-900">{{ estadisticas().goles }}</dd>
+    </div>
+    <div>
+      <dt class="text-xs text-slate-500">Asistencias</dt>
+      <dd class="text-base font-medium text-slate-900">{{ estadisticas().asistencias }}</dd>
+    </div>
+    <div>
+      <dt class="text-xs text-slate-500">Tiros</dt>
+      <dd class="text-base font-medium text-slate-900">{{ estadisticas().tiros }}</dd>
+    </div>
+    <div>
+      <dt class="text-xs text-slate-500">T. amarillas</dt>
+      <dd class="text-base font-medium text-slate-900">{{ estadisticas().tarjetas_amarillas }}</dd>
+    </div>
+  </dl>
+
+  <div class="mt-4 flex flex-wrap items-center gap-2 border-t border-slate-100 pt-4">
+    <span class="text-xs text-slate-500">Contrato restante:</span>
+    <span class="text-sm font-medium text-slate-900">{{ contratoTexto() }}</span>
+
+    @if (estadisticas().gano_liga) {
+      <span class="rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-medium text-amber-700">
+        🏆 Campeón de liga esa temporada
+      </span>
+    }
+    @if (estadisticas().gano_champions) {
+      <span class="rounded-full bg-indigo-50 px-2.5 py-0.5 text-xs font-medium text-indigo-700">
+        🏆 Campeón de Champions esa temporada
+      </span>
+    }
+  </div>
+</div>

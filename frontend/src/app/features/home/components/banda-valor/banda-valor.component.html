@@ -1,0 +1,39 @@
+<div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+  <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wide">
+    Valor estimado (banda)
+  </h3>
+
+  <div class="mt-2 flex items-end gap-3">
+    <span class="text-2xl font-bold text-indigo-700">{{
+      formatoEur(prediccion().banda.valor_medio)
+    }}</span>
+    <span class="text-sm text-slate-500">
+      rango {{ formatoEur(prediccion().banda.valor_bajo) }} –
+      {{ formatoEur(prediccion().banda.valor_alto) }}
+    </span>
+  </div>
+
+  <p class="mt-2 text-xs text-slate-500">{{ prediccion().metodologia_nota }}</p>
+
+  <h4 class="mt-5 text-xs font-semibold text-slate-500 uppercase tracking-wide">
+    Variables que más influyen
+  </h4>
+  <ul class="mt-2 space-y-1.5">
+    @for (c of prediccion().contribuciones; track c.feature) {
+      <li class="flex items-center gap-2 text-xs">
+        <span class="w-40 shrink-0 truncate text-slate-600">{{ c.etiqueta }}</span>
+        <span class="relative h-2 flex-1 rounded bg-slate-100">
+          <span
+            class="absolute inset-y-0 left-0 rounded"
+            [class.bg-emerald-500]="c.direccion === 'sube'"
+            [class.bg-rose-500]="c.direccion === 'baja'"
+            [style.width.%]="anchoBarra(c.contribucion_log)"
+          ></span>
+        </span>
+        <span class="w-10 shrink-0 text-right text-slate-500">{{
+          c.direccion === 'sube' ? '▲' : '▼'
+        }}</span>
+      </li>
+    }
+  </ul>
+</div>

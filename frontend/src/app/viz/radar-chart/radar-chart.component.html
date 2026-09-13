@@ -1,0 +1,33 @@
+<svg [attr.viewBox]="'0 0 ' + size() + ' ' + size()" class="mx-auto w-full max-w-xs">
+  @for (fraccion of anillos; track fraccion) {
+    <polygon [attr.points]="anilloPath(fraccion)" fill="none" stroke="#e2e8f0" stroke-width="1" />
+  }
+
+  @for (eje of ejes(); track eje.etiqueta) {
+    <line
+      [attr.x1]="centroValor"
+      [attr.y1]="centroValor"
+      [attr.x2]="lineaEjeX2(eje)"
+      [attr.y2]="lineaEjeY2(eje)"
+      stroke="#e2e8f0"
+      stroke-width="1"
+    />
+    <text
+      [attr.x]="etiquetaX(eje)"
+      [attr.y]="etiquetaY(eje)"
+      text-anchor="middle"
+      dominant-baseline="middle"
+      font-size="9"
+      class="fill-slate-500"
+    >
+      {{ eje.etiqueta }}
+    </text>
+  }
+
+  <polygon
+    [attr.points]="poligonoPath()"
+    fill="#4263eb33"
+    stroke="#4263eb"
+    stroke-width="2"
+  />
+</svg>

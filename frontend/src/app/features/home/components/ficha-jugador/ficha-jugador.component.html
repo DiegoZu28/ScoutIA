@@ -1,0 +1,21 @@
+@if (cargando()) {
+  <app-loading-spinner />
+} @else if (error()) {
+  <app-error-message [mensaje]="error()!" />
+} @else if (ficha(); as ficha) {
+  <div class="space-y-4">
+    <app-identidad-jugador [estadisticas]="ficha.estadisticas" />
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <app-banda-valor [prediccion]="ficha.valor" />
+      <app-radar-percentiles [percentiles]="ficha.percentiles" />
+    </div>
+
+    <app-arquetipo-jugador [arquetipo]="ficha.arquetipo" />
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <app-rendimiento-historico [historial]="ficha.historial" />
+      <app-valor-historico [historial]="ficha.historial" />
+    </div>
+  </div>
+}
