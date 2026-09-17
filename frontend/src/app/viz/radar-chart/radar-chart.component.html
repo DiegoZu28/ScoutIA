@@ -24,10 +24,23 @@
     </text>
   }
 
-  <polygon
-    [attr.points]="poligonoPath()"
-    fill="#4263eb33"
-    stroke="#4263eb"
-    stroke-width="2"
-  />
+  @for (serie of series(); track serie.etiqueta) {
+    <polygon
+      [attr.points]="poligonoPath(serie)"
+      [attr.fill]="serie.color + '2e'"
+      [attr.stroke]="serie.color"
+      stroke-width="2"
+    />
+  }
 </svg>
+
+@if (series().length > 1) {
+  <div class="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1">
+    @for (serie of series(); track serie.etiqueta) {
+      <span class="flex items-center gap-1.5 text-xs text-slate-600">
+        <span class="h-2.5 w-2.5 rounded-full" [style.background-color]="serie.color"></span>
+        {{ serie.etiqueta }}
+      </span>
+    }
+  </div>
+}

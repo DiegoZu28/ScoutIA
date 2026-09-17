@@ -120,6 +120,36 @@ actualizar una de estas librerías en un lado, actualizar el otro.
    no tiene `strict`/`strictTemplates` activado en `tsconfig.json`).
 8. Radar de percentiles: SVG hecho a mano en `viz/radar-chart/`, sin librería de charts.
 
+## Decisiones de diseño del Comparador + LLM (adelantado desde "fuera de Fase 1", ver abajo)
+
+1. `GET /jugadores/comparar` no llama a un solo modelo nuevo: reutiliza los 3 ya servidos
+   (percentiles precalculados, Lasso, KMeans) y solo agrega la resta/alineación entre las
+   dos filas. Ningún modelo se reentrena para el comparador.
+2. La contribución a la diferencia de valor (`Predictor.explicar_diferencia`) NO es la
+   resta de los top-N de `explicar()` de cada jugador por separado (esos top-N pueden no
+   compartir features) — se calcula la contribución completa de ambos sobre las mismas
+   `feature_cols` y se ordena por la diferencia. Como el modelo es lineal, la suma de todas
+   las diferencias reconstruye exactamente la brecha en espacio log10.
+3. El LLM (`app/src/app/narrativa/`) solo redacta el JSON de diferencias ya calculado —
+   nunca recibe stats crudas ni calcula nada, cumpliendo la regla ya escrita arriba. Mismo
+   patrón de `response_format: json_schema` que `05-llm.ipynb`.
+4. **Encontrado probando con la API real:** pasarle al LLM un booleano (`favorece_a`) para
+   indicar a qué jugador beneficia cada factor de valor causó una atribución cruzada (le
+   asignó un factor al jugador equivocado en la prosa). Se corrigió mandando el nombre del
+   jugador ya resuelto (`jugador_favorecido`) en vez del booleano — quitarle al modelo la
+   indirección booleano→jugador eliminó el error en las pruebas repetidas.
+5. La narrativa es un endpoint separado (`/comparar/narrativa`) que el frontend dispara con
+   un botón explícito, no automáticamente al elegir jugadores — la llamada a OpenAI tiene
+   costo y puede tardar bastante (variable, ~5–40s de punta a punta contra la API real).
+   `app.state.narrador` es `None` si no hay `OPENAI_API_KEY`; el endpoint responde 503.
+6. Colores fijos por identidad (jugador A = índigo `#4f46e5`, jugador B = ámbar `#d97706`),
+   validados como colorblind-safe con el validador del skill de dataviz, reutilizados en
+   radar, tabla de percentiles, barras de valor y arquetipo — nunca se recolorea por rango.
+7. `RadarChartComponent` (`viz/radar-chart/`) se generalizó de una serie (`puntos`) a N
+   series (`series: SerieRadar[]`) para poder superponer a los dos jugadores; `radar-
+   percentiles.component.ts` (ficha individual) ahora le pasa un arreglo de una sola serie,
+   sin cambio visual.
+
 ## Trampas encontradas
 
 - **nvm no persiste entre invocaciones de shell no interactivas** — siempre sourcear
@@ -134,6 +164,9 @@ actualizar una de estas librerías en un lado, actualizar el otro.
   vigilar al actualizar numpy.
 - El merge `fbref_tm_eda.parquet` ↔ `fbref_tm_features.parquet` **no es un merge trivial**
   por los 735 grupos duplicados — ver la sección de arriba antes de tocar el script.
+- `Settings.model_config.env_file` lee primero el `.env` de la raíz del repo y después
+  `app/.env` (que no existe todavía) — así el backend reusa el mismo `OPENAI_API_KEY` que
+  ya usaba `05-llm.ipynb`, sin duplicar el secreto en dos archivos.
 
 ## Comandos
 
@@ -154,7 +187,10 @@ cd frontend && npm run generate:api-types       # regenerar tipos desde /openapi
 ## Qué queda explícitamente fuera de la Fase 1 (diferido a Fase 2+)
 
 Orquestador de agentes de OpenAI (`agents/`, `tools/` en `app/` — ni siquiera se crearon
-como carpetas vacías), Chat, CriticAgent con validación por regex, vista Comparador, vista
-Oportunidades, vista Trazabilidad, red neuronal, selector de temporada en el frontend.
-Autenticación/base de datos/Docker están explícitamente prohibidos por el spec de ScoutIA
-en cualquier fase.
+como carpetas vacías), Chat, CriticAgent con validación por regex, vista Oportunidades,
+vista Trazabilidad, red neuronal, selector de temporada en el frontend. Autenticación/base
+de datos/Docker están explícitamente prohibidos por el spec de ScoutIA en cualquier fase.
+
+**Vista Comparador:** se adelantó respecto al plan original (ver sección de decisiones de
+diseño arriba) — `GET /jugadores/comparar` + `/comparar/narrativa` en el backend, feature
+`frontend/src/app/features/comparador/` en el frontend. El resto de esta lista sigue vigente.

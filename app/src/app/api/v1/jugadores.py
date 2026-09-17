@@ -4,7 +4,16 @@ from fastapi import APIRouter, HTTPException, Query, Request
 from app.domain.dataset_repository import DatasetRepository
 from app.domain.exceptions import JugadorNoEncontrado, TemporadaNoEncontrada
 from app.domain.feature_labels import etiqueta_legible
+from app.narrativa.generador import NarradorComparacion
 from app.schemas.arquetipo import ArquetipoJugador
+from app.schemas.comparacion import (
+    ArquetipoComparado,
+    ComparacionJugadores,
+    ContribucionComparada,
+    NarrativaComparacion,
+    PercentilComparado,
+    ValorComparado,
+)
 from app.schemas.historial import HistorialJugador, TemporadaRendimiento
 from app.schemas.jugador import EstadisticasJugador, JugadorBusqueda
 from app.schemas.percentiles import GrupoComparacion, PercentilEstadistica, PercentilesJugador
@@ -33,6 +42,10 @@ def _repo(request: Request) -> DatasetRepository:
 
 def _predictor(request: Request) -> Predictor:
     return request.app.state.predictor
+
+
+def _narrador(request: Request) -> NarradorComparacion | None:
+    return request.app.state.narrador
 
 
 def _resolver_fila(request: Request, player_id: str, temporada: int | None) -> pd.Series:
@@ -101,6 +114,14 @@ def _valor_de(request: Request, fila: pd.Series) -> PrediccionValor:
     )
 
 
+def _grupo_comparacion_de(fila: pd.Series) -> GrupoComparacion:
+    return GrupoComparacion(
+        posicion=str(fila["posicion_tm"]),
+        temporada=str(fila["Season"]),
+        n=int(fila["n_comparacion"]),
+    )
+
+
 def _percentiles_de(fila: pd.Series) -> PercentilesJugador:
     percentiles = [
         PercentilEstadistica(
@@ -112,17 +133,54 @@ def _percentiles_de(fila: pd.Series) -> PercentilesJugador:
         for stat in PERCENTILE_STATS
     ]
     return PercentilesJugador(
-        grupo_comparacion=GrupoComparacion(
-            posicion=str(fila["posicion_tm"]),
-            temporada=str(fila["Season"]),
-            n=int(fila["n_comparacion"]),
-        ),
+        grupo_comparacion=_grupo_comparacion_de(fila),
         percentiles=percentiles,
     )
 
 
 def _arquetipo_de(fila: pd.Series) -> ArquetipoJugador:
     return ArquetipoJugador(cluster_id=int(fila["cluster_id"]), etiqueta=str(fila["cluster_label"]))
+
+
+def _percentiles_comparados_de(fila_a: pd.Series, fila_b: pd.Series) -> list[PercentilComparado]:
+    return [
+        PercentilComparado(
+            estadistica=stat,
+            etiqueta=etiqueta_legible(stat),
+            percentil_a=float(fila_a[f"pctl_{stat}"]),
+            percentil_b=float(fila_b[f"pctl_{stat}"]),
+            valor_bruto_a=float(fila_a[stat]),
+            valor_bruto_b=float(fila_b[stat]),
+            diferencia=float(fila_a[f"pctl_{stat}"]) - float(fila_b[f"pctl_{stat}"]),
+        )
+        for stat in PERCENTILE_STATS
+    ]
+
+
+def _valor_comparado_de(request: Request, fila_a: pd.Series, fila_b: pd.Series) -> ValorComparado:
+    predictor = _predictor(request)
+    banda_a = predictor.predecir_banda(fila_a)
+    banda_b = predictor.predecir_banda(fila_b)
+    top_n = request.app.state.settings.top_n_contribuciones
+    diferencias = predictor.explicar_diferencia(fila_a, fila_b, top_n=top_n)
+    return ValorComparado(
+        banda_a=BandaValor(**banda_a),
+        banda_b=BandaValor(**banda_b),
+        diferencia_valor_medio_eur=banda_a["valor_medio"] - banda_b["valor_medio"],
+        contribuciones_diferencia=[ContribucionComparada(**c) for c in diferencias],
+    )
+
+
+def _arquetipo_comparado_de(fila_a: pd.Series, fila_b: pd.Series) -> ArquetipoComparado:
+    cluster_a = int(fila_a["cluster_id"])
+    cluster_b = int(fila_b["cluster_id"])
+    return ArquetipoComparado(
+        cluster_id_a=cluster_a,
+        etiqueta_a=str(fila_a["cluster_label"]),
+        cluster_id_b=cluster_b,
+        etiqueta_b=str(fila_b["cluster_label"]),
+        mismo_arquetipo=cluster_a == cluster_b,
+    )
 
 
 @router.get("/buscar", response_model=list[JugadorBusqueda])
@@ -139,6 +197,55 @@ def buscar_jugador(request: Request, q: str = Query(min_length=1), limit: int = 
         )
         for player_id, fila in resultados.iterrows()
     ]
+
+
+def _comparacion_de(
+    request: Request,
+    jugador_a: str,
+    jugador_b: str,
+    temporada_a: int | None,
+    temporada_b: int | None,
+) -> ComparacionJugadores:
+    fila_a = _resolver_fila(request, jugador_a, temporada_a)
+    fila_b = _resolver_fila(request, jugador_b, temporada_b)
+    return ComparacionJugadores(
+        jugador_a=_estadisticas_de(jugador_a, fila_a),
+        jugador_b=_estadisticas_de(jugador_b, fila_b),
+        grupo_comparacion_a=_grupo_comparacion_de(fila_a),
+        grupo_comparacion_b=_grupo_comparacion_de(fila_b),
+        percentiles=_percentiles_comparados_de(fila_a, fila_b),
+        valor=_valor_comparado_de(request, fila_a, fila_b),
+        arquetipo=_arquetipo_comparado_de(fila_a, fila_b),
+    )
+
+
+@router.get("/comparar", response_model=ComparacionJugadores)
+def comparar_jugadores(
+    request: Request,
+    jugador_a: str,
+    jugador_b: str,
+    temporada_a: int | None = None,
+    temporada_b: int | None = None,
+):
+    return _comparacion_de(request, jugador_a, jugador_b, temporada_a, temporada_b)
+
+
+@router.get("/comparar/narrativa", response_model=NarrativaComparacion)
+def comparar_jugadores_narrativa(
+    request: Request,
+    jugador_a: str,
+    jugador_b: str,
+    temporada_a: int | None = None,
+    temporada_b: int | None = None,
+):
+    narrador = _narrador(request)
+    if narrador is None:
+        raise HTTPException(
+            status_code=503,
+            detail="La narrativa por LLM no está disponible: falta configurar OPENAI_API_KEY.",
+        )
+    comparacion = _comparacion_de(request, jugador_a, jugador_b, temporada_a, temporada_b)
+    return NarrativaComparacion(**narrador.redactar(comparacion))
 
 
 @router.get("/{player_id}/estadisticas", response_model=EstadisticasJugador)

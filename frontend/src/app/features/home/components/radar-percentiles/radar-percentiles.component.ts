@@ -1,7 +1,9 @@
 import { Component, computed, input } from '@angular/core';
 
 import { PercentilesJugador } from '../../../../core/api/scoutia-api.service';
-import { PuntoRadar, RadarChartComponent } from '../../../../viz/radar-chart/radar-chart.component';
+import { RadarChartComponent, SerieRadar } from '../../../../viz/radar-chart/radar-chart.component';
+
+const COLOR_SERIE_UNICA = '#4263eb';
 
 @Component({
   selector: 'app-radar-percentiles',
@@ -12,10 +14,14 @@ import { PuntoRadar, RadarChartComponent } from '../../../../viz/radar-chart/rad
 export class RadarPercentilesComponent {
   percentiles = input.required<PercentilesJugador>();
 
-  readonly puntos = computed<PuntoRadar[]>(() =>
-    this.percentiles().percentiles.map((p) => ({
-      etiqueta: p.etiqueta,
-      percentil: p.percentil,
-    })),
-  );
+  readonly series = computed<SerieRadar[]>(() => [
+    {
+      etiqueta: 'Percentil',
+      color: COLOR_SERIE_UNICA,
+      puntos: this.percentiles().percentiles.map((p) => ({
+        etiqueta: p.etiqueta,
+        percentil: p.percentil,
+      })),
+    },
+  ]);
 }

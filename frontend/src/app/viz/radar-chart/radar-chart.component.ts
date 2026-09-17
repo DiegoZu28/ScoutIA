@@ -5,7 +5,14 @@ export interface PuntoRadar {
   percentil: number; // 0..1
 }
 
-interface EjeRadar extends PuntoRadar {
+export interface SerieRadar {
+  etiqueta: string;
+  color: string; // hex, ej. '#4f46e5'
+  puntos: PuntoRadar[]; // mismos ejes y mismo orden entre series
+}
+
+interface EjeRadar {
+  etiqueta: string;
   angulo: number;
 }
 
@@ -17,7 +24,7 @@ const ANILLOS = [0.25, 0.5, 0.75, 1];
   templateUrl: './radar-chart.component.html',
 })
 export class RadarChartComponent {
-  puntos = input.required<PuntoRadar[]>();
+  series = input.required<SerieRadar[]>();
   size = input(320);
 
   readonly anillos = ANILLOS;
@@ -26,18 +33,20 @@ export class RadarChartComponent {
   private readonly radioMax = computed(() => this.size() / 2 - 50);
 
   readonly ejes = computed<EjeRadar[]>(() => {
-    const n = this.puntos().length;
-    return this.puntos().map((punto, i) => ({
-      ...punto,
+    const puntosReferencia = this.series()[0]?.puntos ?? [];
+    const n = puntosReferencia.length;
+    return puntosReferencia.map((punto, i) => ({
+      etiqueta: punto.etiqueta,
       angulo: (2 * Math.PI * i) / n - Math.PI / 2,
     }));
   });
 
-  readonly poligonoPath = computed(() =>
-    this.ejes()
-      .map((eje) => this.coordenadaStr(eje.angulo, this.radioMax() * eje.percentil))
-      .join(' '),
-  );
+  poligonoPath(serie: SerieRadar): string {
+    const ejes = this.ejes();
+    return serie.puntos
+      .map((punto, i) => this.coordenadaStr(ejes[i].angulo, this.radioMax() * punto.percentil))
+      .join(' ');
+  }
 
   private coordenada(angulo: number, radio: number): { x: number; y: number } {
     const c = this.centro();

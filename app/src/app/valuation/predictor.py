@@ -27,6 +27,11 @@ class Predictor:
         x = fila[self._feature_cols].to_frame().T.astype(float)
         return self._scaler.transform(x)[0]
 
+    def _contribuciones_todas(self, fila: pd.Series) -> dict[str, float]:
+        x_escalado = self._fila_a_x_escalado(fila)
+        contribuciones = self._model.coef_ * x_escalado
+        return dict(zip(self._feature_cols, contribuciones))
+
     def predecir_banda(self, fila: pd.Series) -> dict:
         x_escalado = self._fila_a_x_escalado(fila)
         pred_log = float(self._model.predict(x_escalado.reshape(1, -1))[0])
@@ -38,11 +43,10 @@ class Predictor:
         }
 
     def explicar(self, fila: pd.Series, top_n: int = 8) -> list[dict]:
-        x_escalado = self._fila_a_x_escalado(fila)
-        contribuciones_todas = self._model.coef_ * x_escalado
+        contribuciones_todas = self._contribuciones_todas(fila)
 
         contribuciones = sorted(
-            zip(self._feature_cols, contribuciones_todas),
+            contribuciones_todas.items(),
             key=lambda par: abs(par[1]),
             reverse=True,
         )[:top_n]
@@ -57,4 +61,37 @@ class Predictor:
             }
             for feature, contribucion in contribuciones
             if contribucion != 0  # Lasso lleva varios coeficientes exactamente a cero
+        ]
+
+    def explicar_diferencia(self, fila_a: pd.Series, fila_b: pd.Series, top_n: int = 8) -> list[dict]:
+        """Descompone la brecha de valor (A vs B) en las variables que más la explican.
+
+        A diferencia de `explicar`, que trunca al top-N de CADA jugador por separado (dos
+        conjuntos de features que pueden no coincidir), aquí se calcula la diferencia de
+        contribución sobre las mismas features para ambos y se ordena por esa diferencia.
+        Como el modelo es lineal, la suma de todas las diferencias reconstruye exactamente
+        la brecha entre las dos predicciones en espacio log10.
+        """
+        contrib_a = self._contribuciones_todas(fila_a)
+        contrib_b = self._contribuciones_todas(fila_b)
+
+        diferencias = sorted(
+            (
+                (feature, contrib_a[feature], contrib_b[feature], contrib_a[feature] - contrib_b[feature])
+                for feature in self._feature_cols
+            ),
+            key=lambda t: abs(t[3]),
+            reverse=True,
+        )[:top_n]
+
+        return [
+            {
+                "feature": feature,
+                "etiqueta": etiqueta_legible(feature),
+                "contribucion_log_a": float(contribucion_a),
+                "contribucion_log_b": float(contribucion_b),
+                "diferencia_log": float(diferencia),
+            }
+            for feature, contribucion_a, contribucion_b, diferencia in diferencias
+            if diferencia != 0
         ]

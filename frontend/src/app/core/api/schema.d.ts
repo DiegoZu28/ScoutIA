@@ -21,6 +21,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/jugadores/comparar": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Comparar Jugadores */
+        get: operations["comparar_jugadores_api_v1_jugadores_comparar_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/jugadores/comparar/narrativa": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Comparar Jugadores Narrativa */
+        get: operations["comparar_jugadores_narrativa_api_v1_jugadores_comparar_narrativa_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/jugadores/{player_id}/estadisticas": {
         parameters: {
             query?: never;
@@ -130,6 +164,19 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /** ArquetipoComparado */
+        ArquetipoComparado: {
+            /** Cluster Id A */
+            cluster_id_a: number;
+            /** Etiqueta A */
+            etiqueta_a: string;
+            /** Cluster Id B */
+            cluster_id_b: number;
+            /** Etiqueta B */
+            etiqueta_b: string;
+            /** Mismo Arquetipo */
+            mismo_arquetipo: boolean;
+        };
         /** ArquetipoJugador */
         ArquetipoJugador: {
             /** Cluster Id */
@@ -150,6 +197,30 @@ export interface components {
              * @default EUR
              */
             moneda: string;
+        };
+        /** ComparacionJugadores */
+        ComparacionJugadores: {
+            jugador_a: components["schemas"]["EstadisticasJugador"];
+            jugador_b: components["schemas"]["EstadisticasJugador"];
+            grupo_comparacion_a: components["schemas"]["GrupoComparacion"];
+            grupo_comparacion_b: components["schemas"]["GrupoComparacion"];
+            /** Percentiles */
+            percentiles: components["schemas"]["PercentilComparado"][];
+            valor: components["schemas"]["ValorComparado"];
+            arquetipo: components["schemas"]["ArquetipoComparado"];
+        };
+        /** ContribucionComparada */
+        ContribucionComparada: {
+            /** Feature */
+            feature: string;
+            /** Etiqueta */
+            etiqueta: string;
+            /** Contribucion Log A */
+            contribucion_log_a: number;
+            /** Contribucion Log B */
+            contribucion_log_b: number;
+            /** Diferencia Log */
+            diferencia_log: number;
         };
         /** ContribucionVariable */
         ContribucionVariable: {
@@ -243,6 +314,39 @@ export interface components {
             /** Temporada Mas Reciente */
             temporada_mas_reciente: string;
         };
+        /** NarrativaComparacion */
+        NarrativaComparacion: {
+            /** Resumen */
+            resumen: string;
+            /** Fortalezas Jugador A */
+            fortalezas_jugador_a: string[];
+            /** Fortalezas Jugador B */
+            fortalezas_jugador_b: string[];
+            /** Explicacion Diferencia Valor */
+            explicacion_diferencia_valor: string;
+            /**
+             * Metodologia Nota
+             * @default Estimación de un modelo estadístico entrenado con datos históricos de rendimiento y valor de mercado. No es una tasación oficial ni una recomendación de compra o venta: preséntese siempre como rango, nunca como cifra puntual.
+             */
+            metodologia_nota: string;
+        };
+        /** PercentilComparado */
+        PercentilComparado: {
+            /** Estadistica */
+            estadistica: string;
+            /** Etiqueta */
+            etiqueta: string;
+            /** Percentil A */
+            percentil_a: number;
+            /** Percentil B */
+            percentil_b: number;
+            /** Valor Bruto A */
+            valor_bruto_a: number;
+            /** Valor Bruto B */
+            valor_bruto_b: number;
+            /** Diferencia */
+            diferencia: number;
+        };
         /** PercentilEstadistica */
         PercentilEstadistica: {
             /** Estadistica */
@@ -303,6 +407,20 @@ export interface components {
             /** Context */
             ctx?: Record<string, never>;
         };
+        /** ValorComparado */
+        ValorComparado: {
+            banda_a: components["schemas"]["BandaValor"];
+            banda_b: components["schemas"]["BandaValor"];
+            /** Diferencia Valor Medio Eur */
+            diferencia_valor_medio_eur: number;
+            /** Contribuciones Diferencia */
+            contribuciones_diferencia: components["schemas"]["ContribucionComparada"][];
+            /**
+             * Metodologia Nota
+             * @default Estimación de un modelo estadístico entrenado con datos históricos de rendimiento y valor de mercado. No es una tasación oficial ni una recomendación de compra o venta: preséntese siempre como rango, nunca como cifra puntual.
+             */
+            metodologia_nota: string;
+        };
     };
     responses: never;
     parameters: never;
@@ -331,6 +449,74 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["JugadorBusqueda"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    comparar_jugadores_api_v1_jugadores_comparar_get: {
+        parameters: {
+            query: {
+                jugador_a: string;
+                jugador_b: string;
+                temporada_a?: number | null;
+                temporada_b?: number | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ComparacionJugadores"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    comparar_jugadores_narrativa_api_v1_jugadores_comparar_narrativa_get: {
+        parameters: {
+            query: {
+                jugador_a: string;
+                jugador_b: string;
+                temporada_a?: number | null;
+                temporada_b?: number | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NarrativaComparacion"];
                 };
             };
             /** @description Validation Error */

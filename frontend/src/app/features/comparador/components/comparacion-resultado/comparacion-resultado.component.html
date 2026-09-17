@@ -1,0 +1,53 @@
+@if (cargando()) {
+  <app-loading-spinner />
+} @else if (error()) {
+  <app-error-message [mensaje]="error()!" />
+} @else if (comparacion(); as c) {
+  <div class="space-y-4">
+    <div class="grid gap-4 sm:grid-cols-2">
+      <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div class="flex items-center gap-2">
+          <span class="h-2.5 w-2.5 shrink-0 rounded-full" [style.background-color]="colorA"></span>
+          <h2 class="text-xl font-semibold text-slate-900">{{ c.jugador_a.nombre }}</h2>
+        </div>
+        <p class="mt-1 text-sm text-slate-600">
+          {{ c.jugador_a.club }} · {{ c.jugador_a.liga }} · {{ c.jugador_a.posicion_detallada }} ·
+          {{ c.jugador_a.edad }} años
+        </p>
+      </div>
+      <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div class="flex items-center gap-2">
+          <span class="h-2.5 w-2.5 shrink-0 rounded-full" [style.background-color]="colorB"></span>
+          <h2 class="text-xl font-semibold text-slate-900">{{ c.jugador_b.nombre }}</h2>
+        </div>
+        <p class="mt-1 text-sm text-slate-600">
+          {{ c.jugador_b.club }} · {{ c.jugador_b.liga }} · {{ c.jugador_b.posicion_detallada }} ·
+          {{ c.jugador_b.edad }} años
+        </p>
+      </div>
+    </div>
+
+    <app-comparacion-percentiles
+      [percentiles]="c.percentiles"
+      [grupoA]="c.grupo_comparacion_a"
+      [grupoB]="c.grupo_comparacion_b"
+      [nombreA]="c.jugador_a.nombre"
+      [nombreB]="c.jugador_b.nombre"
+    />
+
+    <app-comparacion-valor [valor]="c.valor" [nombreA]="c.jugador_a.nombre" [nombreB]="c.jugador_b.nombre" />
+
+    <app-comparacion-arquetipo
+      [arquetipo]="c.arquetipo"
+      [nombreA]="c.jugador_a.nombre"
+      [nombreB]="c.jugador_b.nombre"
+    />
+
+    <app-narrativa-comparacion
+      [jugadorAId]="jugadorAId()"
+      [jugadorBId]="jugadorBId()"
+      [nombreA]="c.jugador_a.nombre"
+      [nombreB]="c.jugador_b.nombre"
+    />
+  </div>
+}
