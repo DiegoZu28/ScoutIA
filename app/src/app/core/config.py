@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     cors_origins: list[str] = ["http://localhost:4200"]
     top_n_contribuciones: int = 8
     openai_api_key: str | None = None
-    llm_modelo: str = "gpt-4o-mini"
+    llm_modelo: str = "gpt-4.1"
 
 
 @lru_cache

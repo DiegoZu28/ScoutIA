@@ -9,7 +9,10 @@ SYSTEM_PROMPT = (
     "entre dos jugadores: percentiles frente a jugadores de su misma posición y temporada, "
     "la contribución de un modelo de valor de mercado a la diferencia de valor entre ambos, "
     "y su arquetipo de estilo de juego (de un modelo de clustering). Tu único trabajo es "
-    "REDACTAR esa comparación en español de forma clara y objetiva para un scout.\n\n"
+    "REDACTAR esa comparación en español de forma clara, objetiva y con suficiente detalle "
+    "para un scout: no te limites a listar los datos, conéctalos entre sí (por ejemplo, "
+    "relaciona un percentil alto en una estadística con el arquetipo de estilo de juego, o "
+    "con los factores que explican la diferencia de valor) para dar una lectura más completa.\n\n"
     "Reglas estrictas:\n"
     "- No inventes cifras, estadísticas ni hechos que no estén en los datos entregados.\n"
     "- No calcules nada nuevo: limita tus afirmaciones a lo que los números ya indican.\n"
@@ -28,21 +31,37 @@ RESPONSE_SCHEMA = {
         "properties": {
             "resumen": {
                 "type": "string",
-                "description": "2-4 oraciones que sintetizan la comparación completa.",
+                "description": (
+                    "5-7 oraciones que sintetizan la comparación completa: incluye posición, "
+                    "estilo de juego (arquetipo) y una lectura general de las diferencias de "
+                    "rendimiento y de valor de mercado entre ambos jugadores."
+                ),
             },
             "fortalezas_jugador_a": {
                 "type": "array",
                 "items": {"type": "string"},
-                "description": "3 a 5 puntos donde el jugador A destaca sobre el B.",
+                "description": (
+                    "4 a 6 puntos donde el jugador A destaca sobre el B. Cada punto debe ser "
+                    "1-2 oraciones: no solo nombrar la estadística, sino explicar qué implica "
+                    "esa diferencia para el estilo de juego o el rol del jugador en la cancha."
+                ),
             },
             "fortalezas_jugador_b": {
                 "type": "array",
                 "items": {"type": "string"},
-                "description": "3 a 5 puntos donde el jugador B destaca sobre el A.",
+                "description": (
+                    "4 a 6 puntos donde el jugador B destaca sobre el A. Cada punto debe ser "
+                    "1-2 oraciones: no solo nombrar la estadística, sino explicar qué implica "
+                    "esa diferencia para el estilo de juego o el rol del jugador en la cancha."
+                ),
             },
             "explicacion_diferencia_valor": {
                 "type": "string",
-                "description": "Explica la brecha de valor de mercado citando los factores entregados.",
+                "description": (
+                    "4-6 oraciones que explican en detalle la brecha de valor de mercado, "
+                    "citando y desarrollando cada uno de los factores entregados en "
+                    "'factores_que_explican_la_diferencia_de_valor' y a qué jugador favorece."
+                ),
             },
         },
         "required": [
@@ -113,7 +132,7 @@ class NarradorComparacion:
     haya calculado.
     """
 
-    def __init__(self, api_key: str, modelo: str = "gpt-4o-mini"):
+    def __init__(self, api_key: str, modelo: str = "gpt-4.1"):
         self._client = OpenAI(api_key=api_key)
         self._modelo = modelo
 
