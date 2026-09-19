@@ -1,0 +1,19 @@
+@if (mostrarFoto()) {
+  <img
+    [src]="fotoUrl()"
+    (error)="onErrorFoto()"
+    class="shrink-0 object-cover"
+    [class]="claseTamano() + ' ' + claseForma()"
+    [alt]="nombre()"
+  />
+} @else {
+  <div
+    class="flex shrink-0 items-center justify-center font-semibold text-white"
+    [class]="claseTamano() + ' ' + claseForma()"
+    [style.background-color]="color()"
+    [attr.aria-label]="nombre()"
+    role="img"
+  >
+    {{ iniciales() }}
+  </div>
+}
