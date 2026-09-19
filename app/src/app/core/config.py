@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     )
 
     dataset_path: Path = REPO_ROOT / "data" / "processed" / "dataset.parquet"
+    imagenes_path: Path = REPO_ROOT / "data" / "processed" / "imagenes_jugadores.json"
     models_dir: Path = REPO_ROOT / "models"
     cors_origins: list[str] = ["http://localhost:4200"]
     top_n_contribuciones: int = 8

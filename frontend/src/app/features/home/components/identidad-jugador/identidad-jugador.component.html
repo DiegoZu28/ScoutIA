@@ -1,12 +1,35 @@
 <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-  <div class="flex flex-wrap items-baseline justify-between gap-2">
-    <h2 class="text-xl font-semibold text-slate-900">{{ estadisticas().nombre }}</h2>
-    <span class="text-sm text-slate-500">{{ estadisticas().temporada }}</span>
+  <div class="flex items-start gap-4">
+    <app-avatar-jugador
+      [nombre]="estadisticas().nombre"
+      [fotoUrl]="estadisticas().foto_url"
+      tamano="xl"
+      forma="cuadro"
+    />
+    <div class="min-w-0 flex-1">
+      <div class="flex flex-wrap items-baseline justify-between gap-2">
+        <h2 class="text-xl font-semibold text-slate-900">{{ estadisticas().nombre }}</h2>
+        <span class="text-sm text-slate-500">{{ estadisticas().temporada }}</span>
+      </div>
+      <div class="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-slate-600">
+        <span class="inline-flex items-center gap-1">
+          @if (estadisticas().escudo_url) {
+            <img [src]="estadisticas().escudo_url" alt="" class="h-4 w-4 object-contain" />
+          }
+          {{ estadisticas().club }}
+        </span>
+        <span>· {{ estadisticas().liga }}</span>
+        <span>· {{ estadisticas().posicion_detallada }}</span>
+        <span class="inline-flex items-center gap-1">
+          ·
+          @if (estadisticas().bandera_url) {
+            <img [src]="estadisticas().bandera_url" alt="" class="h-3 w-4 object-cover" />
+          }
+          {{ estadisticas().nacionalidad }}
+        </span>
+      </div>
+    </div>
   </div>
-  <p class="mt-1 text-sm text-slate-600">
-    {{ estadisticas().club }} · {{ estadisticas().liga }} ·
-    {{ estadisticas().posicion_detallada }} · {{ estadisticas().nacionalidad }}
-  </p>
 
   <dl class="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-6">
     <div>

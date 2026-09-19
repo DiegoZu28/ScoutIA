@@ -27,14 +27,13 @@ export class NarrativaComparacionComponent {
   narrativa = signal<NarrativaComparacion | null>(null);
 
   constructor() {
-    // Cambiar de pareja de jugadores invalida cualquier narrativa ya generada, pero no
-    // dispara sola una nueva llamada al LLM: eso lo decide el usuario con el botón.
+    // En cuanto hay una pareja de jugadores (este componente solo se monta cuando ya la
+    // hay, ver comparacion-resultado.component.html), se genera el análisis solo. El botón
+    // queda para regenerar manualmente si el usuario quiere otra redacción.
     effect(() => {
       this.jugadorAId();
       this.jugadorBId();
-      this.narrativa.set(null);
-      this.error.set(null);
-      this.cargando.set(false);
+      this.generar();
     });
   }
 

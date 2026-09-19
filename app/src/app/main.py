@@ -14,7 +14,7 @@ from app.valuation.predictor import Predictor
 async def lifespan(app: FastAPI):
     settings = get_settings()
     app.state.settings = settings
-    app.state.dataset_repository = DatasetRepository(settings.dataset_path)
+    app.state.dataset_repository = DatasetRepository(settings.dataset_path, settings.imagenes_path)
     app.state.predictor = Predictor(settings.models_dir)
     app.state.narrador = (
         NarradorComparacion(api_key=settings.openai_api_key, modelo=settings.llm_modelo)

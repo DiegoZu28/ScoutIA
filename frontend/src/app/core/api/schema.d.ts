@@ -253,6 +253,12 @@ export interface components {
             liga: string;
             /** Temporada */
             temporada: string;
+            /** Foto Url */
+            foto_url?: string | null;
+            /** Bandera Url */
+            bandera_url?: string | null;
+            /** Escudo Url */
+            escudo_url?: string | null;
             /** Edad */
             edad: number;
             /** Minutos Jugados */
@@ -313,6 +319,8 @@ export interface components {
             liga: string;
             /** Temporada Mas Reciente */
             temporada_mas_reciente: string;
+            /** Foto Url */
+            foto_url?: string | null;
         };
         /** NarrativaComparacion */
         NarrativaComparacion: {

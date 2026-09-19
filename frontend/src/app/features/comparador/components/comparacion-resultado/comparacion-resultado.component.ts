@@ -1,6 +1,7 @@
 import { Component, effect, inject, input, signal } from '@angular/core';
 
 import { ComparacionJugadores, ScoutiaApiService } from '../../../../core/api/scoutia-api.service';
+import { AvatarJugadorComponent } from '../../../../shared/ui/avatar-jugador/avatar-jugador.component';
 import { ErrorMessageComponent } from '../../../../shared/ui/error-message/error-message.component';
 import { LoadingSpinnerComponent } from '../../../../shared/ui/loading-spinner/loading-spinner.component';
 import { COLOR_JUGADOR_A, COLOR_JUGADOR_B } from '../../colores-comparador';
@@ -15,6 +16,7 @@ import { NarrativaComparacionComponent } from '../narrativa-comparacion/narrativ
   imports: [
     LoadingSpinnerComponent,
     ErrorMessageComponent,
+    AvatarJugadorComponent,
     ComparacionPercentilesComponent,
     ComparacionValorComponent,
     ComparacionArquetipoComponent,

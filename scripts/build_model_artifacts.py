@@ -18,6 +18,8 @@ percentiles por posición+temporada.
 """
 
 import json
+import re
+import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -31,7 +33,21 @@ from sklearn.preprocessing import RobustScaler, StandardScaler, TargetEncoder
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data" / "processed"
+INTERIM_DIR = ROOT / "data" / "interim"
 MODELS_DIR = ROOT / "models"
+
+
+def _normalizar(s: str) -> str:
+    s = unicodedata.normalize("NFKD", str(s))
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    s = s.replace("đ", "d").replace("Đ", "D").replace("ł", "l").replace("ø", "o")
+    s = re.sub(r"[^a-z ]", "", s.lower())
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def _coincide(a: str, b: str) -> bool:
+    a, b = _normalizar(a), _normalizar(b)
+    return (a in b) or (b in a)
 
 ID_COLS = ["Player", "player_id", "saison_id"]
 TARGET_COLS = ["valor_eur", "log_valor_eur"]
@@ -94,11 +110,11 @@ N_CLUSTERS = 5
 # Se completa a mano tras leer el perfil crudo impreso por print_cluster_profile(), luego
 # se vuelve a correr el script. Ver AGENTS.md para el perfil que quedó documentado.
 CLUSTER_LABELS = {
-    0: "Rotación joven en clubes de alto rendimiento",
-    1: "Titular ofensivo de buen nivel",
+    0: "Joven de plantilla modesta, poca participación",
+    1: "Titular recurrente, perfil de contención",
     2: "Estrella ofensiva de máximo volumen",
-    3: "Joven de plantilla modesta, poca participación",
-    4: "Titular recurrente, perfil de contención",
+    3: "Titular ofensivo de buen nivel",
+    4: "Rotación joven en clubes de alto rendimiento",
 }
 
 
@@ -108,20 +124,59 @@ def load_frames():
     return df_feat, df_eda
 
 
-def resolve_eda_ambiguity(df_eda):
-    """Reaplica la regla de club_coincide de 03-ingenieria_variables.ipynb (celda 8)."""
+def load_prestamos() -> pd.DataFrame:
+    """Pares (player_id, saison_id) -> club donde jugó cedido, detectados desde las
+    insignias de Transfermarkt por scripts/detectar_prestamos.py. Ver ese script para el
+    porqué: club_coincide por sí solo siempre prefiere al club dueño de la ficha, aunque
+    el jugador haya pasado la temporada entera cedido en otro club (caso Endrick /
+    Olympique Lyon 2025-2026, reportado por el usuario)."""
+    path = INTERIM_DIR / "prestamos.csv"
+    if not path.exists():
+        return pd.DataFrame(columns=["player_id", "saison_id", "club_prestamo", "club_dueno"])
+    df = pd.read_csv(path)
+    df["player_id"] = df["player_id"].astype(str)
+    return df
+
+
+def resolve_eda_ambiguity(df_eda, prestamos):
+    """Reaplica la regla de resolución de ambigüedad de 03-ingenieria_variables.ipynb
+    (celda 8), extendida con evidencia de cesión (ver load_prestamos):
+
+    1. Si hay una insignia de cesión de Transfermarkt para este jugador+temporada, se
+       conserva la fila cuyo Squad coincide con el club de la cesión (donde jugó de
+       verdad), sin importar si coincide con el club "dueño" de la ficha.
+    2. Si no hay evidencia de cesión, se aplica la regla original por club_coincide:
+       se conserva la única fila que coincide con el club de Transfermarkt; si ninguna
+       o más de una coincide, se descarta el grupo completo (sin forma confiable de
+       saber cuál es la correcta -- este es el caso que arregló el bug de "Rodri").
+    """
     df = df_eda.copy()
     key_cols = ["player_id", "saison_id"]
+
+    prestamo_de_grupo = dict(zip(zip(prestamos["player_id"], prestamos["saison_id"]), prestamos["club_prestamo"]))
+    club_prestamo = [prestamo_de_grupo.get((pid, sid)) for pid, sid in zip(df["player_id"], df["saison_id"])]
+    df["_es_fila_prestamo"] = [
+        cp is not None and _coincide(sq, cp) for sq, cp in zip(df["Squad"], club_prestamo)
+    ]
+
     n_squads = df.groupby(key_cols)["Squad"].transform("nunique")
     ambiguos = n_squads > 1
+    tiene_prestamo = df.groupby(key_cols)["_es_fila_prestamo"].transform("any")
+
     n_true_grupo = df.groupby(key_cols)["club_coincide"].transform("sum")
 
     n_grupos_ambiguos = df.loc[ambiguos, key_cols].drop_duplicates().shape[0]
-    descartar = (ambiguos & (n_true_grupo == 1) & (~df["club_coincide"])) | (
+    n_grupos_prestamo = df.loc[ambiguos & tiene_prestamo, key_cols].drop_duplicates().shape[0]
+
+    descartar_club_coincide = (ambiguos & (n_true_grupo == 1) & (~df["club_coincide"])) | (
         ambiguos & (n_true_grupo == 0)
     )
+    descartar_prestamo = ambiguos & tiene_prestamo & (~df["_es_fila_prestamo"])
+    descartar = np.where(tiene_prestamo, descartar_prestamo, descartar_club_coincide)
+    df = df.drop(columns=["_es_fila_prestamo"])
 
     print(f"Grupos (player_id, saison_id) con Squad ambiguo: {n_grupos_ambiguos}")
+    print(f"  resueltos via evidencia de cesión: {n_grupos_prestamo}")
     print(f"Filas descartadas: {descartar.sum()} de {df.shape[0]}")
     df = df[~descartar].reset_index(drop=True)
     print(f"Shape tras resolver ambigüedad: {df.shape}")
@@ -297,7 +352,8 @@ def save_artifacts(encoder, scaler, model, feature_cols, kmeans, cluster_labels,
 
 def main():
     df_feat, df_eda = load_frames()
-    df_eda_resuelto = resolve_eda_ambiguity(df_eda)
+    prestamos = load_prestamos()
+    df_eda_resuelto = resolve_eda_ambiguity(df_eda, prestamos)
     assert_join_keys_match(df_eda_resuelto, df_feat)
 
     encoder, scaler, model, feature_cols, df_model_full = fit_target_encoder_and_model(df_feat)

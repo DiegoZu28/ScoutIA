@@ -4,11 +4,12 @@ import { Subject, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { JugadorBusqueda, ScoutiaApiService } from '../../../../core/api/scoutia-api.service';
+import { AvatarJugadorComponent } from '../../../../shared/ui/avatar-jugador/avatar-jugador.component';
 
 @Component({
   selector: 'app-buscador-jugador',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, AvatarJugadorComponent],
   templateUrl: './buscador-jugador.component.html',
 })
 export class BuscadorJugadorComponent {

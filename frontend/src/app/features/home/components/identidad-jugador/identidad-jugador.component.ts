@@ -1,10 +1,12 @@
 import { Component, computed, input } from '@angular/core';
 
 import { EstadisticasJugador } from '../../../../core/api/scoutia-api.service';
+import { AvatarJugadorComponent } from '../../../../shared/ui/avatar-jugador/avatar-jugador.component';
 
 @Component({
   selector: 'app-identidad-jugador',
   standalone: true,
+  imports: [AvatarJugadorComponent],
   templateUrl: './identidad-jugador.component.html',
 })
 export class IdentidadJugadorComponent {

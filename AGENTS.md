@@ -46,22 +46,51 @@ existía en ninguna notebook), y escribe:
 - `data/processed/dataset.parquet` (panel jugador-temporada listo para servir)
 
 **Invariante crítico del join:** `fbref_tm_eda.parquet` tiene 735 grupos `(player_id, saison_id)`
-duplicados por transferencias a media temporada (mismo bug ya conocido, ver commit "Cruce
-FBref y Transfermarkt"). El script reaplica exactamente la regla de `club_coincide` de
-`03-ingenieria_variables.ipynb` (celda 8) y **hace `assert` de que las keys resultantes
-coinciden 1:1 con `fbref_tm_features.parquet`** — si алгún día cambian los datos fuente y el
-assert revienta, es la señal de que hay que revisar esa regla, no de saltársela.
+ambiguos (más de un `Squad` distinto para la misma temporada) — dos causas distintas mezcladas
+ahí: colisiones de nombre en el cruce FBref↔Transfermarkt (bug real, ver commit "Cruce FBref y
+Transfermarkt") y jugadores cedidos (misma persona, dos clubes legítimos en la misma
+temporada). El script reaplica exactamente la regla de `03-ingenieria_variables.ipynb`
+(celda 8), que ahora es de dos niveles:
+
+1. Si hay evidencia de cesión en `data/interim/prestamos.csv` (generado por
+   `scripts/detectar_prestamos.py` a partir de las insignias "On loan from X" / "Returned
+   after loan spell with X" de las plantillas de Transfermarkt) para ese `(player_id,
+   saison_id)`, se conserva la fila del club donde jugó de verdad, no la del club dueño.
+2. Si no, la regla original por `club_coincide`: se conserva la única fila que coincide con
+   el club de Transfermarkt; si ninguna o más de una coincide, se descarta el grupo entero.
+
+Desglose actual: 58 grupos resueltos vía evidencia de cesión (23 en la temporada
+2025-2026), 603 vía `club_coincide`, 74 sin fila confiable (descartados). Caso que motivó el
+punto 1: Endrick, cedido en Olympique Lyon toda 2025-2026 (16 partidos, 5 goles) — antes
+`club_coincide` se quedaba con sus 12 minutos post-regreso a Real Madrid; ver memoria
+`data_quality_loan_split_bug`.
+
+El script **hace `assert` de que las keys resultantes coinciden 1:1 con
+`fbref_tm_features.parquet`** — si algún día cambian los datos fuente (o se vuelve a correr
+`03-ingenieria_variables.ipynb`) y el assert revienta, es la señal de que hay que revisar
+esa regla, no de saltársela.
+
+**Bug residual conocido, no arreglado:** ni `club_coincide` ni la evidencia de cesión
+atrapan el caso donde el `player_id` está mal cruzado con una persona real distinta *y esa
+persona equivocada* también coincide con su propio club de Transfermarkt — ver memoria
+`data_quality_rodri_merge_bug` (casos concretos: Marc Guéhi y Antoine Semenyo, ambos
+muestran "Manchester City" en 2025-2026 de forma espuria).
 
 Las etiquetas de arquetipo (`CLUSTER_LABELS` en el script) se escribieron a mano tras leer
 el perfil crudo por cluster que imprime el script. Perfil actual (k=5):
 
 | cluster | n | edad | minutos | goles | asist. | tiros | amarillas | PPM equipo | etiqueta |
 |---|---|---|---|---|---|---|---|---|---|
-| 0 | 2490 | 23.69 | 572 | 0.38 | 0.37 | 4.59 | 0.95 | 2.07 | Rotación joven en clubes de alto rendimiento |
-| 1 | 1901 | 25.52 | 1962 | 4.91 | 3.55 | 40.48 | 3.69 | 1.49 | Titular ofensivo de buen nivel |
-| 2 | 513 | 26.21 | 2395 | 13.51 | 5.03 | 76.67 | 3.89 | 1.67 | Estrella ofensiva de máximo volumen |
-| 3 | 3774 | 23.66 | 476 | 0.26 | 0.21 | 4.30 | 0.90 | 0.72 | Joven de plantilla modesta, poca participación |
-| 4 | 4344 | 27.08 | 1940 | 1.06 | 1.15 | 15.23 | 4.60 | 1.31 | Titular recurrente, perfil de contención |
+| 0 | 3803 | 23.71 | 482 | 0.25 | 0.21 | 4.32 | 0.91 | 0.72 | Joven de plantilla modesta, poca participación |
+| 1 | 4328 | 27.01 | 1944 | 1.09 | 1.17 | 15.49 | 4.62 | 1.31 | Titular recurrente, perfil de contención |
+| 2 | 499 | 26.18 | 2395 | 13.66 | 4.94 | 76.95 | 3.88 | 1.66 | Estrella ofensiva de máximo volumen |
+| 3 | 1872 | 25.56 | 1969 | 4.98 | 3.61 | 40.97 | 3.71 | 1.49 | Titular ofensivo de buen nivel |
+| 4 | 2521 | 23.77 | 589 | 0.39 | 0.37 | 4.65 | 0.96 | 2.07 | Rotación joven en clubes de alto rendimiento |
+
+(Perfil de la corrida más reciente, post-fix de cesiones — 2026-09-18. El orden de
+`cluster_id` cambió respecto a la tabla anterior por el mismo motivo que advierte el párrafo
+de abajo: **siempre releer el perfil impreso antes de confiar en `CLUSTER_LABELS`**, no
+asumir que el índice se mantiene entre corridas.)
 
 Si se vuelve a correr el script con datos distintos, los `cluster_id` de KMeans pueden salir
 en otro orden — releer el perfil impreso antes de confiar en las etiquetas.

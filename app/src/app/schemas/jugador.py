@@ -8,6 +8,7 @@ class JugadorBusqueda(BaseModel):
     posicion: str
     liga: str
     temporada_mas_reciente: str
+    foto_url: str | None = None
 
 
 class EstadisticasJugador(BaseModel):
@@ -19,6 +20,9 @@ class EstadisticasJugador(BaseModel):
     posicion_detallada: str
     liga: str
     temporada: str
+    foto_url: str | None = None
+    bandera_url: str | None = None
+    escudo_url: str | None = None
     edad: float
     minutos_jugados: int
     goles: int

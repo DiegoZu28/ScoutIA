@@ -57,6 +57,11 @@ def _resolver_fila(request: Request, player_id: str, temporada: int | None) -> p
         raise HTTPException(status_code=404, detail=str(exc)) from exc
 
 
+def _url_de(fila: pd.Series, columna: str) -> str | None:
+    valor = fila.get(columna)
+    return str(valor) if pd.notna(valor) else None
+
+
 def _estadisticas_de(player_id: str, fila: pd.Series) -> EstadisticasJugador:
     contrato_conocido = bool(fila["flag_contrato_conocido"])
     return EstadisticasJugador(
@@ -68,6 +73,9 @@ def _estadisticas_de(player_id: str, fila: pd.Series) -> EstadisticasJugador:
         posicion_detallada=str(fila["posicion_tm"]),
         liga=str(fila["Comp"]),
         temporada=str(fila["Season"]),
+        foto_url=_url_de(fila, "foto_url"),
+        bandera_url=_url_de(fila, "bandera_url"),
+        escudo_url=_url_de(fila, "escudo_url"),
         edad=float(fila["Age"]),
         minutos_jugados=int(fila["Playing Time_Min"]),
         goles=int(fila["Performance_Gls"]),
@@ -194,6 +202,7 @@ def buscar_jugador(request: Request, q: str = Query(min_length=1), limit: int = 
             posicion=str(fila["posicion_tm"]),
             liga=str(fila["Comp"]),
             temporada_mas_reciente=str(fila["Season"]),
+            foto_url=_url_de(fila, "foto_url"),
         )
         for player_id, fila in resultados.iterrows()
     ]

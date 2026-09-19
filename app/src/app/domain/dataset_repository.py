@@ -1,9 +1,11 @@
+import json
 from pathlib import Path
 
 import pandas as pd
 from unidecode import unidecode
 
 from app.domain.exceptions import JugadorNoEncontrado, TemporadaNoEncontrada
+from app.domain.posiciones import posicion_corta_es, posicion_detallada_es
 
 
 def _normalizar(texto: object) -> str:
@@ -13,10 +15,22 @@ def _normalizar(texto: object) -> str:
 class DatasetRepository:
     """Carga data/processed/dataset.parquet una sola vez y resuelve consultas por jugador."""
 
-    def __init__(self, dataset_path: Path):
+    def __init__(self, dataset_path: Path, imagenes_path: Path | None = None):
         df = pd.read_parquet(dataset_path)
         df["saison_id"] = df["saison_id"].astype(int)
         df["_nombre_norm"] = df["Player"].map(_normalizar)
+
+        # Traducción de posiciones a español (solo de presentación: el pipeline de
+        # modelado usa las dummies pos_* ya precomputadas, nunca este texto).
+        df["posicion_tm"] = df["posicion_tm"].map(posicion_detallada_es)
+        df["Pos"] = df["Pos"].map(posicion_corta_es)
+
+        imagenes: dict[str, dict[str, str | None]] = {}
+        if imagenes_path is not None and imagenes_path.exists():
+            imagenes = json.loads(imagenes_path.read_text(encoding="utf-8"))
+        df["foto_url"] = df["player_id"].map(lambda pid: (imagenes.get(pid) or {}).get("foto_url"))
+        df["bandera_url"] = df["player_id"].map(lambda pid: (imagenes.get(pid) or {}).get("bandera_url"))
+        df["escudo_url"] = df["player_id"].map(lambda pid: (imagenes.get(pid) or {}).get("escudo_url"))
 
         # Un jugador solo cuenta como vigente si tiene fila en la temporada MÁS RECIENTE
         # del dataset -- si no, es que ya no juega en las 5 grandes ligas (ej. Messi:
