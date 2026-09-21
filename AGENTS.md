@@ -161,7 +161,9 @@ actualizar una de estas librerías en un lado, actualizar el otro.
    las diferencias reconstruye exactamente la brecha en espacio log10.
 3. El LLM (`app/src/app/narrativa/`) solo redacta el JSON de diferencias ya calculado —
    nunca recibe stats crudas ni calcula nada, cumpliendo la regla ya escrita arriba. Mismo
-   patrón de `response_format: json_schema` que `05-llm.ipynb`.
+   patrón de `response_format: json_schema` ya validado en el prototipo de noticias con LLM
+   (notebook `05-llm.ipynb`, eliminado 2026-09-20 al descartarse esa feature — ver sección
+   de descartadas más abajo).
 4. **Encontrado probando con la API real:** pasarle al LLM un booleano (`favorece_a`) para
    indicar a qué jugador beneficia cada factor de valor causó una atribución cruzada (le
    asignó un factor al jugador equivocado en la prosa). Se corrigió mandando el nombre del
@@ -195,7 +197,8 @@ actualizar una de estas librerías en un lado, actualizar el otro.
   por los 735 grupos duplicados — ver la sección de arriba antes de tocar el script.
 - `Settings.model_config.env_file` lee primero el `.env` de la raíz del repo y después
   `app/.env` (que no existe todavía) — así el backend reusa el mismo `OPENAI_API_KEY` que
-  ya usaba `05-llm.ipynb`, sin duplicar el secreto en dos archivos.
+  ya usaba el prototipo de noticias con LLM (`05-llm.ipynb`, eliminado — ver sección de
+  descartadas), sin duplicar el secreto en dos archivos.
 
 ## Comandos
 
@@ -209,17 +212,69 @@ cd app && uv run pytest -q
 
 # Frontend
 export NVM_DIR="$HOME/.nvm"; . "$NVM_DIR/nvm.sh"
-cd frontend && npm start                       # http://localhost:4200
+cd frontend && npm start                       # http://localhost:4200 (proxy a :8000 vía proxy.conf.json)
 cd frontend && npm run generate:api-types       # regenerar tipos desde /openapi.json (requiere backend corriendo)
+
+# Compartir la app (LAN o internet) para que alguien más la pruebe
+scripts/compartir_app.sh                        # build de Angular + backend en :8000 (sirve ambos) + túnel público
+scripts/detener_app.sh                          # baja todo — a partir de ahí no se gasta nada
 ```
+
+## Compartir la app con otros (2026-09-19)
+
+`scripts/compartir_app.sh` resuelve "que mis amigos/el profe prueben la app desde otra red"
+sin desplegar nada permanente (spec prohíbe Docker en cualquier fase, y esto es para pruebas
+puntuales, no para producción):
+
+1. `npm run build` compila Angular a `frontend/dist/frontend/browser/`.
+2. `app/src/app/main.py` ahora monta un catch-all (`GET /{full_path:path}`, registrado
+   *después* de `include_router` para no pisar `/api/v1/*`) que sirve ese build y cae a
+   `index.html` para las rutas del router de Angular (ej. `/oportunidades`) que no son un
+   archivo real — así queda **un solo puerto** (8000) sirviendo frontend + API, en vez de
+   4200 + 8000 por separado.
+3. Por eso `API_BASE_URL` (`frontend/src/app/core/config/api-base-url.ts`) pasó de estar
+   hardcodeado a `http://localhost:8000` a ser **relativo** (`/api/v1`) — si no, el navegador
+   de un amigo intentaría pegarle a su propio `localhost`, no al servidor real. En dev
+   (`npm start`), `proxy.conf.json` reenvía `/api/v1` a `:8000` para que la ruta relativa
+   siga funcionando con `ng serve`.
+4. El túnel es Cloudflare Tunnel (`cloudflared`, instalado en `~/.local/bin`, sin cuenta —
+   "quick tunnel"): URL pública `https://*.trycloudflare.com` distinta cada vez que se corre
+   el script, válida mientras el proceso esté vivo.
+5. **Costo/exposición:** el LLM (`/comparar/narrativa`) sigue consumiendo `OPENAI_API_KEY`
+   por cada llamada real, esté o no la app expuesta — la URL pública es obscura pero no tiene
+   auth (prohibida por el spec), así que cualquiera con el link puede llamarlo. Para cero
+   riesgo/costo cuando no se está mostrando la app: `scripts/detener_app.sh`.
 
 ## Qué queda explícitamente fuera de la Fase 1 (diferido a Fase 2+)
 
 Orquestador de agentes de OpenAI (`agents/`, `tools/` en `app/` — ni siquiera se crearon
-como carpetas vacías), Chat, CriticAgent con validación por regex, vista Oportunidades,
-vista Trazabilidad, red neuronal, selector de temporada en el frontend. Autenticación/base
-de datos/Docker están explícitamente prohibidos por el spec de ScoutIA en cualquier fase.
+como carpetas vacías), CriticAgent con validación por regex, red neuronal, selector de
+temporada en el frontend. Autenticación/base de datos/Docker están explícitamente
+prohibidos por el spec de ScoutIA en cualquier fase.
+
+**Descartadas (no se van a construir):** Chat y vista Trazabilidad — estaban en el navbar
+como placeholders ("Próxima fase") pero se quitaron (2026-09-19) porque se decidió no
+implementarlas.
+
+**Notebook `05-llm.ipynb` eliminado (2026-09-20):** era un prototipo (ESPN + OpenAI) para
+clasificar noticias por jugador y ligarlas al dataset; se descartó la feature de noticias y
+el notebook no tenía ninguna dependencia real — nada en `app/`, `scripts/` ni `frontend/`
+lo importaba, y su único output (`data/interim/espn_news/*.parquet`) estaba en
+`.gitignore` y no lo leía nada más. No afecta al LLM que sí usa la app
+(`app/src/app/narrativa/`, ver decisiones de diseño del Comparador arriba), que es
+independiente.
 
 **Vista Comparador:** se adelantó respecto al plan original (ver sección de decisiones de
 diseño arriba) — `GET /jugadores/comparar` + `/comparar/narrativa` en el backend, feature
-`frontend/src/app/features/comparador/` en el frontend. El resto de esta lista sigue vigente.
+`frontend/src/app/features/comparador/` en el frontend.
+
+**Vista Oportunidades:** también se adelantó (2026-09-19). `GET /jugadores/oportunidades`
+(`app/src/app/valuation/oportunidades.py` + `Predictor.predecir_banda_lote`, vectorizado en
+vez de llamar `predecir_banda` fila por fila) filtra los ~2545 jugadores vigentes a los que
+tienen `valor_medio` (banda del modelo) **por encima** de `valor_eur` (Transfermarkt) —
+jugadores que el modelo valora más de lo que refleja su precio de mercado —, ordenados por
+brecha absoluta descendente. `banda_completa_por_encima` (incluso el extremo bajo de la banda
+ya supera el valor de mercado) es la señal más confiable, mostrada como badge "Señal fuerte"
+en el frontend (`frontend/src/app/features/oportunidades/`) — no filtra por ella, solo la
+marca. Sigue la regla de bandas + "casos a revisión manual" (nunca comprar/vender) del spec.
+El resto de esta lista sigue vigente.

@@ -20,6 +20,8 @@ export type ContribucionComparada = components['schemas']['ContribucionComparada
 export type ValorComparado = components['schemas']['ValorComparado'];
 export type ArquetipoComparado = components['schemas']['ArquetipoComparado'];
 export type NarrativaComparacion = components['schemas']['NarrativaComparacion'];
+export type OportunidadJugador = components['schemas']['OportunidadJugador'];
+export type ListaOportunidades = components['schemas']['ListaOportunidades'];
 
 export interface FichaJugador {
   estadisticas: EstadisticasJugador;
@@ -54,6 +56,11 @@ export class ScoutiaApiService {
   ): Observable<ComparacionJugadores> {
     const params = this.paramsComparacion(jugadorA, jugadorB, temporadaA, temporadaB);
     return this.http.get<ComparacionJugadores>(`${API_BASE_URL}/jugadores/comparar`, { params });
+  }
+
+  obtenerOportunidades(limit = 20): Observable<ListaOportunidades> {
+    const params = new HttpParams().set('limit', limit);
+    return this.http.get<ListaOportunidades>(`${API_BASE_URL}/jugadores/oportunidades`, { params });
   }
 
   obtenerNarrativaComparacion(

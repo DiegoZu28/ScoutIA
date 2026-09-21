@@ -16,8 +16,10 @@ from app.schemas.comparacion import (
 )
 from app.schemas.historial import HistorialJugador, TemporadaRendimiento
 from app.schemas.jugador import EstadisticasJugador, JugadorBusqueda
+from app.schemas.oportunidad import ListaOportunidades, OportunidadJugador
 from app.schemas.percentiles import GrupoComparacion, PercentilEstadistica, PercentilesJugador
 from app.schemas.valor import BandaValor, ContribucionVariable, PrediccionValor
+from app.valuation.oportunidades import calcular_oportunidades
 from app.valuation.predictor import Predictor
 
 router = APIRouter(prefix="/jugadores", tags=["jugadores"])
@@ -206,6 +208,35 @@ def buscar_jugador(request: Request, q: str = Query(min_length=1), limit: int = 
         )
         for player_id, fila in resultados.iterrows()
     ]
+
+
+def _oportunidad_de(player_id: str, fila: pd.Series) -> OportunidadJugador:
+    return OportunidadJugador(
+        player_id=str(player_id),
+        nombre=str(fila["Player"]),
+        club=str(fila["Squad"]),
+        posicion=str(fila["posicion_tm"]),
+        liga=str(fila["Comp"]),
+        temporada=str(fila["Season"]),
+        foto_url=_url_de(fila, "foto_url"),
+        valor_mercado_eur=float(fila["valor_eur"]),
+        banda=BandaValor(
+            valor_bajo=float(fila["valor_bajo"]),
+            valor_medio=float(fila["valor_medio"]),
+            valor_alto=float(fila["valor_alto"]),
+        ),
+        diferencia_eur=float(fila["diferencia_eur"]),
+        diferencia_pct=float(fila["diferencia_pct"]),
+        banda_completa_por_encima=bool(fila["banda_completa_por_encima"]),
+    )
+
+
+@router.get("/oportunidades", response_model=ListaOportunidades)
+def obtener_oportunidades(request: Request, limit: int = 20):
+    candidatos = calcular_oportunidades(_repo(request).jugadores_vigentes(), _predictor(request), limit)
+    return ListaOportunidades(
+        jugadores=[_oportunidad_de(player_id, fila) for player_id, fila in candidatos.iterrows()]
+    )
 
 
 def _comparacion_de(

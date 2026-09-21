@@ -1,0 +1,63 @@
+<div class="mx-auto max-w-3xl px-4 py-8">
+  <h1 class="text-2xl font-bold text-slate-900">Oportunidades</h1>
+  <p class="mt-1 text-sm text-slate-600">
+    Jugadores vigentes cuya banda de valor estimada por el modelo queda por encima de su valor
+    de mercado en Transfermarkt. Son casos a revisión manual, no recomendaciones de compra o
+    venta.
+  </p>
+
+  @if (cargando()) {
+    <app-loading-spinner />
+  } @else if (error()) {
+    <div class="mt-6">
+      <app-error-message [mensaje]="error()!" />
+    </div>
+  } @else if (datos(); as datos) {
+    @if (datos.jugadores.length === 0) {
+      <p class="mt-6 text-sm text-slate-400">No hay casos a revisión manual en este momento.</p>
+    } @else {
+      <ul class="mt-6 space-y-3">
+        @for (j of datos.jugadores; track j.player_id) {
+          <li class="rounded-xl border border-slate-200 bg-white shadow-sm">
+            <a
+              [routerLink]="['/']"
+              [queryParams]="{ jugador: j.player_id }"
+              class="flex flex-wrap items-center gap-4 rounded-xl p-4 hover:bg-slate-50"
+            >
+              <app-avatar-jugador [nombre]="j.nombre" [fotoUrl]="j.foto_url" tamano="md" />
+
+              <div class="min-w-0 flex-1">
+                <div class="flex flex-wrap items-baseline gap-x-2">
+                  <span class="font-semibold text-slate-900">{{ j.nombre }}</span>
+                  @if (j.banda_completa_por_encima) {
+                    <span
+                      class="rounded-full bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700"
+                      title="Toda la banda estimada queda por encima del valor de mercado"
+                    >
+                      Señal fuerte
+                    </span>
+                  }
+                </div>
+                <p class="text-sm text-slate-500">{{ j.club }} · {{ j.liga }} · {{ j.posicion }}</p>
+              </div>
+
+              <div class="flex shrink-0 flex-col items-end gap-0.5 text-right">
+                <span class="text-xs text-slate-500">
+                  Mercado {{ formatoEur(j.valor_mercado_eur) }}
+                </span>
+                <span class="text-sm font-semibold text-indigo-700">
+                  Modelo {{ formatoEur(j.banda.valor_bajo) }} – {{ formatoEur(j.banda.valor_alto) }}
+                </span>
+                <span class="text-xs font-medium text-emerald-600">
+                  +{{ formatoEur(j.diferencia_eur) }} ({{ formatoPct(j.diferencia_pct) }})
+                </span>
+              </div>
+            </a>
+          </li>
+        }
+      </ul>
+    }
+
+    <p class="mt-6 text-xs text-slate-500">{{ datos.metodologia_nota }}</p>
+  }
+</div>

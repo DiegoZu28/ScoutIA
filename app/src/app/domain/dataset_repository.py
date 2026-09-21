@@ -47,6 +47,10 @@ class DatasetRepository:
             df.sort_values("saison_id").groupby("player_id", as_index=False).tail(1).set_index("player_id")
         )
 
+    def jugadores_vigentes(self) -> pd.DataFrame:
+        """Una fila por jugador vigente (su temporada más reciente), indexada por player_id."""
+        return self._ultima_temporada
+
     def buscar(self, query: str, limit: int = 20) -> pd.DataFrame:
         q = _normalizar(query)
         vista = self._ultima_temporada

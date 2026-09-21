@@ -42,6 +42,17 @@ class Predictor:
             "moneda": "EUR",
         }
 
+    def predecir_banda_lote(self, df: pd.DataFrame) -> dict[str, pd.Series]:
+        """Igual que `predecir_banda`, vectorizado para muchas filas a la vez (ej. Oportunidades)."""
+        x = df[self._feature_cols].astype(float)
+        x_escalado = self._scaler.transform(x)
+        pred_log = self._model.predict(x_escalado)
+        return {
+            "valor_bajo": 10 ** (pred_log - self._rmse_log10),
+            "valor_medio": 10**pred_log,
+            "valor_alto": 10 ** (pred_log + self._rmse_log10),
+        }
+
     def explicar(self, fila: pd.Series, top_n: int = 8) -> list[dict]:
         contribuciones_todas = self._contribuciones_todas(fila)
 

@@ -10,8 +10,8 @@
   </div>
 
   <div class="mt-6">
-    @if (jugadorSeleccionado(); as jugador) {
-      <app-ficha-jugador [playerId]="jugador.player_id" />
+    @if (playerId(); as id) {
+      <app-ficha-jugador [playerId]="id" />
     } @else {
       <p class="text-sm text-slate-400">Ningún jugador seleccionado todavía.</p>
     }

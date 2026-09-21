@@ -21,6 +21,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/jugadores/oportunidades": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener Oportunidades */
+        get: operations["obtener_oportunidades_api_v1_jugadores_oportunidades_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/jugadores/comparar": {
         parameters: {
             query?: never;
@@ -322,6 +339,16 @@ export interface components {
             /** Foto Url */
             foto_url?: string | null;
         };
+        /** ListaOportunidades */
+        ListaOportunidades: {
+            /** Jugadores */
+            jugadores: components["schemas"]["OportunidadJugador"][];
+            /**
+             * Metodologia Nota
+             * @default Compara la banda de valor estimada por el modelo con el valor de mercado publicado en Transfermarkt. Un valor estimado por encima del de mercado no es una recomendación de compra o venta: son casos a revisión manual, ya que el modelo puede no capturar factores como lesiones, contexto táctico o situación contractual.
+             */
+            metodologia_nota: string;
+        };
         /** NarrativaComparacion */
         NarrativaComparacion: {
             /** Resumen */
@@ -337,6 +364,32 @@ export interface components {
              * @default Estimación de un modelo estadístico entrenado con datos históricos de rendimiento y valor de mercado. No es una tasación oficial ni una recomendación de compra o venta: preséntese siempre como rango, nunca como cifra puntual.
              */
             metodologia_nota: string;
+        };
+        /** OportunidadJugador */
+        OportunidadJugador: {
+            /** Player Id */
+            player_id: string;
+            /** Nombre */
+            nombre: string;
+            /** Club */
+            club: string;
+            /** Posicion */
+            posicion: string;
+            /** Liga */
+            liga: string;
+            /** Temporada */
+            temporada: string;
+            /** Foto Url */
+            foto_url?: string | null;
+            /** Valor Mercado Eur */
+            valor_mercado_eur: number;
+            banda: components["schemas"]["BandaValor"];
+            /** Diferencia Eur */
+            diferencia_eur: number;
+            /** Diferencia Pct */
+            diferencia_pct: number;
+            /** Banda Completa Por Encima */
+            banda_completa_por_encima: boolean;
         };
         /** PercentilComparado */
         PercentilComparado: {
@@ -457,6 +510,37 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["JugadorBusqueda"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    obtener_oportunidades_api_v1_jugadores_oportunidades_get: {
+        parameters: {
+            query?: {
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListaOportunidades"];
                 };
             };
             /** @description Validation Error */
