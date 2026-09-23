@@ -16,7 +16,7 @@ export class RadarPercentilesComponent {
 
   readonly series = computed<SerieRadar[]>(() => [
     {
-      etiqueta: 'Percentil',
+      etiqueta: 'Comparación con otros jugadores',
       color: COLOR_SERIE_UNICA,
       puntos: this.percentiles().percentiles.map((p) => ({
         etiqueta: p.etiqueta,

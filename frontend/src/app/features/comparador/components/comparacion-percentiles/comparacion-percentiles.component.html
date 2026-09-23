@@ -1,17 +1,17 @@
-<div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-  <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wide">
-    Percentiles por posición y temporada
+<div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+  <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wide dark:text-slate-400">
+    Comparación con otros jugadores
   </h3>
 
   @if (mismaPosicion()) {
-    <p class="mt-1 text-xs text-slate-500">
+    <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
       Ambos comparados contra jugadores en la posición "{{ grupoA().posicion }}" en
       {{ grupoA().temporada }}.
     </p>
   } @else {
-    <p class="mt-1 text-xs text-amber-700">
-      Juegan posiciones distintas ({{ grupoA().posicion }} vs. {{ grupoB().posicion }}): los
-      percentiles se calculan contra grupos de referencia distintos.
+    <p class="mt-1 text-xs text-amber-700 dark:text-amber-400">
+      Juegan posiciones distintas ({{ grupoA().posicion }} vs. {{ grupoB().posicion }}): se
+      comparan contra grupos de referencia distintos.
     </p>
   }
 
@@ -19,7 +19,7 @@
 
   <table class="mt-4 w-full text-xs">
     <thead>
-      <tr class="text-left text-slate-500">
+      <tr class="text-left text-slate-500 dark:text-slate-400">
         <th class="py-1 font-medium">Estadística</th>
         <th class="py-1 text-right font-medium">{{ nombreA() }}</th>
         <th class="py-1 text-right font-medium">{{ nombreB() }}</th>
@@ -27,24 +27,32 @@
     </thead>
     <tbody>
       @for (p of percentiles(); track p.estadistica) {
-        <tr class="border-t border-slate-100">
-          <td class="py-1.5 text-slate-600">{{ p.etiqueta }}</td>
+        <tr class="border-t border-slate-100 dark:border-slate-800">
+          <td class="py-1.5 text-slate-600 dark:text-slate-400">{{ p.etiqueta }}</td>
           <td
             class="py-1.5 text-right font-medium"
             [class.text-slate-900]="p.percentil_a >= p.percentil_b"
             [class.text-slate-400]="p.percentil_a < p.percentil_b"
+            [class.dark:text-slate-100]="p.percentil_a >= p.percentil_b"
+            [class.dark:text-slate-500]="p.percentil_a < p.percentil_b"
           >
-            {{ p.percentil_a * 100 | number: '1.0-0' }}
+            {{ p.percentil_a * 100 | number: '1.0-0' }}%
           </td>
           <td
             class="py-1.5 text-right font-medium"
             [class.text-slate-900]="p.percentil_b >= p.percentil_a"
             [class.text-slate-400]="p.percentil_b < p.percentil_a"
+            [class.dark:text-slate-100]="p.percentil_b >= p.percentil_a"
+            [class.dark:text-slate-500]="p.percentil_b < p.percentil_a"
           >
-            {{ p.percentil_b * 100 | number: '1.0-0' }}
+            {{ p.percentil_b * 100 | number: '1.0-0' }}%
           </td>
         </tr>
       }
     </tbody>
   </table>
+  <p class="mt-2 text-xs text-slate-400 dark:text-slate-500">
+    El porcentaje indica a cuántos jugadores del grupo de referencia supera cada uno en esa
+    estadística.
+  </p>
 </div>

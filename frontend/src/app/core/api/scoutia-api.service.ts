@@ -22,6 +22,7 @@ export type ArquetipoComparado = components['schemas']['ArquetipoComparado'];
 export type NarrativaComparacion = components['schemas']['NarrativaComparacion'];
 export type OportunidadJugador = components['schemas']['OportunidadJugador'];
 export type ListaOportunidades = components['schemas']['ListaOportunidades'];
+export type ResumenDataset = components['schemas']['ResumenDataset'];
 
 export interface FichaJugador {
   estadisticas: EstadisticasJugador;
@@ -34,6 +35,10 @@ export interface FichaJugador {
 @Injectable({ providedIn: 'root' })
 export class ScoutiaApiService {
   private readonly http = inject(HttpClient);
+
+  obtenerResumen(): Observable<ResumenDataset> {
+    return this.http.get<ResumenDataset>(`${API_BASE_URL}/jugadores/resumen`);
+  }
 
   buscarJugador(query: string, limit = 20): Observable<JugadorBusqueda[]> {
     const params = new HttpParams().set('q', query).set('limit', limit);

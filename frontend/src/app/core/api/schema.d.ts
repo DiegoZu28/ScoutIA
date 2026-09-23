@@ -4,6 +4,23 @@
  */
 
 export interface paths {
+    "/api/v1/jugadores/resumen": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener Resumen */
+        get: operations["obtener_resumen_api_v1_jugadores_resumen_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/jugadores/buscar": {
         parameters: {
             query?: never;
@@ -436,6 +453,21 @@ export interface components {
              */
             metodologia_nota: string;
         };
+        /** ResumenDataset */
+        ResumenDataset: {
+            /** Temporada Inicio */
+            temporada_inicio: string;
+            /** Temporada Fin */
+            temporada_fin: string;
+            /** Total Temporadas */
+            total_temporadas: number;
+            /** Ligas */
+            ligas: string[];
+            /** Total Jugadores */
+            total_jugadores: number;
+            /** Total Equipos */
+            total_equipos: number;
+        };
         /** TemporadaRendimiento */
         TemporadaRendimiento: {
             /** Temporada */
@@ -491,6 +523,26 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    obtener_resumen_api_v1_jugadores_resumen_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResumenDataset"];
+                };
+            };
+        };
+    };
     buscar_jugador_api_v1_jugadores_buscar_get: {
         parameters: {
             query: {

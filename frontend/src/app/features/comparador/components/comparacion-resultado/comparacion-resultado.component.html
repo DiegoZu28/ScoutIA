@@ -5,7 +5,7 @@
 } @else if (comparacion(); as c) {
   <div class="space-y-4">
     <div class="grid gap-4 sm:grid-cols-2">
-      <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+      <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
         <div class="flex items-start gap-3">
           <app-avatar-jugador
             [nombre]="c.jugador_a.nombre"
@@ -16,9 +16,9 @@
           <div class="min-w-0 flex-1">
             <div class="flex items-center gap-2">
               <span class="h-2.5 w-2.5 shrink-0 rounded-full" [style.background-color]="colorA"></span>
-              <h2 class="text-xl font-semibold text-slate-900">{{ c.jugador_a.nombre }}</h2>
+              <h2 class="text-xl font-semibold text-slate-900 dark:text-slate-100">{{ c.jugador_a.nombre }}</h2>
             </div>
-            <div class="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-slate-600">
+            <div class="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-slate-600 dark:text-slate-400">
               <span class="inline-flex items-center gap-1">
                 @if (c.jugador_a.escudo_url) {
                   <img [src]="c.jugador_a.escudo_url" alt="" class="h-4 w-4 object-contain" />
@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+      <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
         <div class="flex items-start gap-3">
           <app-avatar-jugador
             [nombre]="c.jugador_b.nombre"
@@ -50,9 +50,9 @@
           <div class="min-w-0 flex-1">
             <div class="flex items-center gap-2">
               <span class="h-2.5 w-2.5 shrink-0 rounded-full" [style.background-color]="colorB"></span>
-              <h2 class="text-xl font-semibold text-slate-900">{{ c.jugador_b.nombre }}</h2>
+              <h2 class="text-xl font-semibold text-slate-900 dark:text-slate-100">{{ c.jugador_b.nombre }}</h2>
             </div>
-            <div class="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-slate-600">
+            <div class="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-slate-600 dark:text-slate-400">
               <span class="inline-flex items-center gap-1">
                 @if (c.jugador_b.escudo_url) {
                   <img [src]="c.jugador_b.escudo_url" alt="" class="h-4 w-4 object-contain" />

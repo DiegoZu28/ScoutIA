@@ -1,12 +1,12 @@
-<div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-  <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wide">Valor estimado (banda)</h3>
+<div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+  <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wide dark:text-slate-400">Valor estimado (banda)</h3>
 
   <div class="mt-2 grid gap-3 sm:grid-cols-2">
     <div class="flex items-start gap-2">
       <span class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full" [style.background-color]="colorA"></span>
       <div>
-        <div class="text-lg font-bold text-slate-900">{{ formatoEur(valor().banda_a.valor_medio) }}</div>
-        <div class="text-xs text-slate-500">
+        <div class="text-lg font-bold text-slate-900 dark:text-slate-100">{{ formatoEur(valor().banda_a.valor_medio) }}</div>
+        <div class="text-xs text-slate-500 dark:text-slate-400">
           {{ nombreA() }} · rango {{ formatoEur(valor().banda_a.valor_bajo) }} –
           {{ formatoEur(valor().banda_a.valor_alto) }}
         </div>
@@ -15,8 +15,8 @@
     <div class="flex items-start gap-2">
       <span class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full" [style.background-color]="colorB"></span>
       <div>
-        <div class="text-lg font-bold text-slate-900">{{ formatoEur(valor().banda_b.valor_medio) }}</div>
-        <div class="text-xs text-slate-500">
+        <div class="text-lg font-bold text-slate-900 dark:text-slate-100">{{ formatoEur(valor().banda_b.valor_medio) }}</div>
+        <div class="text-xs text-slate-500 dark:text-slate-400">
           {{ nombreB() }} · rango {{ formatoEur(valor().banda_b.valor_bajo) }} –
           {{ formatoEur(valor().banda_b.valor_alto) }}
         </div>
@@ -24,12 +24,12 @@
     </div>
   </div>
 
-  <p class="mt-2 text-xs text-slate-500">{{ valor().metodologia_nota }}</p>
+  <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">{{ valor().metodologia_nota }}</p>
 
-  <h4 class="mt-5 text-xs font-semibold text-slate-500 uppercase tracking-wide">
+  <h4 class="mt-5 text-xs font-semibold text-slate-500 uppercase tracking-wide dark:text-slate-400">
     Qué explica la diferencia de valor
   </h4>
-  <div class="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-600">
+  <div class="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-600 dark:text-slate-400">
     <span class="flex items-center gap-1.5">
       <span class="h-2.5 w-2.5 rounded-full" [style.background-color]="colorA"></span>
       Favorece a {{ nombreA() }}
@@ -43,8 +43,8 @@
   <ul class="mt-2 space-y-1.5">
     @for (c of valor().contribuciones_diferencia; track c.feature) {
       <li class="flex items-center gap-2 text-xs">
-        <span class="w-40 shrink-0 truncate text-slate-600">{{ c.etiqueta }}</span>
-        <span class="relative h-2 flex-1 rounded bg-slate-100">
+        <span class="w-40 shrink-0 truncate text-slate-600 dark:text-slate-400">{{ c.etiqueta }}</span>
+        <span class="relative h-2 flex-1 rounded bg-slate-100 dark:bg-slate-700">
           <span
             class="absolute inset-y-0 left-0 rounded"
             [style.background-color]="colorFactor(c.diferencia_log)"

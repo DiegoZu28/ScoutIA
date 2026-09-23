@@ -5,10 +5,10 @@
       [attr.y1]="linea.y"
       [attr.x2]="ejeXAncho"
       [attr.y2]="linea.y"
-      stroke="#e2e8f0"
+      class="stroke-slate-200 dark:stroke-slate-700"
       stroke-width="1"
     />
-    <text [attr.x]="ejeXY - 6" [attr.y]="linea.y" text-anchor="end" dominant-baseline="middle" font-size="9" class="fill-slate-500">
+    <text [attr.x]="ejeXY - 6" [attr.y]="linea.y" text-anchor="end" dominant-baseline="middle" font-size="9" class="fill-slate-500 dark:fill-slate-400">
       {{ formatoValor()(linea.valor) }}
     </text>
   }
@@ -17,10 +17,10 @@
 
   @for (p of puntosSvg(); track p.etiqueta) {
     <circle [attr.cx]="p.x" [attr.cy]="p.y" r="3.5" [attr.fill]="colorLinea()" />
-    <text [attr.x]="p.x" [attr.y]="ejeXAlto + 14" text-anchor="middle" font-size="9" class="fill-slate-500">
+    <text [attr.x]="p.x" [attr.y]="ejeXAlto + 14" text-anchor="middle" font-size="9" class="fill-slate-500 dark:fill-slate-400">
       {{ p.etiqueta }}
     </text>
-    <text [attr.x]="p.x" [attr.y]="p.y - 8" text-anchor="middle" font-size="9" class="fill-slate-700 font-medium">
+    <text [attr.x]="p.x" [attr.y]="p.y - 8" text-anchor="middle" font-size="9" class="fill-slate-700 dark:fill-slate-300 font-medium">
       {{ formatoValor()(p.valor) }}
     </text>
   }

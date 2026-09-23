@@ -1,6 +1,6 @@
 <svg [attr.viewBox]="'0 0 ' + size() + ' ' + size()" class="mx-auto w-full max-w-xs">
   @for (fraccion of anillos; track fraccion) {
-    <polygon [attr.points]="anilloPath(fraccion)" fill="none" stroke="#e2e8f0" stroke-width="1" />
+    <polygon [attr.points]="anilloPath(fraccion)" fill="none" class="stroke-slate-200 dark:stroke-slate-700" stroke-width="1" />
   }
 
   @for (eje of ejes(); track eje.etiqueta) {
@@ -9,7 +9,7 @@
       [attr.y1]="centroValor"
       [attr.x2]="lineaEjeX2(eje)"
       [attr.y2]="lineaEjeY2(eje)"
-      stroke="#e2e8f0"
+      class="stroke-slate-200 dark:stroke-slate-700"
       stroke-width="1"
     />
     <text
@@ -18,7 +18,7 @@
       text-anchor="middle"
       dominant-baseline="middle"
       font-size="9"
-      class="fill-slate-500"
+      class="fill-slate-500 dark:fill-slate-400"
     >
       {{ eje.etiqueta }}
     </text>
@@ -37,7 +37,7 @@
 @if (series().length > 1) {
   <div class="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1">
     @for (serie of series(); track serie.etiqueta) {
-      <span class="flex items-center gap-1.5 text-xs text-slate-600">
+      <span class="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400">
         <span class="h-2.5 w-2.5 rounded-full" [style.background-color]="serie.color"></span>
         {{ serie.etiqueta }}
       </span>

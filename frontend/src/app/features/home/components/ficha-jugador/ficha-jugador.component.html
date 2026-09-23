@@ -13,9 +13,8 @@
 
     <app-arquetipo-jugador [arquetipo]="ficha.arquetipo" />
 
-    <div class="grid gap-4 md:grid-cols-2">
-      <app-rendimiento-historico [historial]="ficha.historial" />
-      <app-valor-historico [historial]="ficha.historial" />
-    </div>
+    <app-valor-historico [historial]="ficha.historial" />
+
+    <app-rendimiento-historico [historial]="ficha.historial" />
   </div>
 }

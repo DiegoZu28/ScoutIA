@@ -51,6 +51,22 @@ class DatasetRepository:
         """Una fila por jugador vigente (su temporada más reciente), indexada por player_id."""
         return self._ultima_temporada
 
+    def resumen(self) -> dict[str, object]:
+        """Cifras agregadas del dataset (pantalla de bienvenida). Se calculan sobre `self._df`,
+        ya filtrado a jugadores vigentes -- son las mismas cifras que respalda el resto de la API,
+        no el dataset crudo sin filtrar."""
+        temporadas = sorted(self._df["Season"].unique().tolist())
+        temporada_mas_reciente = self._df["saison_id"].max()
+        equipos_actuales = self._df.loc[self._df["saison_id"] == temporada_mas_reciente, "Squad"].nunique()
+        return {
+            "temporada_inicio": temporadas[0],
+            "temporada_fin": temporadas[-1],
+            "total_temporadas": len(temporadas),
+            "ligas": sorted(self._df["Comp"].unique().tolist()),
+            "total_jugadores": len(self._ultima_temporada),
+            "total_equipos": int(equipos_actuales),
+        }
+
     def buscar(self, query: str, limit: int = 20) -> pd.DataFrame:
         q = _normalizar(query)
         vista = self._ultima_temporada

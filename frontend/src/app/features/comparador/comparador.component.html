@@ -1,20 +1,20 @@
 <div class="mx-auto max-w-3xl px-4 py-8">
-  <h1 class="text-2xl font-bold text-slate-900">Comparador de jugadores</h1>
-  <p class="mt-1 text-sm text-slate-600">
-    Elige dos jugadores para ver, lado a lado, sus percentiles, valor estimado y arquetipo de
-    estilo de juego.
+  <h1 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Comparador de jugadores</h1>
+  <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">
+    Elige dos jugadores para ver, lado a lado, cómo se comparan estadísticamente, su valor
+    estimado y su arquetipo de estilo de juego.
   </p>
 
   <div class="mt-6 grid gap-4 sm:grid-cols-2">
     <div>
-      <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-500">
+      <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
         <span class="h-2.5 w-2.5 rounded-full" [style.background-color]="colorA"></span>
         Jugador A
       </div>
       <app-buscador-jugador (jugadorSeleccionado)="onSeleccionA($event)" />
     </div>
     <div>
-      <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-500">
+      <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
         <span class="h-2.5 w-2.5 rounded-full" [style.background-color]="colorB"></span>
         Jugador B
       </div>
@@ -27,10 +27,10 @@
       @if (jugadorB(); as b) {
         <app-comparacion-resultado [jugadorAId]="a.player_id" [jugadorBId]="b.player_id" />
       } @else {
-        <p class="text-sm text-slate-400">Elige también un segundo jugador.</p>
+        <p class="text-sm text-slate-400 dark:text-slate-500">Elige también un segundo jugador.</p>
       }
     } @else {
-      <p class="text-sm text-slate-400">Elige dos jugadores para compararlos.</p>
+      <p class="text-sm text-slate-400 dark:text-slate-500">Elige dos jugadores para compararlos.</p>
     }
   </div>
 </div>

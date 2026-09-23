@@ -18,6 +18,7 @@ from app.schemas.historial import HistorialJugador, TemporadaRendimiento
 from app.schemas.jugador import EstadisticasJugador, JugadorBusqueda
 from app.schemas.oportunidad import ListaOportunidades, OportunidadJugador
 from app.schemas.percentiles import GrupoComparacion, PercentilEstadistica, PercentilesJugador
+from app.schemas.resumen import ResumenDataset
 from app.schemas.valor import BandaValor, ContribucionVariable, PrediccionValor
 from app.valuation.oportunidades import calcular_oportunidades
 from app.valuation.predictor import Predictor
@@ -191,6 +192,11 @@ def _arquetipo_comparado_de(fila_a: pd.Series, fila_b: pd.Series) -> ArquetipoCo
         etiqueta_b=str(fila_b["cluster_label"]),
         mismo_arquetipo=cluster_a == cluster_b,
     )
+
+
+@router.get("/resumen", response_model=ResumenDataset)
+def obtener_resumen(request: Request) -> ResumenDataset:
+    return ResumenDataset(**_repo(request).resumen())
 
 
 @router.get("/buscar", response_model=list[JugadorBusqueda])

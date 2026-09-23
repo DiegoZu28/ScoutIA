@@ -181,6 +181,58 @@ actualizar una de estas librerías en un lado, actualizar el otro.
    percentiles.component.ts` (ficha individual) ahora le pasa un arreglo de una sola serie,
    sin cambio visual.
 
+## Modo oscuro (2026-09-21)
+
+- Tailwind v4 no trae dark mode por clase activado por defecto (usa `prefers-color-scheme`
+  vía media query). Para poder alternarlo manualmente se agregó en `styles.css`:
+  `@custom-variant dark (&:where(.dark, .dark *));` — a partir de ahí cualquier `dark:` en
+  templates depende de que `<html>` tenga la clase `.dark`, no de la preferencia del SO.
+- `core/theme/theme.service.ts` (`ThemeService`, signal `tema: 'claro' | 'oscuro'`) decide el
+  tema inicial (localStorage `scoutia-tema` > `prefers-color-scheme` del sistema) y sincroniza
+  la clase `.dark` en `<html>` + `localStorage` vía `effect()`. `alternar()` lo invierte. Se
+  inyecta una sola vez en `App` (`app.ts`) para garantizar que el `effect` corra desde el
+  arranque; el botón sol/luna vive en la navbar (`app.html`).
+- `index.html` tiene un script inline en el `<head>` que lee `localStorage`/`matchMedia` y
+  aplica `.dark` a `<html>` **antes** de que Angular arranque — sin esto se ve un flash de
+  tema claro en cada carga si el usuario ya eligió oscuro.
+- Convención de color para dark mode (aplicada a todos los componentes de `frontend/src/app`):
+  fondo de página `dark:bg-slate-950`, navbar y tarjetas `dark:bg-slate-900` con
+  `dark:border-slate-800`, texto principal `dark:text-slate-100`, texto secundario
+  `dark:text-slate-400`. Badges de acento (`bg-indigo-50`/`bg-amber-50`/`bg-red-50` con texto
+  `-700`) pasan a `dark:bg-{color}-500/10 dark:text-{color}-400`. Cualquier componente nuevo
+  con fondo/texto propio debe seguir esta misma paleta para no romper la consistencia visual.
+- Los gráficos SVG (`viz/line-chart/`, `viz/radar-chart/`) tenían líneas de grilla con
+  `stroke="#e2e8f0"` fijo en el atributo (no clase) — no reacciona a `dark:`. Se cambió a
+  `class="stroke-slate-200 dark:stroke-slate-700"` (Tailwind soporta utilidades `stroke-*`/
+  `fill-*` en SVG). Los colores de las líneas de datos (series por jugador, por stat) quedan
+  igual en ambos temas a propósito — son colores saturados pensados para contrastar sobre
+  cualquier fondo, no se tocan.
+
+## Pantalla de bienvenida y reordenamiento de rutas (2026-09-21)
+
+- `/` dejó de ser la ficha/buscador (`HomeComponent`) y ahora es `BienvenidaComponent`
+  (`features/bienvenida/`) — primera vista al entrar a la app y destino del click en el logo
+  (`app.html`, `<a routerLink="/">` envolviendo el `<img>`). El buscador+ficha que antes vivía
+  en `/` se movió a `/jugador` sin cambios de lógica interna (mismo `HomeComponent`, mismo
+  soporte de `?jugador=<id>` como query param).
+- Por el movimiento de ruta, `oportunidades.component.html` (el link de cada fila a la ficha
+  del jugador) se actualizó de `routerLink="/"` a `routerLink="/jugador"`, manteniendo el
+  `queryParams` con el `player_id`. Cualquier otro link nuevo hacia la ficha de un jugador debe
+  apuntar a `/jugador`, no a `/`.
+- Nav de `app.html` pasó de `Home | Comparador | Oportunidades` a
+  `Inicio | Buscar jugador | Comparador | Oportunidades` (`Inicio` → `/`, `Buscar jugador` →
+  `/jugador`).
+- Las cifras de la bienvenida (temporadas, ligas, jugadores, equipos) **no están hardcodeadas**
+  en el frontend — vienen de `GET /api/v1/jugadores/resumen` (`DatasetRepository.resumen()` en
+  `app/src/app/domain/dataset_repository.py`), calculadas sobre `self._df` ya filtrado a
+  jugadores vigentes (las mismas filas que respaldan el resto de la API). `total_equipos` es
+  el conteo de `Squad` únicos solo en la temporada más reciente (96 = 20+20+20+18+18 de las 5
+  ligas), no en todo el histórico (que da 130, porque incluye clubes previos de jugadores que
+  ya se transfirieron) — la cifra que describe mejor "qué equipos tiene la app hoy".
+- Al agregar el endpoint se regeneró `frontend/src/app/core/api/schema.d.ts` con
+  `npm run generate:api-types` (requiere el backend corriendo) — cualquier cambio de schema en
+  `app/src/app/schemas/` necesita el mismo paso para que el frontend vea los tipos nuevos.
+
 ## Trampas encontradas
 
 - **nvm no persiste entre invocaciones de shell no interactivas** — siempre sourcear

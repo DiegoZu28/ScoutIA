@@ -4,24 +4,24 @@
     [ngModel]="query()"
     (ngModelChange)="onInput($event)"
     placeholder="Buscar jugador… (ej. Mbappé, Haaland)"
-    class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm shadow-sm focus:border-indigo-500 focus:outline-none"
+    class="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
   />
 
   @if (resultados().length > 0) {
     <ul
-      class="absolute z-10 mt-1 w-full rounded-lg border border-slate-200 bg-white shadow-lg"
+      class="absolute z-10 mt-1 w-full rounded-lg border border-slate-200 bg-white shadow-lg dark:border-slate-800 dark:bg-slate-900"
     >
       @for (jugador of resultados(); track jugador.player_id) {
         <li>
           <button
             type="button"
             (click)="seleccionar(jugador)"
-            class="flex w-full items-center gap-3 px-4 py-2 text-left text-sm hover:bg-slate-50"
+            class="flex w-full items-center gap-3 px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800"
           >
             <app-avatar-jugador [nombre]="jugador.nombre" [fotoUrl]="jugador.foto_url" tamano="sm" />
             <span class="flex min-w-0 flex-1 items-center justify-between gap-2">
-              <span class="font-medium text-slate-800">{{ jugador.nombre }}</span>
-              <span class="shrink-0 text-xs text-slate-500"
+              <span class="font-medium text-slate-800 dark:text-slate-200">{{ jugador.nombre }}</span>
+              <span class="shrink-0 text-xs text-slate-500 dark:text-slate-400"
                 >{{ jugador.club }} · {{ jugador.posicion }}</span
               >
             </span>
