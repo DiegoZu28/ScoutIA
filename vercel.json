@@ -1,7 +1,7 @@
 {
     "services": {
         "frontend": { "root": "frontend", "framework": "angular" },
-        "backend": { "root": "app", "framework": "fastapi", "entrypoint": "app.main:app" }
+        "backend": { "root": "app", "framework": "fastapi", "entrypoint": "src.app.main:app" }
     },
     "rewrites": [
         { "source": "/api(/.*)?", "destination": { "type": "service", "service": "backend" } },
