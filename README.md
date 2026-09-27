@@ -162,6 +162,78 @@ explícitamente prohibido por el spec en cualquier fase). La URL no tiene autent
 LLM sigue consumiendo `OPENAI_API_KEY` real por cada llamada, así que conviene bajarla
 (`detener_app.sh`) cuando no se está mostrando.
 
+## Despliegue permanente en Vercel
+
+`scripts/compartir_app.sh` sirve para pruebas puntuales, pero muere apenas cerrás la
+terminal. `vercel.json` (raíz del repo) usa la feature [Services](https://vercel.com/docs/services)
+de Vercel para desplegar frontend y backend como un solo proyecto, en un solo dominio,
+disponible todo el tiempo:
+
+```json
+{
+    "services": {
+        "frontend": { "root": "frontend", "framework": "angular" },
+        "backend": { "root": "app", "framework": "fastapi", "entrypoint": "app.main:app" }
+    },
+    "rewrites": [
+        { "source": "/api(/.*)?", "destination": { "type": "service", "service": "backend" } },
+        { "source": "/(.*)", "destination": { "type": "service", "service": "frontend" } }
+    ]
+}
+```
+
+### Antes del primer deploy (una sola vez, ya hecho en este commit)
+
+El servicio de backend en Vercel solo empaqueta lo que vive **dentro** de `app/` — no ve
+`models/` ni `data/processed/` de la raíz (siguen sin versionarse, se regeneran con
+`scripts/build_model_artifacts.py`). Por eso hay copias versionadas en `app/models/` y
+`app/data/processed/`, generadas por:
+
+```bash
+scripts/preparar_deploy_vercel.sh
+```
+
+Correr este script (y volver a hacer `git add app/models app/data` + commit) cada vez que se
+regenere el modelo y se quiera redesplegar.
+
+También se generó `app/requirements.txt` (`uv export --format requirements.txt --no-dev
+--no-hashes`) porque el builder de Python de Vercel espera ese archivo, no `pyproject.toml` +
+`uv.lock` directamente — `app/pyproject.toml` sigue siendo la fuente de verdad para
+desarrollo local (`uv sync`); `requirements.txt` es solo para el deploy y hay que regenerarlo
+si cambian las dependencias (`cd app && uv export --format requirements.txt --no-dev
+--no-hashes -o requirements.txt`).
+
+### En el dashboard de Vercel
+
+1. **Importar el repo.** En la pantalla de configuración del proyecto, **Root Directory**
+   debe quedar en `./` (ahí es donde Vercel busca `vercel.json` con la clave `services`) y
+   **Build/Output/Install Settings** deben quedar apagados — en modo `services` esos ajustes
+   se definen por servicio dentro de `vercel.json`, no a nivel de proyecto.
+2. **Environment Variables** (se llenan en el dashboard, nunca en `vercel.json`):
+
+   | Variable | Valor |
+   |---|---|
+   | `OPENAI_API_KEY` | tu clave real |
+   | `PYTHONPATH` | `src` (el backend usa layout `src/`; sin esto, Vercel puede no encontrar `app.main:app`) |
+   | `MODELS_DIR` | `models` |
+   | `DATASET_PATH` | `data/processed/dataset.parquet` |
+   | `IMAGENES_PATH` | `data/processed/imagenes_jugadores.json` |
+
+   Las últimas tres pisan los defaults de `Settings` (pensados para correr desde la raíz del
+   repo en local) por rutas relativas al *root* del servicio de backend (`app/`), donde ahora
+   sí existen esas copias.
+3. **Deploy.** Como frontend y backend quedan bajo el mismo dominio, `API_BASE_URL` (ya
+   relativo, `/api/v1`) funciona sin configuración extra — mismo mecanismo que
+   `scripts/compartir_app.sh`.
+
+### Limitación conocida: LLM y timeouts de función serverless
+
+`GET /jugadores/comparar/narrativa` puede tardar ~5-40s (ver AGENTS.md). Las funciones
+serverless de Vercel tienen un límite de duración que en el plan gratuito puede quedar corto
+para el caso más lento. Si ese endpoint empieza a fallar por timeout en producción, subir el
+`maxDuration` de la función en la configuración del servicio backend (o en el plan de Vercel)
+es el siguiente paso — no es algo que resuelva la app en sí.
+
 ## Configuración (`.env`)
 
 En una copia nueva del repo, copiar `.env.example` a `.env` en la raíz (nunca se versiona):

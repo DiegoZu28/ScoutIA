@@ -1,0 +1,39 @@
+{
+  "built_at": "2026-09-18T19:01:24.040715+00:00",
+  "n_rows_dataset": 13023,
+  "modelo": "Lasso",
+  "lasso_alpha": 0.0004481862405462222,
+  "lasso_params_busqueda": {
+    "alphas": 100,
+    "cv": 5,
+    "random_state": 42,
+    "max_iter": 20000
+  },
+  "test_metrics_notebook_04": {
+    "r2_log10": 0.731312,
+    "rmse_log10": 0.325505,
+    "mae_eur": 4837111.0,
+    "mape_pct": 77.72949
+  },
+  "n_clusters": 5,
+  "percentile_stats": [
+    "Per 90 Minutes_Gls",
+    "Per 90 Minutes_Ast",
+    "Standard_Sh/90",
+    "Standard_SoT%",
+    "Performance_TklW",
+    "Performance_Int",
+    "Performance_Crs",
+    "Playing Time_Min%"
+  ],
+  "rs_cols_for_clustering": [
+    "Age_rs",
+    "altura_m_rs",
+    "Playing Time_Min_rs",
+    "Performance_Gls_rs_global",
+    "Performance_Ast_rs_global",
+    "Standard_Sh_rs_global",
+    "Performance_CrdY_rs",
+    "Team Success_PPM_rs"
+  ]
+}

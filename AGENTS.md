@@ -125,10 +125,15 @@ Si en el futuro se agregan más columnas `_rs por posición` en `03`, revisar si
 ## Versiones que deben mantenerse sincronizadas
 
 `.venv312` (raíz, `requirements.txt`) y `app/pyproject.toml` deben tener las **mismas
-versiones exactas** de `pandas`, `pyarrow`, `numpy`, `scikit-learn`, `xgboost`, `shap`,
-`joblib` — los `.joblib` en `models/` se picklean con las versiones de `.venv312`, y un
-desajuste puede romper la deserialización en `app/` (silenciosa o ruidosamente). Al
-actualizar una de estas librerías en un lado, actualizar el otro.
+versiones exactas** de `pandas`, `pyarrow`, `numpy`, `scikit-learn`, `joblib` — los `.joblib`
+en `models/` se picklean con las versiones de `.venv312`, y un desajuste puede romper la
+deserialización en `app/` (silenciosa o ruidosamente). Al actualizar una de estas librerías
+en un lado, actualizar el otro. `xgboost`/`shap` **no** están en esta lista a propósito:
+`.venv312` los sigue necesitando (`04-modelado.ipynb` compara Lasso contra XGBoost), pero se
+quitaron de `app/pyproject.toml` -- el backend nunca los importa (el modelo servido es Lasso,
+ver más abajo), y arrastraban una cadena de dependencias pesada (`numba`, `llvmlite`,
+`nvidia-nccl-cu13`, ~9 paquetes) sin ningún uso real, un problema real para el tamaño del
+deploy en Vercel (ver sección de despliegue en el `README.md`).
 
 ## Decisiones de diseño de la Fase 1 (revisables, no dogma)
 
