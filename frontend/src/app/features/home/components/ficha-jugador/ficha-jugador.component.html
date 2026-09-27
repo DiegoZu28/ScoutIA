@@ -3,18 +3,47 @@
 } @else if (error()) {
   <app-error-message [mensaje]="error()!" />
 } @else if (ficha(); as ficha) {
-  <div class="space-y-4">
+  <div class="space-y-6">
     <app-identidad-jugador [estadisticas]="ficha.estadisticas" />
 
-    <div class="grid gap-4 md:grid-cols-2">
-      <app-banda-valor [prediccion]="ficha.valor" />
-      <app-radar-percentiles [percentiles]="ficha.percentiles" />
+    <div class="grid gap-6 lg:grid-cols-2 lg:items-start">
+      <section class="border-l-4 border-indigo-200 pl-4 dark:border-indigo-900">
+        <div class="mb-4 flex items-center gap-2.5">
+          <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-indigo-50 dark:bg-indigo-500/10">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-5 w-5 text-indigo-600 dark:text-indigo-400">
+              <path stroke-linecap="round" d="M5 20V10M12 20V4M19 20v-7" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="font-semibold text-slate-900 dark:text-slate-100">Rendimiento y estilo de juego</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Cómo rinde en cancha frente a su posición</p>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <app-radar-percentiles [percentiles]="ficha.percentiles" />
+          <app-arquetipo-jugador [arquetipo]="ficha.arquetipo" />
+          <app-rendimiento-historico [historial]="ficha.historial" />
+        </div>
+      </section>
+
+      <section class="border-l-4 border-emerald-200 pl-4 dark:border-emerald-900">
+        <div class="mb-4 flex items-center gap-2.5">
+          <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-50 dark:bg-emerald-500/10">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-5 w-5 text-emerald-600 dark:text-emerald-400">
+              <circle cx="12" cy="12" r="9" />
+              <path stroke-linecap="round" d="M9.3 9.6c.5-1.1 1.6-1.7 2.9-1.7 1.9 0 3.2 1 3.2 2.3 0 2.9-6 1.7-6 4.8 0 1.3 1.4 2.3 3.2 2.3 1.4 0 2.5-.6 3-1.5M12 6.3v1.3M12 16.4v1.3" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="font-semibold text-slate-900 dark:text-slate-100">Valor de mercado</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Estimación del modelo y evolución de su precio</p>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <app-banda-valor [prediccion]="ficha.valor" />
+          <app-valor-historico [historial]="ficha.historial" />
+        </div>
+      </section>
     </div>
-
-    <app-arquetipo-jugador [arquetipo]="ficha.arquetipo" />
-
-    <app-valor-historico [historial]="ficha.historial" />
-
-    <app-rendimiento-historico [historial]="ficha.historial" />
   </div>
 }

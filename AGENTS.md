@@ -38,10 +38,14 @@ notebooks con el venv de `app/`, etc.).
 ```
 
 Lee `data/processed/fbref_tm_features.parquet` y `fbref_tm_eda.parquet`, reentrena
-TargetEncoder+XGBoost sobre el 100% de los datos (mismos hiperparámetros ya elegidos en
-`04-modelado.ipynb`, sin retunear), agrega SHAP/percentiles/KMeans (trabajo nuevo, no
-existía en ninguna notebook), y escribe:
-- `models/*.joblib` (encoder, modelo, feature_cols, shap explainer, kmeans, cluster_labels)
+TargetEncoder+Lasso (`LassoCV`) sobre el 100% de los datos -- **no** XGBoost: XGBoost daba
+mejores métricas en `04-modelado.ipynb` (R²≈0.83 vs. 0.73 del Lasso) pero se descartó para
+el modelo servido a propósito, porque los coeficientes lineales dan una contribución exacta
+y aditiva por variable (coeficiente × valor estandarizado, sin aproximar vía SHAP sobre un
+ensemble de árboles) -- más alineado con el pedido del profesor de usar métodos clásicos, no
+ensembles (ver docstring de `scripts/build_model_artifacts.py`). Agrega percentiles/KMeans
+(trabajo nuevo, no existía en ninguna notebook), y escribe:
+- `models/*.joblib` (target encoder, scaler, modelo Lasso, feature_cols, kmeans, cluster_labels)
 - `models/metadata.json` (hiperparámetros, métricas de test documentadas, config de percentiles/clustering)
 - `data/processed/dataset.parquet` (panel jugador-temporada listo para servir)
 
@@ -128,8 +132,11 @@ actualizar una de estas librerías en un lado, actualizar el otro.
 
 ## Decisiones de diseño de la Fase 1 (revisables, no dogma)
 
-1. El modelo servido se reentrena sobre el 100% de los datos (no solo train) — las métricas
-   de test de `04-modelado.ipynb` (R²=0.8276, RMSE log10=0.2607) quedan documentadas en
+1. El modelo servido es **Lasso**, no XGBoost (que daba mejores métricas, R²≈0.83) — se
+   eligió por interpretabilidad: coeficientes lineales dan una contribución exacta y aditiva
+   por variable, sin aproximar vía SHAP. Se reentrena sobre el 100% de los datos (no solo
+   train) — las métricas de test de `04-modelado.ipynb` para este Lasso (R²=0.731312,
+   RMSE log10=0.325505, ver `TEST_METRICS_NOTEBOOK_04` en el script) quedan documentadas en
    `models/metadata.json` como la estimación honesta de generalización, no como el
    desempeño exacto del modelo servido.
 2. Percentiles calculados sobre 8 estadísticas (ver `PERCENTILE_STATS` en el script),
@@ -137,8 +144,11 @@ actualizar una de estas librerías en un lado, actualizar el otro.
 3. KMeans con k=5 (silhouette mejor en k=3, pero muy tosco como feature de producto).
 4. Banda de valor = `10**(pred_log ± 1×RMSE_test(log10))` — proxy pragmático, no un
    intervalo estadístico riguroso.
-5. SHAP se muestra en espacio log10 (magnitud + dirección), nunca convertido a euros por
-   variable — convertir sería matemáticamente engañoso.
+5. Las contribuciones de valor (`Predictor.explicar`/`explicar_diferencia`) son exactas, no
+   una aproximación tipo SHAP: para un modelo lineal, contribución_i = coeficiente_i × valor
+   estandarizado_i, y la suma de todas + el intercepto reconstruye la predicción exacta en
+   espacio log10. Se muestran en ese mismo espacio log10 (magnitud + dirección), nunca
+   convertidas a euros por variable — convertir sería matemáticamente engañoso.
 6. Endpoint extra `GET /{player_id}/ficha` (no está en la lista de tools del spec): combina
    los 4 endpoints granulares en una sola llamada, solo por conveniencia del frontend. Los 4
    granulares (`estadisticas`, `valor`, `percentiles`, `arquetipo`) siguen siendo la fuente

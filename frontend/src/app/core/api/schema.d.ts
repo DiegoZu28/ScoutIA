@@ -482,8 +482,16 @@ export interface components {
             tiros: number;
             /** Tarjetas Amarillas */
             tarjetas_amarillas: number;
+            /** Tarjetas Rojas */
+            tarjetas_rojas: number;
             /** Asistencias */
             asistencias: number;
+            /** Minutos Jugados */
+            minutos_jugados: number;
+            /** Entradas Ganadas */
+            entradas_ganadas: number;
+            /** Intercepciones */
+            intercepciones: number;
             /** Valor Mercado Eur */
             valor_mercado_eur: number;
         };
@@ -579,6 +587,7 @@ export interface operations {
         parameters: {
             query?: {
                 limit?: number;
+                posicion?: string | null;
             };
             header?: never;
             path?: never;

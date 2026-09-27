@@ -6,18 +6,26 @@ from app.schemas.comparacion import ComparacionJugadores
 
 SYSTEM_PROMPT = (
     "Eres un analista de scouting de fútbol. Se te entrega una comparación ya calculada "
-    "entre dos jugadores: percentiles frente a jugadores de su misma posición y temporada, "
-    "la contribución de un modelo de valor de mercado a la diferencia de valor entre ambos, "
-    "y su arquetipo de estilo de juego (de un modelo de clustering). Tu único trabajo es "
-    "REDACTAR esa comparación en español de forma clara, objetiva y CONCISA para un scout: "
-    "ve directo a lo importante (fortalezas de cada uno y por qué difiere el valor), sin "
-    "relleno ni frases genéricas.\n\n"
+    "entre dos jugadores: qué tan bien rinde cada uno frente a otros de su misma posición y "
+    "temporada, la contribución de un modelo de valor de mercado a la diferencia de valor "
+    "entre ambos, y su arquetipo de estilo de juego (de un modelo de clustering). Tu único "
+    "trabajo es REDACTAR esa comparación en español de forma clara, objetiva y CONCISA para "
+    "un scout: ve directo a lo importante (fortalezas de cada uno y por qué difiere el "
+    "valor), sin relleno ni frases genéricas.\n\n"
     "Reglas estrictas:\n"
     "- No inventes cifras, estadísticas ni hechos que no estén en los datos entregados.\n"
     "- No calcules nada nuevo: limita tus afirmaciones a lo que los números ya indican.\n"
     "- El valor de mercado es una estimación de un modelo estadístico, no una tasación "
     "oficial ni una recomendación de compra o venta: trátalo siempre como estimación.\n"
-    "- Si los dos jugadores juegan posiciones distintas, acláralo antes de comparar percentiles.\n"
+    "- Si los dos jugadores juegan posiciones distintas, acláralo antes de comparar su "
+    "rendimiento relativo.\n"
+    "- En 'rendimiento_frente_a_su_posicion' cada estadística trae 'nivel_a'/'nivel_b', un "
+    "valor de 0 a 100 que indica qué tan bien rinde cada jugador frente a otros de su misma "
+    "posición y temporada (más alto = mejor). Redáctalo siempre en lenguaje cotidiano, no "
+    "estadístico: nunca escribas la palabra 'percentil' ni cites el número exacto en la "
+    "prosa -- usa expresiones como 'está entre los mejores de su posición', 'rinde muy por "
+    "encima/debajo del promedio' o 'destaca claramente' según qué tan alto o bajo sea el "
+    "valor.\n"
     "- Cada factor de 'factores_que_explican_la_diferencia_de_valor' ya trae el nombre exacto "
     "del jugador al que favorece en 'jugador_favorecido': atribúyeselo literalmente a ese "
     "jugador, nunca al otro."
@@ -93,11 +101,11 @@ def _datos_para_prompt(comparacion: ComparacionJugadores) -> dict:
             "temporada": b.temporada,
         },
         "misma_posicion": comparacion.grupo_comparacion_a.posicion == comparacion.grupo_comparacion_b.posicion,
-        "percentiles_vs_su_posicion": [
+        "rendimiento_frente_a_su_posicion": [
             {
                 "estadistica": p.etiqueta,
-                "percentil_a": round(p.percentil_a * 100, 1),
-                "percentil_b": round(p.percentil_b * 100, 1),
+                "nivel_a": round(p.percentil_a * 100, 1),
+                "nivel_b": round(p.percentil_b * 100, 1),
             }
             for p in comparacion.percentiles
         ],

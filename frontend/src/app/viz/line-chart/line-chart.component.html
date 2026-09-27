@@ -8,19 +8,19 @@
       class="stroke-slate-200 dark:stroke-slate-700"
       stroke-width="1"
     />
-    <text [attr.x]="ejeXY - 6" [attr.y]="linea.y" text-anchor="end" dominant-baseline="middle" font-size="9" class="fill-slate-500 dark:fill-slate-400">
+    <text [attr.x]="ejeXY - 8" [attr.y]="linea.y" text-anchor="end" dominant-baseline="middle" font-size="12" class="fill-slate-500 dark:fill-slate-400">
       {{ formatoValor()(linea.valor) }}
     </text>
   }
 
-  <path [attr.d]="lineaPath()" fill="none" [attr.stroke]="colorLinea()" stroke-width="2" />
+  <path [attr.d]="lineaPath()" fill="none" [attr.stroke]="colorLinea()" stroke-width="2.5" />
 
   @for (p of puntosSvg(); track p.etiqueta) {
-    <circle [attr.cx]="p.x" [attr.cy]="p.y" r="3.5" [attr.fill]="colorLinea()" />
-    <text [attr.x]="p.x" [attr.y]="ejeXAlto + 14" text-anchor="middle" font-size="9" class="fill-slate-500 dark:fill-slate-400">
+    <circle [attr.cx]="p.x" [attr.cy]="p.y" r="4.5" [attr.fill]="colorLinea()" />
+    <text [attr.x]="p.x" [attr.y]="ejeXAlto + 20" text-anchor="middle" font-size="12" class="fill-slate-500 dark:fill-slate-400">
       {{ p.etiqueta }}
     </text>
-    <text [attr.x]="p.x" [attr.y]="p.y - 8" text-anchor="middle" font-size="9" class="fill-slate-700 dark:fill-slate-300 font-medium">
+    <text [attr.x]="p.x" [attr.y]="p.y - 12" text-anchor="middle" font-size="13.5" font-weight="600" class="fill-slate-800 dark:fill-slate-200">
       {{ formatoValor()(p.valor) }}
     </text>
   }

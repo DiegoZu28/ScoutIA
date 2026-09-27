@@ -6,8 +6,8 @@ export interface PuntoLinea {
 }
 
 const ANCHO = 480;
-const ALTO = 220;
-const MARGEN = { top: 16, right: 16, bottom: 28, left: 48 };
+const ALTO = 300;
+const MARGEN = { top: 26, right: 38, bottom: 36, left: 62 };
 
 @Component({
   selector: 'app-line-chart',

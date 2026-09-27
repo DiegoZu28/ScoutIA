@@ -34,3 +34,22 @@ def test_oportunidades_nunca_usa_lenguaje_de_compra_o_venta(client):
     assert "comprar" not in nota
     assert "vender" not in nota
     assert "revisión manual" in nota
+
+
+def test_oportunidades_filtra_por_posicion(client):
+    sin_filtro = client.get("/api/v1/jugadores/oportunidades", params={"limit": 30}).json()["jugadores"]
+    posicion = sin_filtro[0]["posicion"]
+
+    resp = client.get("/api/v1/jugadores/oportunidades", params={"limit": 30, "posicion": posicion})
+    assert resp.status_code == 200
+    jugadores = resp.json()["jugadores"]
+    assert len(jugadores) > 0
+    assert all(j["posicion"] == posicion for j in jugadores)
+
+
+def test_oportunidades_posicion_sin_candidatos_devuelve_lista_vacia(client):
+    resp = client.get(
+        "/api/v1/jugadores/oportunidades", params={"posicion": "Posición que no existe"}
+    )
+    assert resp.status_code == 200
+    assert resp.json()["jugadores"] == []

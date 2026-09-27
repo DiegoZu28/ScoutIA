@@ -6,6 +6,23 @@
     venta.
   </p>
 
+  <div class="mt-5 flex items-center gap-2">
+    <label for="filtro-posicion" class="text-sm font-medium text-slate-700 dark:text-slate-300">
+      Posición
+    </label>
+    <select
+      id="filtro-posicion"
+      class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-900 shadow-sm focus:border-indigo-400 focus:outline-none dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100"
+      [value]="posicionSeleccionada()"
+      (change)="filtrarPorPosicion($any($event.target).value)"
+    >
+      <option value="">Todas</option>
+      @for (p of posiciones; track p) {
+        <option [value]="p">{{ p }}</option>
+      }
+    </select>
+  </div>
+
   @if (cargando()) {
     <app-loading-spinner />
   } @else if (error()) {
@@ -14,7 +31,13 @@
     </div>
   } @else if (datos(); as datos) {
     @if (datos.jugadores.length === 0) {
-      <p class="mt-6 text-sm text-slate-400 dark:text-slate-500">No hay casos a revisión manual en este momento.</p>
+      <p class="mt-6 text-sm text-slate-400 dark:text-slate-500">
+        @if (posicionSeleccionada()) {
+          No hay casos a revisión manual para {{ posicionSeleccionada() }} en este momento.
+        } @else {
+          No hay casos a revisión manual en este momento.
+        }
+      </p>
     } @else {
       <ul class="mt-6 space-y-3">
         @for (j of datos.jugadores; track j.player_id) {

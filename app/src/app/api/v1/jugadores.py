@@ -102,7 +102,11 @@ def _historial_de(player_id: str, filas: pd.DataFrame) -> HistorialJugador:
             goles=int(fila["Performance_Gls"]),
             tiros=int(fila["Standard_Sh"]),
             tarjetas_amarillas=int(fila["Performance_CrdY"]),
+            tarjetas_rojas=int(fila["Performance_CrdR"]),
             asistencias=int(fila["Performance_Ast"]),
+            minutos_jugados=int(fila["Playing Time_Min"]),
+            entradas_ganadas=int(fila["Performance_TklW"]),
+            intercepciones=int(fila["Performance_Int"]),
             valor_mercado_eur=float(fila["valor_eur"]),
         )
         for _, fila in filas.iterrows()
@@ -238,8 +242,10 @@ def _oportunidad_de(player_id: str, fila: pd.Series) -> OportunidadJugador:
 
 
 @router.get("/oportunidades", response_model=ListaOportunidades)
-def obtener_oportunidades(request: Request, limit: int = 20):
-    candidatos = calcular_oportunidades(_repo(request).jugadores_vigentes(), _predictor(request), limit)
+def obtener_oportunidades(request: Request, limit: int = 20, posicion: str | None = None):
+    candidatos = calcular_oportunidades(
+        _repo(request).jugadores_vigentes(), _predictor(request), limit, posicion=posicion
+    )
     return ListaOportunidades(
         jugadores=[_oportunidad_de(player_id, fila) for player_id, fila in candidatos.iterrows()]
     )

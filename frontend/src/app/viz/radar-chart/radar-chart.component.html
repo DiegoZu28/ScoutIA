@@ -1,4 +1,4 @@
-<svg [attr.viewBox]="'0 0 ' + size() + ' ' + size()" class="mx-auto w-full max-w-xs">
+<svg [attr.viewBox]="'0 0 ' + size() + ' ' + size()" class="mx-auto w-full max-w-lg">
   @for (fraccion of anillos; track fraccion) {
     <polygon [attr.points]="anilloPath(fraccion)" fill="none" class="stroke-slate-200 dark:stroke-slate-700" stroke-width="1" />
   }

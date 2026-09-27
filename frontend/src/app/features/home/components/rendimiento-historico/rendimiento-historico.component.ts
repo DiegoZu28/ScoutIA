@@ -3,7 +3,15 @@ import { Component, computed, input, signal } from '@angular/core';
 import { HistorialJugador } from '../../../../core/api/scoutia-api.service';
 import { LineChartComponent, PuntoLinea } from '../../../../viz/line-chart/line-chart.component';
 
-type StatKey = 'goles' | 'tiros' | 'tarjetas_amarillas' | 'asistencias';
+type StatKey =
+  | 'goles'
+  | 'asistencias'
+  | 'tiros'
+  | 'minutos_jugados'
+  | 'tarjetas_amarillas'
+  | 'tarjetas_rojas'
+  | 'entradas_ganadas'
+  | 'intercepciones';
 
 interface OpcionStat {
   clave: StatKey;
@@ -13,9 +21,13 @@ interface OpcionStat {
 
 const OPCIONES: OpcionStat[] = [
   { clave: 'goles', etiqueta: 'Goles', color: '#2b8a3e' },
-  { clave: 'tiros', etiqueta: 'Tiros', color: '#4263eb' },
-  { clave: 'tarjetas_amarillas', etiqueta: 'Tarjetas amarillas', color: '#f08c00' },
   { clave: 'asistencias', etiqueta: 'Asistencias', color: '#7048e8' },
+  { clave: 'tiros', etiqueta: 'Tiros', color: '#4263eb' },
+  { clave: 'minutos_jugados', etiqueta: 'Minutos jugados', color: '#0c8599' },
+  { clave: 'tarjetas_amarillas', etiqueta: 'Tarjetas amarillas', color: '#f08c00' },
+  { clave: 'tarjetas_rojas', etiqueta: 'Tarjetas rojas', color: '#e03131' },
+  { clave: 'entradas_ganadas', etiqueta: 'Entradas ganadas', color: '#5c940d' },
+  { clave: 'intercepciones', etiqueta: 'Intercepciones', color: '#9c36b5' },
 ];
 
 @Component({

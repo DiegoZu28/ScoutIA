@@ -8,7 +8,11 @@ class TemporadaRendimiento(BaseModel):
     goles: int
     tiros: int
     tarjetas_amarillas: int
+    tarjetas_rojas: int
     asistencias: int
+    minutos_jugados: int
+    entradas_ganadas: int
+    intercepciones: int
     valor_mercado_eur: float
 
 

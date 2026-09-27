@@ -63,8 +63,11 @@ export class ScoutiaApiService {
     return this.http.get<ComparacionJugadores>(`${API_BASE_URL}/jugadores/comparar`, { params });
   }
 
-  obtenerOportunidades(limit = 20): Observable<ListaOportunidades> {
-    const params = new HttpParams().set('limit', limit);
+  obtenerOportunidades(limit = 20, posicion?: string): Observable<ListaOportunidades> {
+    let params = new HttpParams().set('limit', limit);
+    if (posicion) {
+      params = params.set('posicion', posicion);
+    }
     return this.http.get<ListaOportunidades>(`${API_BASE_URL}/jugadores/oportunidades`, { params });
   }
 
