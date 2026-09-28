@@ -1,0 +1,485 @@
+liga_codigo,liga,saison_id,club_id,club
+GB1,Premier League,2021,281,Manchester City
+GB1,Premier League,2021,31,Liverpool FC
+GB1,Premier League,2021,631,Chelsea FC
+GB1,Premier League,2021,985,Manchester United
+GB1,Premier League,2021,148,Tottenham Hotspur
+GB1,Premier League,2021,11,Arsenal FC
+GB1,Premier League,2021,1003,Leicester City
+GB1,Premier League,2021,405,Aston Villa
+GB1,Premier League,2021,29,Everton FC
+GB1,Premier League,2021,543,Wolverhampton Wanderers
+GB1,Premier League,2021,379,West Ham United
+GB1,Premier League,2021,1237,Brighton & Hove Albion
+GB1,Premier League,2021,762,Newcastle United
+GB1,Premier League,2021,399,Leeds United
+GB1,Premier League,2021,180,Southampton FC
+GB1,Premier League,2021,1148,Brentford FC
+GB1,Premier League,2021,873,Crystal Palace
+GB1,Premier League,2021,1123,Norwich City
+GB1,Premier League,2021,1010,Watford FC
+GB1,Premier League,2021,1132,Burnley FC
+GB1,Premier League,2022,281,Manchester City
+GB1,Premier League,2022,11,Arsenal FC
+GB1,Premier League,2022,631,Chelsea FC
+GB1,Premier League,2022,985,Manchester United
+GB1,Premier League,2022,31,Liverpool FC
+GB1,Premier League,2022,148,Tottenham Hotspur
+GB1,Premier League,2022,762,Newcastle United
+GB1,Premier League,2022,1237,Brighton & Hove Albion
+GB1,Premier League,2022,405,Aston Villa
+GB1,Premier League,2022,543,Wolverhampton Wanderers
+GB1,Premier League,2022,1003,Leicester City
+GB1,Premier League,2022,379,West Ham United
+GB1,Premier League,2022,180,Southampton FC
+GB1,Premier League,2022,29,Everton FC
+GB1,Premier League,2022,703,Nottingham Forest
+GB1,Premier League,2022,1148,Brentford FC
+GB1,Premier League,2022,399,Leeds United
+GB1,Premier League,2022,873,Crystal Palace
+GB1,Premier League,2022,931,Fulham FC
+GB1,Premier League,2022,989,AFC Bournemouth
+GB1,Premier League,2023,281,Manchester City
+GB1,Premier League,2023,11,Arsenal FC
+GB1,Premier League,2023,631,Chelsea FC
+GB1,Premier League,2023,31,Liverpool FC
+GB1,Premier League,2023,148,Tottenham Hotspur
+GB1,Premier League,2023,985,Manchester United
+GB1,Premier League,2023,405,Aston Villa
+GB1,Premier League,2023,762,Newcastle United
+GB1,Premier League,2023,1237,Brighton & Hove Albion
+GB1,Premier League,2023,703,Nottingham Forest
+GB1,Premier League,2023,379,West Ham United
+GB1,Premier League,2023,873,Crystal Palace
+GB1,Premier League,2023,543,Wolverhampton Wanderers
+GB1,Premier League,2023,1148,Brentford FC
+GB1,Premier League,2023,989,AFC Bournemouth
+GB1,Premier League,2023,29,Everton FC
+GB1,Premier League,2023,931,Fulham FC
+GB1,Premier League,2023,1132,Burnley FC
+GB1,Premier League,2023,350,Sheffield United
+GB1,Premier League,2023,1031,Luton Town
+GB1,Premier League,2024,281,Manchester City
+GB1,Premier League,2024,631,Chelsea FC
+GB1,Premier League,2024,11,Arsenal FC
+GB1,Premier League,2024,31,Liverpool FC
+GB1,Premier League,2024,985,Manchester United
+GB1,Premier League,2024,148,Tottenham Hotspur
+GB1,Premier League,2024,405,Aston Villa
+GB1,Premier League,2024,762,Newcastle United
+GB1,Premier League,2024,1237,Brighton & Hove Albion
+GB1,Premier League,2024,873,Crystal Palace
+GB1,Premier League,2024,989,AFC Bournemouth
+GB1,Premier League,2024,703,Nottingham Forest
+GB1,Premier League,2024,543,Wolverhampton Wanderers
+GB1,Premier League,2024,1148,Brentford FC
+GB1,Premier League,2024,379,West Ham United
+GB1,Premier League,2024,29,Everton FC
+GB1,Premier League,2024,931,Fulham FC
+GB1,Premier League,2024,180,Southampton FC
+GB1,Premier League,2024,677,Ipswich Town
+GB1,Premier League,2024,1003,Leicester City
+GB1,Premier League,2025,281,Manchester City
+GB1,Premier League,2025,11,Arsenal FC
+GB1,Premier League,2025,631,Chelsea FC
+GB1,Premier League,2025,31,Liverpool FC
+GB1,Premier League,2025,148,Tottenham Hotspur
+GB1,Premier League,2025,985,Manchester United
+GB1,Premier League,2025,873,Crystal Palace
+GB1,Premier League,2025,762,Newcastle United
+GB1,Premier League,2025,989,AFC Bournemouth
+GB1,Premier League,2025,703,Nottingham Forest
+GB1,Premier League,2025,1237,Brighton & Hove Albion
+GB1,Premier League,2025,405,Aston Villa
+GB1,Premier League,2025,1148,Brentford FC
+GB1,Premier League,2025,379,West Ham United
+GB1,Premier League,2025,29,Everton FC
+GB1,Premier League,2025,289,Sunderland AFC
+GB1,Premier League,2025,543,Wolverhampton Wanderers
+GB1,Premier League,2025,931,Fulham FC
+GB1,Premier League,2025,399,Leeds United
+GB1,Premier League,2025,1132,Burnley FC
+ES1,La Liga,2021,418,Real Madrid
+ES1,La Liga,2021,131,FC Barcelona
+ES1,La Liga,2021,13,Atlético de Madrid
+ES1,La Liga,2021,1050,Villarreal CF
+ES1,La Liga,2021,368,Sevilla FC
+ES1,La Liga,2021,681,Real Sociedad
+ES1,La Liga,2021,1049,Valencia CF
+ES1,La Liga,2021,150,Real Betis Balompié
+ES1,La Liga,2021,621,Athletic Bilbao
+ES1,La Liga,2021,3709,Getafe CF
+ES1,La Liga,2021,714,RCD Espanyol Barcelona
+ES1,La Liga,2021,940,Celta de Vigo
+ES1,La Liga,2021,331,CA Osasuna
+ES1,La Liga,2021,16795,Granada CF
+ES1,La Liga,2021,3368,Levante UD
+ES1,La Liga,2021,237,RCD Mallorca
+ES1,La Liga,2021,1531,Elche CF
+ES1,La Liga,2021,2687,Cádiz CF
+ES1,La Liga,2021,367,Rayo Vallecano
+ES1,La Liga,2021,1108,Deportivo Alavés
+ES1,La Liga,2022,418,Real Madrid
+ES1,La Liga,2022,131,FC Barcelona
+ES1,La Liga,2022,13,Atlético de Madrid
+ES1,La Liga,2022,681,Real Sociedad
+ES1,La Liga,2022,1050,Villarreal CF
+ES1,La Liga,2022,1049,Valencia CF
+ES1,La Liga,2022,150,Real Betis Balompié
+ES1,La Liga,2022,368,Sevilla FC
+ES1,La Liga,2022,621,Athletic Bilbao
+ES1,La Liga,2022,331,CA Osasuna
+ES1,La Liga,2022,12321,Girona FC
+ES1,La Liga,2022,940,Celta de Vigo
+ES1,La Liga,2022,3709,Getafe CF
+ES1,La Liga,2022,714,RCD Espanyol Barcelona
+ES1,La Liga,2022,3302,UD Almería
+ES1,La Liga,2022,237,RCD Mallorca
+ES1,La Liga,2022,367,Rayo Vallecano
+ES1,La Liga,2022,366,Real Valladolid CF
+ES1,La Liga,2022,1531,Elche CF
+ES1,La Liga,2022,2687,Cádiz CF
+ES1,La Liga,2023,418,Real Madrid
+ES1,La Liga,2023,131,FC Barcelona
+ES1,La Liga,2023,681,Real Sociedad
+ES1,La Liga,2023,13,Atlético de Madrid
+ES1,La Liga,2023,12321,Girona FC
+ES1,La Liga,2023,621,Athletic Bilbao
+ES1,La Liga,2023,1050,Villarreal CF
+ES1,La Liga,2023,1049,Valencia CF
+ES1,La Liga,2023,368,Sevilla FC
+ES1,La Liga,2023,150,Real Betis Balompié
+ES1,La Liga,2023,940,Celta de Vigo
+ES1,La Liga,2023,16795,Granada CF
+ES1,La Liga,2023,3709,Getafe CF
+ES1,La Liga,2023,1108,Deportivo Alavés
+ES1,La Liga,2023,472,UD Las Palmas
+ES1,La Liga,2023,331,CA Osasuna
+ES1,La Liga,2023,3302,UD Almería
+ES1,La Liga,2023,237,RCD Mallorca
+ES1,La Liga,2023,367,Rayo Vallecano
+ES1,La Liga,2023,2687,Cádiz CF
+ES1,La Liga,2024,418,Real Madrid
+ES1,La Liga,2024,131,FC Barcelona
+ES1,La Liga,2024,13,Atlético de Madrid
+ES1,La Liga,2024,621,Athletic Bilbao
+ES1,La Liga,2024,681,Real Sociedad
+ES1,La Liga,2024,150,Real Betis Balompié
+ES1,La Liga,2024,1050,Villarreal CF
+ES1,La Liga,2024,1049,Valencia CF
+ES1,La Liga,2024,368,Sevilla FC
+ES1,La Liga,2024,12321,Girona FC
+ES1,La Liga,2024,940,Celta de Vigo
+ES1,La Liga,2024,472,UD Las Palmas
+ES1,La Liga,2024,714,RCD Espanyol Barcelona
+ES1,La Liga,2024,331,CA Osasuna
+ES1,La Liga,2024,1108,Deportivo Alavés
+ES1,La Liga,2024,3709,Getafe CF
+ES1,La Liga,2024,237,RCD Mallorca
+ES1,La Liga,2024,366,Real Valladolid CF
+ES1,La Liga,2024,367,Rayo Vallecano
+ES1,La Liga,2024,1244,CD Leganés
+ES1,La Liga,2025,418,Real Madrid
+ES1,La Liga,2025,131,FC Barcelona
+ES1,La Liga,2025,13,Atlético de Madrid
+ES1,La Liga,2025,1050,Villarreal CF
+ES1,La Liga,2025,681,Real Sociedad
+ES1,La Liga,2025,150,Real Betis Balompié
+ES1,La Liga,2025,621,Athletic Bilbao
+ES1,La Liga,2025,940,Celta de Vigo
+ES1,La Liga,2025,12321,Girona FC
+ES1,La Liga,2025,368,Sevilla FC
+ES1,La Liga,2025,1049,Valencia CF
+ES1,La Liga,2025,714,RCD Espanyol Barcelona
+ES1,La Liga,2025,1531,Elche CF
+ES1,La Liga,2025,3368,Levante UD
+ES1,La Liga,2025,367,Rayo Vallecano
+ES1,La Liga,2025,331,CA Osasuna
+ES1,La Liga,2025,3709,Getafe CF
+ES1,La Liga,2025,237,RCD Mallorca
+ES1,La Liga,2025,1108,Deportivo Alavés
+ES1,La Liga,2025,2497,Real Oviedo
+IT1,Serie A,2021,506,Juventus FC
+IT1,Serie A,2021,46,Inter Milan
+IT1,Serie A,2021,5,AC Milan
+IT1,Serie A,2021,6195,SSC Napoli
+IT1,Serie A,2021,800,Atalanta BC
+IT1,Serie A,2021,12,AS Roma
+IT1,Serie A,2021,430,ACF Fiorentina
+IT1,Serie A,2021,398,SS Lazio
+IT1,Serie A,2021,6574,US Sassuolo
+IT1,Serie A,2021,416,Torino FC
+IT1,Serie A,2021,1025,Bologna FC 1909
+IT1,Serie A,2021,276,Hellas Verona
+IT1,Serie A,2021,410,Udinese Calcio
+IT1,Serie A,2021,1390,Cagliari Calcio
+IT1,Serie A,2021,1038,UC Sampdoria
+IT1,Serie A,2021,749,FC Empoli
+IT1,Serie A,2021,252,Genoa CFC
+IT1,Serie A,2021,607,Venezia FC
+IT1,Serie A,2021,3522,Spezia Calcio
+IT1,Serie A,2021,380,US Salernitana 1919
+IT1,Serie A,2022,6195,SSC Napoli
+IT1,Serie A,2022,46,Inter Milan
+IT1,Serie A,2022,5,AC Milan
+IT1,Serie A,2022,506,Juventus FC
+IT1,Serie A,2022,12,AS Roma
+IT1,Serie A,2022,800,Atalanta BC
+IT1,Serie A,2022,398,SS Lazio
+IT1,Serie A,2022,430,ACF Fiorentina
+IT1,Serie A,2022,6574,US Sassuolo
+IT1,Serie A,2022,416,Torino FC
+IT1,Serie A,2022,410,Udinese Calcio
+IT1,Serie A,2022,1025,Bologna FC 1909
+IT1,Serie A,2022,2919,AC Monza
+IT1,Serie A,2022,749,FC Empoli
+IT1,Serie A,2022,276,Hellas Verona
+IT1,Serie A,2022,380,US Salernitana 1919
+IT1,Serie A,2022,3522,Spezia Calcio
+IT1,Serie A,2022,1005,US Lecce
+IT1,Serie A,2022,2239,US Cremonese
+IT1,Serie A,2022,1038,UC Sampdoria
+IT1,Serie A,2023,46,Inter Milan
+IT1,Serie A,2023,5,AC Milan
+IT1,Serie A,2023,6195,SSC Napoli
+IT1,Serie A,2023,506,Juventus FC
+IT1,Serie A,2023,800,Atalanta BC
+IT1,Serie A,2023,1025,Bologna FC 1909
+IT1,Serie A,2023,12,AS Roma
+IT1,Serie A,2023,430,ACF Fiorentina
+IT1,Serie A,2023,416,Torino FC
+IT1,Serie A,2023,398,SS Lazio
+IT1,Serie A,2023,252,Genoa CFC
+IT1,Serie A,2023,410,Udinese Calcio
+IT1,Serie A,2023,2919,AC Monza
+IT1,Serie A,2023,276,Hellas Verona
+IT1,Serie A,2023,6574,US Sassuolo
+IT1,Serie A,2023,8970,Frosinone Calcio
+IT1,Serie A,2023,1005,US Lecce
+IT1,Serie A,2023,749,FC Empoli
+IT1,Serie A,2023,380,US Salernitana 1919
+IT1,Serie A,2023,1390,Cagliari Calcio
+IT1,Serie A,2024,46,Inter Milan
+IT1,Serie A,2024,506,Juventus FC
+IT1,Serie A,2024,5,AC Milan
+IT1,Serie A,2024,800,Atalanta BC
+IT1,Serie A,2024,6195,SSC Napoli
+IT1,Serie A,2024,12,AS Roma
+IT1,Serie A,2024,430,ACF Fiorentina
+IT1,Serie A,2024,1025,Bologna FC 1909
+IT1,Serie A,2024,398,SS Lazio
+IT1,Serie A,2024,416,Torino FC
+IT1,Serie A,2024,1047,Como 1907
+IT1,Serie A,2024,410,Udinese Calcio
+IT1,Serie A,2024,252,Genoa CFC
+IT1,Serie A,2024,130,Parma Calcio 1913
+IT1,Serie A,2024,1005,US Lecce
+IT1,Serie A,2024,276,Hellas Verona
+IT1,Serie A,2024,749,FC Empoli
+IT1,Serie A,2024,2919,AC Monza
+IT1,Serie A,2024,607,Venezia FC
+IT1,Serie A,2024,1390,Cagliari Calcio
+IT1,Serie A,2025,46,Inter Milan
+IT1,Serie A,2025,506,Juventus FC
+IT1,Serie A,2025,5,AC Milan
+IT1,Serie A,2025,12,AS Roma
+IT1,Serie A,2025,800,Atalanta BC
+IT1,Serie A,2025,6195,SSC Napoli
+IT1,Serie A,2025,1047,Como 1907
+IT1,Serie A,2025,1025,Bologna FC 1909
+IT1,Serie A,2025,398,SS Lazio
+IT1,Serie A,2025,430,ACF Fiorentina
+IT1,Serie A,2025,6574,US Sassuolo
+IT1,Serie A,2025,410,Udinese Calcio
+IT1,Serie A,2025,130,Parma Calcio 1913
+IT1,Serie A,2025,1390,Cagliari Calcio
+IT1,Serie A,2025,252,Genoa CFC
+IT1,Serie A,2025,416,Torino FC
+IT1,Serie A,2025,1005,US Lecce
+IT1,Serie A,2025,4172,Pisa Sporting Club
+IT1,Serie A,2025,276,Hellas Verona
+IT1,Serie A,2025,2239,US Cremonese
+L1,Bundesliga,2021,27,Bayern Munich
+L1,Bundesliga,2021,16,Borussia Dortmund
+L1,Bundesliga,2021,23826,RB Leipzig
+L1,Bundesliga,2021,15,Bayer 04 Leverkusen
+L1,Bundesliga,2021,82,VfL Wolfsburg
+L1,Bundesliga,2021,18,Borussia Mönchengladbach
+L1,Bundesliga,2021,24,Eintracht Frankfurt
+L1,Bundesliga,2021,533,TSG 1899 Hoffenheim
+L1,Bundesliga,2021,60,SC Freiburg
+L1,Bundesliga,2021,79,VfB Stuttgart
+L1,Bundesliga,2021,44,Hertha BSC
+L1,Bundesliga,2021,39,1.FSV Mainz 05
+L1,Bundesliga,2021,89,1.FC Union Berlin
+L1,Bundesliga,2021,3,1.FC Köln
+L1,Bundesliga,2021,167,FC Augsburg
+L1,Bundesliga,2021,10,Arminia Bielefeld
+L1,Bundesliga,2021,80,VfL Bochum
+L1,Bundesliga,2021,65,SpVgg Greuther Fürth
+L1,Bundesliga,2022,27,Bayern Munich
+L1,Bundesliga,2022,16,Borussia Dortmund
+L1,Bundesliga,2022,23826,RB Leipzig
+L1,Bundesliga,2022,15,Bayer 04 Leverkusen
+L1,Bundesliga,2022,24,Eintracht Frankfurt
+L1,Bundesliga,2022,18,Borussia Mönchengladbach
+L1,Bundesliga,2022,82,VfL Wolfsburg
+L1,Bundesliga,2022,60,SC Freiburg
+L1,Bundesliga,2022,533,TSG 1899 Hoffenheim
+L1,Bundesliga,2022,89,1.FC Union Berlin
+L1,Bundesliga,2022,79,VfB Stuttgart
+L1,Bundesliga,2022,39,1.FSV Mainz 05
+L1,Bundesliga,2022,167,FC Augsburg
+L1,Bundesliga,2022,3,1.FC Köln
+L1,Bundesliga,2022,44,Hertha BSC
+L1,Bundesliga,2022,86,SV Werder Bremen
+L1,Bundesliga,2022,33,FC Schalke 04
+L1,Bundesliga,2022,80,VfL Bochum
+L1,Bundesliga,2023,27,Bayern Munich
+L1,Bundesliga,2023,15,Bayer 04 Leverkusen
+L1,Bundesliga,2023,23826,RB Leipzig
+L1,Bundesliga,2023,16,Borussia Dortmund
+L1,Bundesliga,2023,79,VfB Stuttgart
+L1,Bundesliga,2023,24,Eintracht Frankfurt
+L1,Bundesliga,2023,82,VfL Wolfsburg
+L1,Bundesliga,2023,60,SC Freiburg
+L1,Bundesliga,2023,533,TSG 1899 Hoffenheim
+L1,Bundesliga,2023,18,Borussia Mönchengladbach
+L1,Bundesliga,2023,89,1.FC Union Berlin
+L1,Bundesliga,2023,39,1.FSV Mainz 05
+L1,Bundesliga,2023,167,FC Augsburg
+L1,Bundesliga,2023,86,SV Werder Bremen
+L1,Bundesliga,2023,3,1.FC Köln
+L1,Bundesliga,2023,2036,1.FC Heidenheim 1846
+L1,Bundesliga,2023,80,VfL Bochum
+L1,Bundesliga,2023,105,SV Darmstadt 98
+L1,Bundesliga,2024,27,Bayern Munich
+L1,Bundesliga,2024,15,Bayer 04 Leverkusen
+L1,Bundesliga,2024,23826,RB Leipzig
+L1,Bundesliga,2024,16,Borussia Dortmund
+L1,Bundesliga,2024,24,Eintracht Frankfurt
+L1,Bundesliga,2024,79,VfB Stuttgart
+L1,Bundesliga,2024,82,VfL Wolfsburg
+L1,Bundesliga,2024,18,Borussia Mönchengladbach
+L1,Bundesliga,2024,533,TSG 1899 Hoffenheim
+L1,Bundesliga,2024,60,SC Freiburg
+L1,Bundesliga,2024,39,1.FSV Mainz 05
+L1,Bundesliga,2024,167,FC Augsburg
+L1,Bundesliga,2024,89,1.FC Union Berlin
+L1,Bundesliga,2024,86,SV Werder Bremen
+L1,Bundesliga,2024,2036,1.FC Heidenheim 1846
+L1,Bundesliga,2024,35,FC St. Pauli
+L1,Bundesliga,2024,80,VfL Bochum
+L1,Bundesliga,2024,269,Holstein Kiel
+L1,Bundesliga,2025,27,Bayern Munich
+L1,Bundesliga,2025,23826,RB Leipzig
+L1,Bundesliga,2025,15,Bayer 04 Leverkusen
+L1,Bundesliga,2025,16,Borussia Dortmund
+L1,Bundesliga,2025,79,VfB Stuttgart
+L1,Bundesliga,2025,24,Eintracht Frankfurt
+L1,Bundesliga,2025,533,TSG 1899 Hoffenheim
+L1,Bundesliga,2025,60,SC Freiburg
+L1,Bundesliga,2025,82,VfL Wolfsburg
+L1,Bundesliga,2025,41,Hamburger SV
+L1,Bundesliga,2025,167,FC Augsburg
+L1,Bundesliga,2025,86,SV Werder Bremen
+L1,Bundesliga,2025,18,Borussia Mönchengladbach
+L1,Bundesliga,2025,39,1.FSV Mainz 05
+L1,Bundesliga,2025,3,1.FC Köln
+L1,Bundesliga,2025,89,1.FC Union Berlin
+L1,Bundesliga,2025,2036,1.FC Heidenheim 1846
+L1,Bundesliga,2025,35,FC St. Pauli
+FR1,Ligue 1,2021,583,Paris Saint-Germain
+FR1,Ligue 1,2021,1041,Olympique Lyon
+FR1,Ligue 1,2021,162,AS Monaco
+FR1,Ligue 1,2021,1082,LOSC Lille
+FR1,Ligue 1,2021,273,Stade Rennais FC
+FR1,Ligue 1,2021,244,Olympique Marseille
+FR1,Ligue 1,2021,417,OGC Nice
+FR1,Ligue 1,2021,826,RC Lens
+FR1,Ligue 1,2021,1421,Stade Reims
+FR1,Ligue 1,2021,969,Montpellier HSC
+FR1,Ligue 1,2021,667,RC Strasbourg Alsace
+FR1,Ligue 1,2021,40,FC Girondins Bordeaux
+FR1,Ligue 1,2021,995,FC Nantes
+FR1,Ligue 1,2021,618,AS Saint-Étienne
+FR1,Ligue 1,2021,3911,Stade Brestois 29
+FR1,Ligue 1,2021,347,FC Metz
+FR1,Ligue 1,2021,1420,Angers SCO
+FR1,Ligue 1,2021,1095,ESTAC Troyes
+FR1,Ligue 1,2021,1158,FC Lorient
+FR1,Ligue 1,2021,3524,Clermont Foot 63
+FR1,Ligue 1,2022,583,Paris Saint-Germain
+FR1,Ligue 1,2022,273,Stade Rennais FC
+FR1,Ligue 1,2022,162,AS Monaco
+FR1,Ligue 1,2022,1041,Olympique Lyon
+FR1,Ligue 1,2022,244,Olympique Marseille
+FR1,Ligue 1,2022,417,OGC Nice
+FR1,Ligue 1,2022,1082,LOSC Lille
+FR1,Ligue 1,2022,826,RC Lens
+FR1,Ligue 1,2022,1158,FC Lorient
+FR1,Ligue 1,2022,1421,Stade Reims
+FR1,Ligue 1,2022,969,Montpellier HSC
+FR1,Ligue 1,2022,667,RC Strasbourg Alsace
+FR1,Ligue 1,2022,995,FC Nantes
+FR1,Ligue 1,2022,415,FC Toulouse
+FR1,Ligue 1,2022,3911,Stade Brestois 29
+FR1,Ligue 1,2022,1095,ESTAC Troyes
+FR1,Ligue 1,2022,1420,Angers SCO
+FR1,Ligue 1,2022,290,AJ Auxerre
+FR1,Ligue 1,2022,3524,Clermont Foot 63
+FR1,Ligue 1,2022,1147,AC Ajaccio
+FR1,Ligue 1,2023,583,Paris Saint-Germain
+FR1,Ligue 1,2023,162,AS Monaco
+FR1,Ligue 1,2023,273,Stade Rennais FC
+FR1,Ligue 1,2023,1082,LOSC Lille
+FR1,Ligue 1,2023,244,Olympique Marseille
+FR1,Ligue 1,2023,1041,Olympique Lyon
+FR1,Ligue 1,2023,417,OGC Nice
+FR1,Ligue 1,2023,826,RC Lens
+FR1,Ligue 1,2023,667,RC Strasbourg Alsace
+FR1,Ligue 1,2023,969,Montpellier HSC
+FR1,Ligue 1,2023,415,FC Toulouse
+FR1,Ligue 1,2023,1421,Stade Reims
+FR1,Ligue 1,2023,1158,FC Lorient
+FR1,Ligue 1,2023,995,FC Nantes
+FR1,Ligue 1,2023,3911,Stade Brestois 29
+FR1,Ligue 1,2023,738,Le Havre AC
+FR1,Ligue 1,2023,347,FC Metz
+FR1,Ligue 1,2023,3524,Clermont Foot 63
+FR1,Ligue 1,2024,583,Paris Saint-Germain
+FR1,Ligue 1,2024,162,AS Monaco
+FR1,Ligue 1,2024,244,Olympique Marseille
+FR1,Ligue 1,2024,1082,LOSC Lille
+FR1,Ligue 1,2024,1041,Olympique Lyon
+FR1,Ligue 1,2024,667,RC Strasbourg Alsace
+FR1,Ligue 1,2024,273,Stade Rennais FC
+FR1,Ligue 1,2024,417,OGC Nice
+FR1,Ligue 1,2024,826,RC Lens
+FR1,Ligue 1,2024,1421,Stade Reims
+FR1,Ligue 1,2024,415,FC Toulouse
+FR1,Ligue 1,2024,995,FC Nantes
+FR1,Ligue 1,2024,3911,Stade Brestois 29
+FR1,Ligue 1,2024,290,AJ Auxerre
+FR1,Ligue 1,2024,618,AS Saint-Étienne
+FR1,Ligue 1,2024,738,Le Havre AC
+FR1,Ligue 1,2024,969,Montpellier HSC
+FR1,Ligue 1,2024,1420,Angers SCO
+FR1,Ligue 1,2025,583,Paris Saint-Germain
+FR1,Ligue 1,2025,244,Olympique Marseille
+FR1,Ligue 1,2025,667,RC Strasbourg Alsace
+FR1,Ligue 1,2025,162,AS Monaco
+FR1,Ligue 1,2025,1041,Olympique Lyon
+FR1,Ligue 1,2025,273,Stade Rennais FC
+FR1,Ligue 1,2025,1082,LOSC Lille
+FR1,Ligue 1,2025,826,RC Lens
+FR1,Ligue 1,2025,417,OGC Nice
+FR1,Ligue 1,2025,415,FC Toulouse
+FR1,Ligue 1,2025,10004,Paris FC
+FR1,Ligue 1,2025,1420,Angers SCO
+FR1,Ligue 1,2025,1158,FC Lorient
+FR1,Ligue 1,2025,995,FC Nantes
+FR1,Ligue 1,2025,290,AJ Auxerre
+FR1,Ligue 1,2025,3911,Stade Brestois 29
+FR1,Ligue 1,2025,347,FC Metz
+FR1,Ligue 1,2025,738,Le Havre AC

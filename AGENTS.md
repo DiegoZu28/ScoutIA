@@ -175,10 +175,8 @@ deploy en Vercel (ver sección de despliegue en el `README.md`).
    `feature_cols` y se ordena por la diferencia. Como el modelo es lineal, la suma de todas
    las diferencias reconstruye exactamente la brecha en espacio log10.
 3. El LLM (`app/src/app/narrativa/`) solo redacta el JSON de diferencias ya calculado —
-   nunca recibe stats crudas ni calcula nada, cumpliendo la regla ya escrita arriba. Mismo
-   patrón de `response_format: json_schema` ya validado en el prototipo de noticias con LLM
-   (notebook `05-llm.ipynb`, eliminado 2026-09-20 al descartarse esa feature — ver sección
-   de descartadas más abajo).
+   nunca recibe stats crudas ni calcula nada, cumpliendo la regla ya escrita arriba. Usa
+   `response_format: json_schema` (ver `notebooks/05-llm.ipynb` para el diseño del prompt).
 4. **Encontrado probando con la API real:** pasarle al LLM un booleano (`favorece_a`) para
    indicar a qué jugador beneficia cada factor de valor causó una atribución cruzada (le
    asignó un factor al jugador equivocado en la prosa). Se corrigió mandando el nombre del
@@ -263,9 +261,8 @@ deploy en Vercel (ver sección de despliegue en el `README.md`).
 - El merge `fbref_tm_eda.parquet` ↔ `fbref_tm_features.parquet` **no es un merge trivial**
   por los 735 grupos duplicados — ver la sección de arriba antes de tocar el script.
 - `Settings.model_config.env_file` lee primero el `.env` de la raíz del repo y después
-  `app/.env` (que no existe todavía) — así el backend reusa el mismo `OPENAI_API_KEY` que
-  ya usaba el prototipo de noticias con LLM (`05-llm.ipynb`, eliminado — ver sección de
-  descartadas), sin duplicar el secreto en dos archivos.
+  `app/.env` (que no existe todavía) — así el backend y los notebooks comparten el mismo
+  `OPENAI_API_KEY` sin duplicar el secreto en dos archivos.
 
 ## Comandos
 
@@ -322,14 +319,6 @@ prohibidos por el spec de ScoutIA en cualquier fase.
 **Descartadas (no se van a construir):** Chat y vista Trazabilidad — estaban en el navbar
 como placeholders ("Próxima fase") pero se quitaron (2026-09-19) porque se decidió no
 implementarlas.
-
-**Notebook `05-llm.ipynb` eliminado (2026-09-20):** era un prototipo (ESPN + OpenAI) para
-clasificar noticias por jugador y ligarlas al dataset; se descartó la feature de noticias y
-el notebook no tenía ninguna dependencia real — nada en `app/`, `scripts/` ni `frontend/`
-lo importaba, y su único output (`data/interim/espn_news/*.parquet`) estaba en
-`.gitignore` y no lo leía nada más. No afecta al LLM que sí usa la app
-(`app/src/app/narrativa/`, ver decisiones de diseño del Comparador arriba), que es
-independiente.
 
 **Vista Comparador:** se adelantó respecto al plan original (ver sección de decisiones de
 diseño arriba) — `GET /jugadores/comparar` + `/comparar/narrativa` en el backend, feature

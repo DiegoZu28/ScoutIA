@@ -6,11 +6,31 @@
 __pycache__/
 *.pyc
 
-# datos (pesados, se regeneran con los scripts) -- ancladas a la raíz (/) para no afectar
-# a app/data/ y app/models/, las copias versionadas que necesita el deploy en Vercel (ver
-# scripts/preparar_deploy_vercel.sh)
+# datos -- ancladas a la raíz (/) para no afectar a app/data/ y app/models/ (copias para
+# Vercel, ver scripts/preparar_deploy_vercel.sh). Se versiona lo mínimo que necesitan los
+# notebooks 00-06 para correr de punta a punta sin volver a scrapear nada. La caché cruda
+# de los scripts de descarga (HTML de FBref sin ordenar, capturas de Wayback) NO se
+# versiona -- pesa cientos de MB y ningún notebook la lee.
 /data/**
 !/data/**/.gitkeep
+
+# 00/01: fuentes crudas que sí leen los notebooks
+!/data/raw/
+!/data/raw/fbref_big5/
+!/data/raw/fbref_big5/*/
+!/data/raw/fbref_big5/*/*.parquet
+!/data/raw/transfermarkt/
+!/data/raw/transfermarkt/**
+!/data/raw/kaggle_fifa/
+!/data/raw/kaggle_fifa/**
+!/data/raw/wayback_contratos/
+!/data/raw/wayback_contratos/contratos.csv
+
+# 02-06: datasets intermedios/procesados que arman los notebooks
+!/data/interim/
+!/data/interim/**
+!/data/processed/
+!/data/processed/**
 
 # artefactos
 /logs/

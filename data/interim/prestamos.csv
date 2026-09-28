@@ -1,0 +1,973 @@
+player_id,saison_id,club_prestamo,club_dueno
+631693,2021,FC Andorra,Deportivo Alavés
+608382,2021,Real Zaragoza,Deportivo Alavés
+646734,2021,FC Alverca,Deportivo Alavés
+618813,2021,Rayo Vallecano,Atlético de Madrid
+283170,2021,Elche CF,FC Barcelona
+466810,2021,AS Monaco,FC Barcelona
+495625,2021,Elche CF,Cádiz CF
+607780,2021,Leixões SC,Rayo Vallecano
+625014,2021,Valencia CF,Athletic Bilbao
+610083,2021,Levante UD,Athletic Bilbao
+580560,2021,Deportivo Alavés,Real Sociedad
+216464,2021,CD Mirandés,Real Sociedad
+615350,2022,1.FC Köln,Valencia CF
+634105,2022,CD Mirandés,Valencia CF
+709372,2022,RCD Espanyol Barcelona,Villarreal CF
+783396,2022,RCD Espanyol Barcelona,Villarreal CF
+623526,2022,Gimnàstic de Tarragona,Girona FC
+891923,2022,Cádiz CF,Girona FC
+618813,2022,Rayo Vallecano,Atlético de Madrid
+283170,2022,Elche CF,FC Barcelona
+466810,2022,AS Monaco,FC Barcelona
+495625,2022,Elche CF,Cádiz CF
+538810,2022,Botafogo de Futebol e Regatas,Cádiz CF
+632872,2022,Atlético Sanluqueño CF,Cádiz CF
+433257,2022,Amiens SC,UD Almería
+341272,2022,Jagiellonia Bialystok,UD Almería
+845568,2022,FC Alverca,UD Almería
+281404,2022,CF Pachuca,Real Valladolid CF
+607780,2022,Leixões SC,Rayo Vallecano
+162038,2022,Al-Wakrah SC,Rayo Vallecano
+948273,2022,Getafe CF,Real Madrid
+625014,2022,Valencia CF,Athletic Bilbao
+610083,2022,Levante UD,Athletic Bilbao
+580560,2022,Deportivo Alavés,Real Sociedad
+216464,2022,CD Mirandés,Real Sociedad
+282810,2022,Aris Thessaloniki,Celta de Vigo
+615350,2023,1.FC Köln,Valencia CF
+251845,2023,Real Valladolid CF,Valencia CF
+634105,2023,CD Mirandés,Valencia CF
+709372,2023,RCD Espanyol Barcelona,Villarreal CF
+783396,2023,RCD Espanyol Barcelona,Villarreal CF
+709969,2023,Rayo Vallecano,Villarreal CF
+709380,2023,Real Oviedo,Villarreal CF
+631693,2023,FC Andorra,Deportivo Alavés
+608382,2023,Real Zaragoza,Deportivo Alavés
+258475,2023,CD Mirandés,Deportivo Alavés
+646734,2023,FC Alverca,Deportivo Alavés
+1054931,2023,Cultural Leonesa,Deportivo Alavés
+623526,2023,Gimnàstic de Tarragona,Girona FC
+742521,2023,Birmingham City,Girona FC
+1061665,2023,FC Andorra,Girona FC
+283170,2023,Elche CF,FC Barcelona
+937955,2023,Elche CF,FC Barcelona
+466810,2023,AS Monaco,FC Barcelona
+567504,2023,Real Valladolid CF,Real Betis Balompié
+1034853,2023,Rayo Vallecano,Real Betis Balompié
+268670,2023,Rayo Vallecano,Granada CF
+398808,2023,Aris Thessaloniki,Granada CF
+857830,2023,SD Huesca,RCD Mallorca
+343463,2023,Southampton FC,RCD Mallorca
+495625,2023,Elche CF,Cádiz CF
+538810,2023,Botafogo de Futebol e Regatas,Cádiz CF
+631472,2023,CF Estrela Amadora,UD Almería
+433257,2023,Amiens SC,UD Almería
+341272,2023,Jagiellonia Bialystok,UD Almería
+845568,2023,FC Alverca,UD Almería
+607780,2023,Leixões SC,Rayo Vallecano
+162038,2023,Al-Wakrah SC,Rayo Vallecano
+948273,2023,Getafe CF,Real Madrid
+1210422,2023,AD Ceuta FC,UD Las Palmas
+625014,2023,Valencia CF,Athletic Bilbao
+834487,2023,Girona FC,Athletic Bilbao
+580560,2023,Deportivo Alavés,Real Sociedad
+216464,2023,CD Mirandés,Real Sociedad
+282810,2023,Aris Thessaloniki,Celta de Vigo
+615350,2024,1.FC Köln,Valencia CF
+834463,2024,CD Mirandés,Valencia CF
+251845,2024,Real Valladolid CF,Valencia CF
+634105,2024,CD Mirandés,Valencia CF
+783396,2024,RCD Espanyol Barcelona,Villarreal CF
+709969,2024,Rayo Vallecano,Villarreal CF
+631693,2024,FC Andorra,Deportivo Alavés
+608382,2024,Real Zaragoza,Deportivo Alavés
+694509,2024,RSC Anderlecht,Deportivo Alavés
+668276,2024,CD Mirandés,Deportivo Alavés
+1054933,2024,CD Feirense,Deportivo Alavés
+251897,2024,Racing Santander,Deportivo Alavés
+345911,2024,Wolverhampton Wanderers,Girona FC
+742521,2024,Birmingham City,Girona FC
+1108203,2024,FC Andorra,Girona FC
+1061665,2024,FC Andorra,Girona FC
+857818,2024,Galatasaray,Girona FC
+891923,2024,Cádiz CF,Girona FC
+480883,2024,UD Almería,CD Leganés
+618813,2024,Rayo Vallecano,Atlético de Madrid
+283170,2024,Elche CF,FC Barcelona
+937955,2024,Elche CF,FC Barcelona
+466810,2024,AS Monaco,FC Barcelona
+567504,2024,Real Valladolid CF,Real Betis Balompié
+1034853,2024,Rayo Vallecano,Real Betis Balompié
+722351,2024,SD Huesca,Real Betis Balompié
+1061283,2024,FC Arouca,Real Betis Balompié
+632741,2024,Levante UD,Real Betis Balompié
+857830,2024,SD Huesca,RCD Mallorca
+343463,2024,Southampton FC,RCD Mallorca
+281404,2024,CF Pachuca,Real Valladolid CF
+709971,2024,CE Sabadell FC,Real Valladolid CF
+1176519,2024,Real Madrid C,Real Valladolid CF
+607780,2024,Leixões SC,Rayo Vallecano
+692208,2024,Cádiz CF,Rayo Vallecano
+162038,2024,Al-Wakrah SC,Rayo Vallecano
+461843,2024,Atlanta United FC,Getafe CF
+1033005,2024,RSC Anderlecht,Getafe CF
+710004,2024,Real Valladolid CF,Getafe CF
+1124005,2024,Crystal Palace,Getafe CF
+948273,2024,Getafe CF,Real Madrid
+971570,2024,Olympique Lyon,Real Madrid
+1210422,2024,AD Ceuta FC,UD Las Palmas
+625014,2024,Valencia CF,Athletic Bilbao
+1056966,2024,Racing Santander,Athletic Bilbao
+671649,2024,Al-Gharafa SC,Athletic Bilbao
+580560,2024,Deportivo Alavés,Real Sociedad
+629511,2024,Racing Santander,RCD Espanyol Barcelona
+1204959,2024,Cultural Leonesa,RCD Espanyol Barcelona
+904712,2024,Sporting Gijón,RCD Espanyol Barcelona
+1178721,2024,CD Mirandés,RCD Espanyol Barcelona
+709969,2025,Rayo Vallecano,Villarreal CF
+694509,2025,RSC Anderlecht,Deportivo Alavés
+258475,2025,CD Mirandés,Deportivo Alavés
+345911,2025,Wolverhampton Wanderers,Girona FC
+742521,2025,Birmingham City,Girona FC
+857818,2025,Galatasaray,Girona FC
+891923,2025,Cádiz CF,Girona FC
+618813,2025,Rayo Vallecano,Atlético de Madrid
+283170,2025,Elche CF,FC Barcelona
+632741,2025,Levante UD,Real Betis Balompié
+435493,2025,Granada CF,Elche CF
+1064538,2025,CD Mirandés,Elche CF
+666547,2025,RCD Mallorca,Cagliari Calcio
+857830,2025,SD Huesca,RCD Mallorca
+447823,2025,Burgos CF,Real Oviedo
+188888,2025,1.FSV Mainz 05,CA Osasuna
+1063333,2025,CD Mirandés,Levante UD
+618809,2025,Levante UD,Celta de Vigo
+692208,2025,Cádiz CF,Rayo Vallecano
+124419,2025,Sevilla FC,Newcastle United
+357628,2025,Villarreal CF,Sevilla FC
+469669,2025,Al-Okhdood Club,Getafe CF
+1033005,2025,RSC Anderlecht,Getafe CF
+710004,2025,Real Valladolid CF,Getafe CF
+1124005,2025,Crystal Palace,Getafe CF
+971570,2025,Olympique Lyon,Real Madrid
+610083,2025,Levante UD,Athletic Bilbao
+580560,2025,Deportivo Alavés,Real Sociedad
+629511,2025,Racing Santander,RCD Espanyol Barcelona
+1204959,2025,Cultural Leonesa,RCD Espanyol Barcelona
+1178721,2025,CD Mirandés,RCD Espanyol Barcelona
+946279,2025,CD Mirandés,RCD Espanyol Barcelona
+707230,2021,Levante UD,LOSC Lille
+554251,2021,AE Kifisia,ESTAC Troyes
+372711,2021,Basaksehir FK,Olympique Marseille
+924800,2021,Clermont Foot 63,Stade Brestois 29
+789419,2021,Football Bourg-en-Bresse Péronnas 01,OGC Nice
+804829,2021,Francs Borains,RC Lens
+474800,2021,Olympique Marseille,RC Lens
+357117,2021,Panathinaikos,FC Nantes
+1083024,2022,SC Cambuur Leeuwarden,LOSC Lille
+594991,2022,Gaziantep FK,LOSC Lille
+554251,2022,AE Kifisia,ESTAC Troyes
+743520,2022,Quevilly - Rouen Métropole,Angers SCO
+745178,2022,Cercle Brugge ,AS Monaco
+372711,2022,Basaksehir FK,Olympique Marseille
+806168,2022,1.FC Kaiserslautern,AJ Auxerre
+1108145,2022,AE Kifisia,Clermont Foot 63
+924800,2022,Clermont Foot 63,Stade Brestois 29
+944427,2022,Pau FC,FC Toulouse
+789419,2022,Football Bourg-en-Bresse Péronnas 01,OGC Nice
+493702,2022,UC Sampdoria,OGC Nice
+812654,2022,FC Empoli,OGC Nice
+538874,2022,FC Porto,OGC Nice
+258027,2022,Panathinaikos,Paris Saint-Germain
+804829,2022,Francs Borains,RC Lens
+474800,2022,Olympique Marseille,RC Lens
+250013,2022,Al-Taawoun FC,RC Lens
+357117,2022,Panathinaikos,FC Nantes
+802986,2023,RWDM Brussels,Olympique Lyon
+238266,2023,Real Sociedad,Olympique Lyon
+429901,2023,Real Zaragoza,Olympique Lyon
+810789,2023,SC Bastia,LOSC Lille
+920939,2023,US Boulogne,LOSC Lille
+815652,2023,Casa Pia AC,LOSC Lille
+1083024,2023,SC Cambuur Leeuwarden,LOSC Lille
+649023,2023,Watford FC,FC Lorient
+1049151,2023,Red Star FC,FC Lorient
+700078,2023,Celtic FC,FC Lorient
+405686,2023,Le Havre AC,Stade Reims
+847279,2023,Cercle Brugge ,Stade Reims
+980576,2023,NAC Breda,Stade Reims
+745178,2023,Cercle Brugge ,AS Monaco
+807165,2023,FC Lorient,Olympique Marseille
+192616,2023,US Sassuolo,Olympique Marseille
+372711,2023,Basaksehir FK,Olympique Marseille
+599663,2023,US Cremonese,Olympique Marseille
+400680,2023,Royal Charleroi SC,FC Metz
+919620,2023,Amiens SC,FC Metz
+1111776,2023,Amiens SC,FC Metz
+494236,2023,Jagiellonia Bialystok,Clermont Foot 63
+1108145,2023,AE Kifisia,Clermont Foot 63
+669000,2023,Kocaelispor,Clermont Foot 63
+955360,2023,SC Austria Lustenau,Clermont Foot 63
+924800,2023,Clermont Foot 63,Stade Brestois 29
+275249,2023,SV Darmstadt 98,FC Toulouse
+575693,2023,Bolton Wanderers,FC Toulouse
+944427,2023,Pau FC,FC Toulouse
+789419,2023,Football Bourg-en-Bresse Péronnas 01,OGC Nice
+1180835,2023,IF Brommapojkarna,OGC Nice
+216569,2023,Juventus FC,OGC Nice
+538874,2023,FC Porto,OGC Nice
+666977,2023,FC St. Gallen 1879,OGC Nice
+487969,2023,Tottenham Hotspur,Paris Saint-Germain
+962555,2023,FC Nantes,RC Strasbourg Alsace
+1068110,2023,1.FC Nuremberg,RC Strasbourg Alsace
+789091,2023,SC Aubagne Air Bel,Le Havre AC
+770407,2023,Football Bourg-en-Bresse Péronnas 01,Le Havre AC
+804829,2023,Francs Borains,RC Lens
+474800,2023,Olympique Marseille,RC Lens
+713787,2023,AC Sparta Prague,RC Lens
+250013,2023,Al-Taawoun FC,RC Lens
+524925,2023,Caykur Rizespor,Montpellier HSC
+986262,2023,Quevilly - Rouen Métropole,Montpellier HSC
+357117,2023,Panathinaikos,FC Nantes
+344864,2023,KAA Gent,FC Nantes
+649024,2023,FC Sion,FC Nantes
+802986,2024,RWDM Brussels,Olympique Lyon
+238266,2024,Real Sociedad,Olympique Lyon
+429901,2024,Real Zaragoza,Olympique Lyon
+1108478,2024,FC Annecy,Olympique Lyon
+810789,2024,SC Bastia,LOSC Lille
+1160753,2024,Le Mans FC,LOSC Lille
+920939,2024,US Boulogne,LOSC Lille
+707230,2024,Levante UD,LOSC Lille
+594991,2024,Gaziantep FK,LOSC Lille
+743520,2024,Quevilly - Rouen Métropole,Angers SCO
+646733,2024,Kasimpasa,Angers SCO
+986288,2024,Fenerbahce,Angers SCO
+364827,2024,Ipswich Town,Stade Reims
+405686,2024,Le Havre AC,Stade Reims
+847279,2024,Cercle Brugge ,Stade Reims
+355369,2024,CD Tondela,Stade Reims
+980576,2024,NAC Breda,Stade Reims
+745178,2024,Cercle Brugge ,AS Monaco
+807165,2024,FC Lorient,Olympique Marseille
+192616,2024,US Sassuolo,Olympique Marseille
+372711,2024,Basaksehir FK,Olympique Marseille
+217115,2024,Sevilla FC,Olympique Marseille
+599663,2024,US Cremonese,Olympique Marseille
+275303,2024,Olympique Lyon,Stade Rennais FC
+503866,2024,Hamburger SV,Stade Rennais FC
+977877,2024,Montpellier HSC,Stade Rennais FC
+556865,2024,Omonia Nicosia,AJ Auxerre
+806168,2024,1.FC Kaiserslautern,AJ Auxerre
+1310513,2024,USL Dunkerque,AJ Auxerre
+412934,2024,Stade Lavallois,AJ Auxerre
+1030153,2024,AS Nancy-Lorraine,Stade Brestois 29
+924800,2024,Clermont Foot 63,Stade Brestois 29
+1075580,2024,USL Dunkerque,FC Toulouse
+275249,2024,SV Darmstadt 98,FC Toulouse
+944427,2024,Pau FC,FC Toulouse
+789419,2024,Football Bourg-en-Bresse Péronnas 01,OGC Nice
+1180835,2024,IF Brommapojkarna,OGC Nice
+812654,2024,FC Empoli,OGC Nice
+216569,2024,Juventus FC,OGC Nice
+538874,2024,FC Porto,OGC Nice
+1231401,2024,AS Nancy-Lorraine,OGC Nice
+1275040,2024,Olympique Lyon,Paris Saint-Germain
+487969,2024,Tottenham Hotspur,Paris Saint-Germain
+1052291,2024,Grazer AK 1902,AS Saint-Étienne
+962555,2024,FC Nantes,RC Strasbourg Alsace
+1068110,2024,1.FC Nuremberg,RC Strasbourg Alsace
+1183575,2024,USL Dunkerque,RC Strasbourg Alsace
+1015624,2024,Avs Futebol,RC Strasbourg Alsace
+557612,2024,AJ Auxerre,RC Strasbourg Alsace
+770407,2024,Football Bourg-en-Bresse Péronnas 01,Le Havre AC
+474800,2024,Olympique Marseille,RC Lens
+1160378,2024,SM Caen,RC Lens
+713787,2024,AC Sparta Prague,RC Lens
+250013,2024,Al-Taawoun FC,RC Lens
+491296,2024,Panathinaikos,RC Lens
+1160813,2024,Quevilly - Rouen Métropole,RC Lens
+524925,2024,Caykur Rizespor,Montpellier HSC
+986262,2024,Quevilly - Rouen Métropole,Montpellier HSC
+357117,2024,Panathinaikos,FC Nantes
+807128,2024,FC Nantes,RC Strasbourg Alsace
+344864,2024,KAA Gent,FC Nantes
+914539,2025,Amiens SC,Paris FC
+830265,2025,USL Dunkerque,Paris FC
+640109,2025,Getafe CF,Olympique Lyon
+1108478,2025,FC Annecy,Olympique Lyon
+1160753,2025,Le Mans FC,LOSC Lille
+920939,2025,US Boulogne,LOSC Lille
+707230,2025,Levante UD,LOSC Lille
+649023,2025,Watford FC,FC Lorient
+700078,2025,Celtic FC,FC Lorient
+646733,2025,Kasimpasa,Angers SCO
+986288,2025,Fenerbahce,Angers SCO
+192616,2025,US Sassuolo,Olympique Marseille
+392770,2025,Wolverhampton Wanderers,Olympique Marseille
+372711,2025,Basaksehir FK,Olympique Marseille
+217115,2025,Sevilla FC,Olympique Marseille
+239743,2025,Stade Rennais FC,Galatasaray
+275303,2025,Olympique Lyon,Stade Rennais FC
+556865,2025,Omonia Nicosia,AJ Auxerre
+555076,2025,AJ Auxerre,AFC Bournemouth
+400680,2025,Royal Charleroi SC,FC Metz
+919620,2025,Amiens SC,FC Metz
+677057,2025,FC Metz,FC Kolkheti-1913 Poti
+838562,2025,USL Dunkerque,FC Metz
+1178488,2025,Udinese Calcio,FC Metz
+1111776,2025,Amiens SC,FC Metz
+1030153,2025,AS Nancy-Lorraine,Stade Brestois 29
+924800,2025,Clermont Foot 63,Stade Brestois 29
+275249,2025,SV Darmstadt 98,FC Toulouse
+789419,2025,Football Bourg-en-Bresse Péronnas 01,OGC Nice
+1134250,2025,FC Annecy,OGC Nice
+216569,2025,Juventus FC,OGC Nice
+659542,2025,OGC Nice,Eintracht Frankfurt
+538874,2025,FC Porto,OGC Nice
+1275040,2025,Olympique Lyon,Paris Saint-Germain
+962555,2025,FC Nantes,RC Strasbourg Alsace
+1068110,2025,1.FC Nuremberg,RC Strasbourg Alsace
+557612,2025,AJ Auxerre,RC Strasbourg Alsace
+713787,2025,AC Sparta Prague,RC Lens
+344864,2025,KAA Gent,FC Nantes
+796589,2025,Stade Reims,FC Nantes
+120186,2021,Leyton Orient,Watford FC
+346472,2021,Genclerbirligi Ankara,Watford FC
+493513,2021,SV Werder Bremen,Arsenal FC
+340325,2021,Brentford FC,Arsenal FC
+686839,2021,Stockport County,Burnley FC
+568005,2021,Middlesbrough FC,Brighton & Hove Albion
+648046,2021,AS Roma,Brighton & Hove Albion
+728734,2021,Preston North End,Tottenham Hotspur
+444211,2021,Millwall FC,Southampton FC
+576121,2021,Radomiak Radom,Manchester City
+663225,2021,Stockport County,Everton FC
+338070,2021,AS Roma,Liverpool FC
+417346,2021,ACF Fiorentina,Leeds United
+503980,2021,Hull City,Leeds United
+614811,2021,Bradford City,Newcastle United
+401173,2021,Aston Villa,Manchester United
+258923,2021,FC Barcelona,Manchester United
+292808,2022,AS Monaco,Leicester City
+493513,2022,SV Werder Bremen,Arsenal FC
+425918,2022,FC Porto,Arsenal FC
+537598,2022,Hamburger SV,Arsenal FC
+340325,2022,Brentford FC,Arsenal FC
+568005,2022,Middlesbrough FC,Brighton & Hove Albion
+648046,2022,AS Roma,Brighton & Hove Albion
+728734,2022,Preston North End,Tottenham Hotspur
+646738,2022,Real Zaragoza,Southampton FC
+468198,2022,Leicester City,Southampton FC
+444211,2022,Millwall FC,Southampton FC
+284730,2022,Inter Milan,Manchester City
+576121,2022,Radomiak Radom,Manchester City
+338070,2022,AS Roma,Liverpool FC
+234781,2022,Genoa CFC,West Ham United
+263361,2022,SV Werder Bremen,Leeds United
+417346,2022,ACF Fiorentina,Leeds United
+503980,2022,Hull City,Leeds United
+834742,2022,RCD Mallorca,Leeds United
+649020,2022,FC Metz,Wolverhampton Wanderers
+369567,2022,LASK,Wolverhampton Wanderers
+787232,2022,RC Strasbourg Alsace,Chelsea FC
+424881,2022,Rio Ave FC,Nottingham Forest
+622236,2022,Bristol City,Manchester United
+258923,2022,FC Barcelona,Manchester United
+401173,2022,Aston Villa,Manchester United
+582078,2022,Leyton Orient,AFC Bournemouth
+391065,2022,Olympique Marseille,AFC Bournemouth
+965940,2023,AFC Wimbledon,Luton Town
+469958,2023,Portsmouth FC,Luton Town
+169801,2023,Wycombe Wanderers,Luton Town
+493513,2023,SV Werder Bremen,Arsenal FC
+425918,2023,FC Porto,Arsenal FC
+537598,2023,Hamburger SV,Arsenal FC
+340325,2023,Brentford FC,Arsenal FC
+745461,2023,Paris FC,Burnley FC
+709767,2023,1.FC Kaiserslautern,Brentford FC
+568005,2023,Middlesbrough FC,Brighton & Hove Albion
+648046,2023,AS Roma,Brighton & Hove Albion
+859951,2023,Stoke City,Tottenham Hotspur
+396638,2023,ACF Fiorentina,Tottenham Hotspur
+888493,2023,CA Rosario Central,Tottenham Hotspur
+284730,2023,Inter Milan,Manchester City
+576121,2023,Radomiak Radom,Manchester City
+649452,2023,Wrexham AFC,Manchester City
+663225,2023,Stockport County,Everton FC
+486604,2023,Ajax Amsterdam,Liverpool FC
+338070,2023,AS Roma,Liverpool FC
+226073,2023,Fatih Karagümrük,Sheffield United
+543164,2023,Queens Park Rangers,Sheffield United
+426192,2023,Sheffield United,Southampton FC
+401356,2023,Fenerbahce,West Ham United
+181579,2023,Burnley FC,West Ham United
+234781,2023,Genoa CFC,West Ham United
+953135,2023,VfL Bochum,West Ham United
+649020,2023,FC Metz,Wolverhampton Wanderers
+369567,2023,LASK,Wolverhampton Wanderers
+936874,2023,Everton FC,Chelsea FC
+776890,2023,Bayern Munich,Chelsea FC
+787232,2023,RC Strasbourg Alsace,Chelsea FC
+614811,2023,Bradford City,Newcastle United
+743597,2023,Clube de Regatas Vasco da Gama,Crystal Palace
+381469,2023,Feyenoord Rotterdam,Fulham FC
+622236,2023,Bristol City,Manchester United
+1011738,2023,Norwich City,Manchester United
+654253,2023,Hull City,Manchester United
+258923,2023,FC Barcelona,Manchester United
+401173,2023,Aston Villa,Manchester United
+610442,2023,SSC Napoli,Manchester United
+582078,2023,Leyton Orient,AFC Bournemouth
+471690,2023,Rangers FC,AFC Bournemouth
+512385,2023,Cruzeiro Esporte Clube,AFC Bournemouth
+391065,2023,Olympique Marseille,AFC Bournemouth
+292808,2024,AS Monaco,Leicester City
+592975,2024,US Sassuolo,Leicester City
+654982,2024,VfB Stuttgart,Leicester City
+425918,2024,FC Porto,Arsenal FC
+340325,2024,Brentford FC,Arsenal FC
+709767,2024,1.FC Kaiserslautern,Brentford FC
+1086375,2024,Swansea City,Brentford FC
+568005,2024,Middlesbrough FC,Brighton & Hove Albion
+648046,2024,AS Roma,Brighton & Hove Albion
+728734,2024,Preston North End,Tottenham Hotspur
+427568,2024,Newcastle United,Southampton FC
+646738,2024,Real Zaragoza,Southampton FC
+195633,2024,West Bromwich Albion,Southampton FC
+468198,2024,Leicester City,Southampton FC
+444211,2024,Millwall FC,Southampton FC
+1005575,2024,Girona FC,Manchester City
+284730,2024,Inter Milan,Manchester City
+576121,2024,Radomiak Radom,Manchester City
+649452,2024,Wrexham AFC,Manchester City
+994536,2024,Girona FC,Manchester City
+486604,2024,Ajax Amsterdam,Liverpool FC
+338070,2024,AS Roma,Liverpool FC
+401356,2024,Fenerbahce,West Ham United
+181579,2024,Burnley FC,West Ham United
+326029,2024,AS Roma,Aston Villa
+649020,2024,FC Metz,Wolverhampton Wanderers
+414908,2024,Paris FC,Wolverhampton Wanderers
+369567,2024,LASK,Wolverhampton Wanderers
+834397,2024,RC Strasbourg Alsace,Chelsea FC
+1145504,2024,RC Strasbourg Alsace,Chelsea FC
+936874,2024,Everton FC,Chelsea FC
+776890,2024,Bayern Munich,Chelsea FC
+787232,2024,RC Strasbourg Alsace,Chelsea FC
+371021,2024,US Sassuolo,Ipswich Town
+349503,2024,Portsmouth FC,Ipswich Town
+663244,2024,Besiktas JK,Nottingham Forest
+614811,2024,Bradford City,Newcastle United
+743597,2024,Clube de Regatas Vasco da Gama,Crystal Palace
+381469,2024,Feyenoord Rotterdam,Fulham FC
+1011738,2024,Norwich City,Manchester United
+654253,2024,Hull City,Manchester United
+258923,2024,FC Barcelona,Manchester United
+401173,2024,Aston Villa,Manchester United
+610442,2024,SSC Napoli,Manchester United
+582078,2024,Leyton Orient,AFC Bournemouth
+513970,2024,Celtic FC,AFC Bournemouth
+471690,2024,Rangers FC,AFC Bournemouth
+854721,2024,Barnet FC,AFC Bournemouth
+391065,2024,Olympique Marseille,AFC Bournemouth
+512385,2024,Cruzeiro Esporte Clube,AFC Bournemouth
+746740,2024,Preston North End,AFC Bournemouth
+425918,2025,FC Porto,Arsenal FC
+541628,2025,AC Sparta Prague,Burnley FC
+1086375,2025,Swansea City,Brentford FC
+660860,2025,Paris FC,Brighton & Hove Albion
+892160,2025,Hamburger SV,Tottenham Hotspur
+859951,2025,Stoke City,Tottenham Hotspur
+396638,2025,ACF Fiorentina,Tottenham Hotspur
+284730,2025,Inter Milan,Manchester City
+475946,2025,Millwall FC,Sunderland AFC
+661208,2025,Sheffield United,Sunderland AFC
+181380,2025,RC Lens,Sunderland AFC
+559801,2025,Wycombe Wanderers,Sunderland AFC
+570336,2025,Ipswich Town,Sunderland AFC
+658536,2025,AS Monaco,Sunderland AFC
+663225,2025,Stockport County,Everton FC
+203460,2025,Everton FC,Manchester City
+401356,2025,Fenerbahce,West Ham United
+181579,2025,Burnley FC,West Ham United
+953135,2025,VfL Bochum,West Ham United
+417346,2025,ACF Fiorentina,Leeds United
+627248,2025,Preston North End,Aston Villa
+326029,2025,AS Roma,Aston Villa
+414908,2025,Paris FC,Wolverhampton Wanderers
+1064471,2025,Celta de Vigo,Wolverhampton Wanderers
+369567,2025,LASK,Wolverhampton Wanderers
+936874,2025,Everton FC,Chelsea FC
+663244,2025,Besiktas JK,Nottingham Forest
+585959,2025,Eintracht Frankfurt,Nottingham Forest
+614811,2025,Bradford City,Newcastle United
+500689,2025,Crystal Palace,Aston Villa
+582078,2025,Leyton Orient,AFC Bournemouth
+513970,2025,Celtic FC,AFC Bournemouth
+854721,2025,Barnet FC,AFC Bournemouth
+391065,2025,Olympique Marseille,AFC Bournemouth
+821105,2021,AC Bra,Bologna FC 1909
+368891,2021,Bologna FC 1909,Eintracht Frankfurt
+237658,2021,Pisa Sporting Club,Bologna FC 1909
+358166,2021,Basaksehir FK,AS Roma
+258482,2021,Spezia Calcio,Cagliari Calcio
+256361,2021,Fatih Karagümrük,Spezia Calcio
+704347,2021,Audace Cerignola,US Salernitana 1919
+708086,2021,US Cremonese,SS Lazio
+612059,2021,SS Monopoli 1966,Udinese Calcio
+257474,2021,SSC Napoli,Torino FC
+551752,2021,FK Partizan Belgrade,Torino FC
+417896,2021,LR Vicenza,Torino FC
+364133,2021,FC Empoli,Torino FC
+602124,2021,PAOK Thessaloniki,ACF Fiorentina
+386455,2021,US Lecce,ACF Fiorentina
+669915,2021,Carrarese Calcio 1908,ACF Fiorentina
+731491,2021,Parma Calcio 1913,Inter Milan
+351816,2021,GNK Dinamo Zagreb,AC Milan
+392538,2021,Bologna FC 1909,AC Milan
+162959,2021,ACF Fiorentina,Juventus FC
+362842,2021,Grêmio Foot-Ball Porto Alegrense,Juventus FC
+616228,2021,US Triestina,Venezia FC
+250153,2021,Venezia FC,SSC Napoli
+397225,2021,Udinese Calcio,SSC Napoli
+566936,2021,Latina Calcio 1932,SSC Napoli
+555015,2021,Clube Atlético Mineiro,US Sassuolo
+655525,2021,AC Reggiana 1919,US Sassuolo
+324377,2022,US Cremonese,US Lecce
+659420,2022,Aurora Pro Patria,Bologna FC 1909
+237658,2022,Pisa Sporting Club,Bologna FC 1909
+401935,2022,Delfino Pescara 1936,Bologna FC 1909
+818703,2022,Campobasso FC,UC Sampdoria
+659415,2022,SSC Bari,AS Roma
+358166,2022,Basaksehir FK,AS Roma
+420179,2022,AS Cittadella,US Cremonese
+340707,2022,Spezia Calcio,US Cremonese
+872380,2022,Amed SK,US Cremonese
+407265,2022,Modena FC,US Cremonese
+392545,2022,Delfino Pescara 1936,US Cremonese
+815543,2022,Union Brescia,Hellas Verona
+667056,2022,Virtusvecomp Verona,Hellas Verona
+542588,2022,Calcio Padova,AC Monza
+731467,2022,Alcione Milano,Spezia Calcio
+390160,2022,UC Sampdoria,Spezia Calcio
+934386,2022,AC Trento,Spezia Calcio
+256361,2022,Fatih Karagümrük,Spezia Calcio
+459655,2022,FC Empoli,US Salernitana 1919
+704347,2022,Audace Cerignola,US Salernitana 1919
+626913,2022,SS Lazio,US Salernitana 1919
+287700,2022,Forte Virtus,SS Lazio
+708086,2022,US Cremonese,SS Lazio
+612059,2022,SS Monopoli 1966,Udinese Calcio
+342877,2022,Torino FC,Udinese Calcio
+648032,2022,Watford FC,Udinese Calcio
+653415,2022,Rio Ave FC,Udinese Calcio
+268429,2022,Hellas Verona,Udinese Calcio
+257474,2022,SSC Napoli,Torino FC
+551752,2022,FK Partizan Belgrade,Torino FC
+364133,2022,FC Empoli,Torino FC
+707450,2022,UD Las Palmas,ACF Fiorentina
+602124,2022,PAOK Thessaloniki,ACF Fiorentina
+272261,2022,UC Sampdoria,ACF Fiorentina
+386455,2022,US Lecce,ACF Fiorentina
+669915,2022,Carrarese Calcio 1908,ACF Fiorentina
+351816,2022,GNK Dinamo Zagreb,AC Milan
+392538,2022,Bologna FC 1909,AC Milan
+162959,2022,ACF Fiorentina,Juventus FC
+397225,2022,Udinese Calcio,SSC Napoli
+433584,2022,US Cremonese,SSC Napoli
+282388,2022,Torino FC,SSC Napoli
+481344,2022,Audace Cerignola,US Sassuolo
+555015,2022,Clube Atlético Mineiro,US Sassuolo
+935777,2022,US Livorno 1915,FC Empoli
+606160,2022,US Città di Pontedera,FC Empoli
+895937,2022,Cagliari Calcio,Atalanta BC
+667640,2023,Calcio Foggia 1920,US Lecce
+1118086,2023,Melbourne Victory,US Lecce
+651002,2023,Juventus Next Gen,US Lecce
+324377,2023,US Cremonese,US Lecce
+911328,2023,FC Nantes,US Lecce
+531065,2023,AJ Auxerre,Bologna FC 1909
+237658,2023,Pisa Sporting Club,Bologna FC 1909
+633668,2023,ACF Fiorentina,Bologna FC 1909
+367992,2023,FC Utrecht,Bologna FC 1909
+659415,2023,SSC Bari,AS Roma
+258482,2023,Spezia Calcio,Cagliari Calcio
+885228,2023,SS Monopoli 1966,Cagliari Calcio
+1111663,2023,SV Ried,Cagliari Calcio
+462699,2023,Grazer AK 1902,Genoa CFC
+861981,2023,Levante UD,Genoa CFC
+330208,2023,PAOK Thessaloniki,Genoa CFC
+881610,2023,Krasava ENY,Genoa CFC
+815529,2023,Carrarese Calcio 1908,Hellas Verona
+815539,2023,Virtusvecomp Verona,Hellas Verona
+815543,2023,Union Brescia,Hellas Verona
+748316,2023,AC Trento,Hellas Verona
+542588,2023,Calcio Padova,AC Monza
+459655,2023,FC Empoli,US Salernitana 1919
+704347,2023,Audace Cerignola,US Salernitana 1919
+626913,2023,SS Lazio,US Salernitana 1919
+481675,2023,AFC Bournemouth,SS Lazio
+918957,2023,AC Bra,SS Lazio
+612059,2023,SS Monopoli 1966,Udinese Calcio
+342877,2023,Torino FC,Udinese Calcio
+1058354,2023,UC Sampdoria,Udinese Calcio
+648032,2023,Watford FC,Udinese Calcio
+268429,2023,Hellas Verona,Udinese Calcio
+555820,2023,US Cremonese,Udinese Calcio
+1009633,2023,NK Maribor,Udinese Calcio
+257474,2023,SSC Napoli,Torino FC
+815483,2023,US Pergolettese 1932,Torino FC
+551752,2023,FK Partizan Belgrade,Torino FC
+364133,2023,FC Empoli,Torino FC
+707450,2023,UD Las Palmas,ACF Fiorentina
+272261,2023,UC Sampdoria,ACF Fiorentina
+386455,2023,US Lecce,ACF Fiorentina
+354814,2023,US Sassuolo,ACF Fiorentina
+353366,2023,Olympique Marseille,Inter Milan
+631007,2023,US Cremonese,AC Milan
+741257,2023,AFC Bournemouth,AC Milan
+351816,2023,GNK Dinamo Zagreb,AC Milan
+503991,2023,Atalanta BC,AC Milan
+392538,2023,Bologna FC 1909,AC Milan
+401922,2023,Fulham FC,AC Milan
+1058368,2023,US Lecce,AC Milan
+487843,2023,Genoa CFC,AC Milan
+162959,2023,ACF Fiorentina,Juventus FC
+370846,2023,Olympique Marseille,Juventus FC
+397225,2023,Udinese Calcio,SSC Napoli
+433584,2023,US Cremonese,SSC Napoli
+282388,2023,Torino FC,SSC Napoli
+555015,2023,Clube Atlético Mineiro,US Sassuolo
+655525,2023,AC Reggiana 1919,US Sassuolo
+935777,2023,US Livorno 1915,FC Empoli
+467994,2023,AC Reggiana 1919,FC Empoli
+555056,2023,Inter U23,FC Empoli
+241076,2023,Palermo FC,FC Empoli
+814453,2023,US Pianese,FC Empoli
+895937,2023,Cagliari Calcio,Atalanta BC
+895596,2023,Forlì FC,Frosinone Calcio
+667640,2024,Calcio Foggia 1920,US Lecce
+1118086,2024,Melbourne Victory,US Lecce
+1017950,2024,Krasava ENY,US Lecce
+911328,2024,FC Nantes,US Lecce
+496745,2024,Juventus FC,Bologna FC 1909
+531065,2024,AJ Auxerre,Bologna FC 1909
+237658,2024,Pisa Sporting Club,Bologna FC 1909
+633668,2024,ACF Fiorentina,Bologna FC 1909
+367992,2024,FC Utrecht,Bologna FC 1909
+385394,2024,Cagliari Calcio,Como 1907
+412649,2024,US Catanzaro,Como 1907
+405670,2024,Borussia Mönchengladbach,Como 1907
+226025,2024,Cagliari Calcio,Como 1907
+488052,2024,SSC Bari,Como 1907
+522681,2024,Frosinone Calcio,Como 1907
+1059730,2024,Piacenza Calcio 1919,Como 1907
+877672,2024,Al-Najma SC,Como 1907
+265078,2024,AC Monza,Como 1907
+485584,2024,PSV Eindhoven,AS Roma
+631927,2024,RC Lens,AS Roma
+962125,2024,Elche CF,AS Roma
+358166,2024,Basaksehir FK,AS Roma
+543727,2024,Kocaelispor,Parma Calcio 1913
+182517,2024,SSC Bari,Parma Calcio 1913
+454386,2024,Kasimpasa,Parma Calcio 1913
+885228,2024,SS Monopoli 1966,Cagliari Calcio
+1111663,2024,SV Ried,Cagliari Calcio
+462699,2024,Grazer AK 1902,Genoa CFC
+861981,2024,Levante UD,Genoa CFC
+330208,2024,PAOK Thessaloniki,Genoa CFC
+1061820,2024,AS Roma,Genoa CFC
+881610,2024,Krasava ENY,Genoa CFC
+701819,2024,AS Roma,Hellas Verona
+298635,2024,Aris Limassol,Hellas Verona
+979766,2024,AC Reggiana 1919,Hellas Verona
+676411,2024,Casa Pia AC,Hellas Verona
+542588,2024,Calcio Padova,AC Monza
+724069,2024,US Sambenedettese,AC Monza
+481675,2024,AFC Bournemouth,SS Lazio
+918957,2024,AC Bra,SS Lazio
+1110645,2024,FC Südtirol,SS Lazio
+883058,2024,US Avellino 1912,SS Lazio
+929746,2024,Audace Cerignola,SS Lazio
+612059,2024,SS Monopoli 1966,Udinese Calcio
+342877,2024,Torino FC,Udinese Calcio
+648032,2024,Watford FC,Udinese Calcio
+1058354,2024,UC Sampdoria,Udinese Calcio
+268429,2024,Hellas Verona,Udinese Calcio
+555820,2024,US Cremonese,Udinese Calcio
+671799,2024,Palermo FC,Udinese Calcio
+1009633,2024,NK Maribor,Udinese Calcio
+741292,2024,UD Las Palmas,Udinese Calcio
+257474,2024,SSC Napoli,Torino FC
+345458,2024,US Sassuolo,Torino FC
+1188619,2024,SS Juve Stabia,Torino FC
+364133,2024,FC Empoli,Torino FC
+860992,2024,Hellas Verona,ACF Fiorentina
+932733,2024,AS Gubbio 1910,ACF Fiorentina
+602124,2024,PAOK Thessaloniki,ACF Fiorentina
+932740,2024,Calcio Padova,ACF Fiorentina
+272261,2024,UC Sampdoria,ACF Fiorentina
+386455,2024,US Lecce,ACF Fiorentina
+353366,2024,Olympique Marseille,Inter Milan
+538918,2024,Cagliari Calcio,Inter Milan
+631007,2024,US Cremonese,AC Milan
+741257,2024,AFC Bournemouth,AC Milan
+351816,2024,GNK Dinamo Zagreb,AC Milan
+503991,2024,Atalanta BC,AC Milan
+659516,2024,US Cremonese,AC Milan
+401922,2024,Fulham FC,AC Milan
+128223,2024,Como 1907,AC Milan
+1058368,2024,US Lecce,AC Milan
+162959,2024,ACF Fiorentina,Juventus FC
+370846,2024,Olympique Marseille,Juventus FC
+447661,2024,Aston Villa,Juventus FC
+486031,2024,Atlético de Madrid,Juventus FC
+354909,2024,Delfino Pescara 1936,Venezia FC
+430280,2024,Parma Calcio 1913,Venezia FC
+698560,2024,FC Blau-Weiss Linz,Venezia FC
+936684,2024,Pineto Calcio,Venezia FC
+662261,2024,Villarreal CF,SSC Napoli
+724178,2024,Carrarese Calcio 1908,SSC Napoli
+703240,2024,SS Arezzo,SSC Napoli
+820633,2024,Casertana FC,SSC Napoli
+433584,2024,US Cremonese,SSC Napoli
+282388,2024,Torino FC,SSC Napoli
+521407,2024,US Lecce,SSC Napoli
+935777,2024,US Livorno 1915,FC Empoli
+451154,2024,US Salernitana 1919,FC Empoli
+433181,2024,Torino FC,FC Empoli
+467994,2024,AC Reggiana 1919,FC Empoli
+241076,2024,Palermo FC,FC Empoli
+814453,2024,US Pianese,FC Empoli
+1051741,2024,GSD Ghiviborgo VDS,FC Empoli
+936745,2024,Calcio Lecco 1912,FC Empoli
+895937,2024,Cagliari Calcio,Atalanta BC
+459128,2024,ACF Fiorentina,Atalanta BC
+911328,2025,FC Nantes,US Lecce
+324377,2025,US Cremonese,US Lecce
+496745,2025,Juventus FC,Bologna FC 1909
+633668,2025,ACF Fiorentina,Bologna FC 1909
+367992,2025,FC Utrecht,Bologna FC 1909
+223974,2025,1.FSV Mainz 05,Como 1907
+385394,2025,Cagliari Calcio,Como 1907
+265078,2025,AC Monza,Como 1907
+495722,2025,Besiktas JK,AS Roma
+962125,2025,Elche CF,AS Roma
+543727,2025,Kocaelispor,Parma Calcio 1913
+858677,2025,Cesena FC,Parma Calcio 1913
+1028162,2025,FC Famalicão,Parma Calcio 1913
+708186,2025,UC Sampdoria,Parma Calcio 1913
+454386,2025,Kasimpasa,Parma Calcio 1913
+258482,2025,Spezia Calcio,Cagliari Calcio
+885228,2025,SS Monopoli 1966,Cagliari Calcio
+340707,2025,Spezia Calcio,US Cremonese
+894456,2025,Carrarese Calcio 1908,US Cremonese
+872380,2025,Amed SK,US Cremonese
+375816,2025,Modena FC,US Cremonese
+641537,2025,Genoa CFC,AS Roma
+1061820,2025,AS Roma,Genoa CFC
+298635,2025,Aris Limassol,Hellas Verona
+676411,2025,Casa Pia AC,Hellas Verona
+979766,2025,AC Reggiana 1919,Hellas Verona
+481675,2025,AFC Bournemouth,SS Lazio
+1058354,2025,UC Sampdoria,Udinese Calcio
+268429,2025,Hellas Verona,Udinese Calcio
+671799,2025,Palermo FC,Udinese Calcio
+1009633,2025,NK Maribor,Udinese Calcio
+741292,2025,UD Las Palmas,Udinese Calcio
+1247043,2025,L'Aquila 1927,Pisa Sporting Club
+1159022,2025,AC Reggiana 1919,Pisa Sporting Club
+1231354,2025,US Città di Pontedera,Pisa Sporting Club
+504085,2025,SSC Bari,Pisa Sporting Club
+514895,2025,FC Nordsjaelland,Pisa Sporting Club
+1191069,2025,US Città di Pontedera,Pisa Sporting Club
+353366,2025,Olympique Marseille,Inter Milan
+741257,2025,AFC Bournemouth,AC Milan
+503991,2025,Atalanta BC,AC Milan
+401922,2025,Fulham FC,AC Milan
+162959,2025,ACF Fiorentina,Juventus FC
+486031,2025,Atlético de Madrid,Juventus FC
+814446,2025,Torino FC,SSC Napoli
+397225,2025,Udinese Calcio,SSC Napoli
+724178,2025,Carrarese Calcio 1908,SSC Napoli
+820633,2025,Casertana FC,SSC Napoli
+339332,2025,Galatasaray,SSC Napoli
+572265,2025,Nottingham Forest,SSC Napoli
+521407,2025,US Lecce,SSC Napoli
+406632,2025,SSC Bari,US Sassuolo
+655525,2025,AC Reggiana 1919,US Sassuolo
+390163,2025,FC Empoli,US Sassuolo
+372720,2025,UC Sampdoria,US Sassuolo
+655207,2025,Spezia Calcio,US Sassuolo
+459128,2025,ACF Fiorentina,Atalanta BC
+659813,2021,Arsenal FC,Bayer 04 Leverkusen
+344381,2021,RB Leipzig,AC Milan
+658116,2021,SG Dynamo Dresden,1.FSV Mainz 05
+251309,2021,Aberdeen FC,TSG 1899 Hoffenheim
+574193,2021,SV 07 Elversberg,TSG 1899 Hoffenheim
+690429,2021,SG Dynamo Dresden,SC Freiburg
+392163,2021,Hannover 96,SC Freiburg
+503881,2021,US Sassuolo,VfL Wolfsburg
+698840,2021,SV Babelsberg 03,1.FC Union Berlin
+659813,2022,Arsenal FC,Bayer 04 Leverkusen
+819215,2022,FC Basel 1893,Borussia Dortmund
+388363,2022,Arminia Bielefeld,FC Augsburg
+371000,2022,NK Osijek,FC Augsburg
+557614,2022,Montpellier HSC,FC Augsburg
+247915,2022,Bayer 04 Leverkusen,Borussia Mönchengladbach
+344381,2022,RB Leipzig,AC Milan
+726120,2022,1.FC Kaiserslautern,Eintracht Frankfurt
+571299,2022,Kocaelispor,Eintracht Frankfurt
+536482,2022,Stade Brestois 29,Eintracht Frankfurt
+795762,2022,FC Blau-Weiss Linz,1.FC Köln
+658116,2022,SG Dynamo Dresden,1.FSV Mainz 05
+371141,2022,1.FC Union Berlin,TSG 1899 Hoffenheim
+251309,2022,Aberdeen FC,TSG 1899 Hoffenheim
+690429,2022,SG Dynamo Dresden,SC Freiburg
+608832,2022,Everton FC,SC Freiburg
+392163,2022,Hannover 96,SC Freiburg
+800946,2022,SC Paderborn 07,VfB Stuttgart
+485965,2022,FC Nantes,VfL Wolfsburg
+370998,2022,Venezia FC,VfL Wolfsburg
+503881,2022,US Sassuolo,VfL Wolfsburg
+407098,2022,1.FC Köln,VfL Wolfsburg
+645774,2022,SV Werder Bremen,SC Freiburg
+75489,2022,SV Werder Bremen,West Ham United
+698840,2022,SV Babelsberg 03,1.FC Union Berlin
+550829,2023,PSV Eindhoven,Bayer 04 Leverkusen
+659813,2023,Arsenal FC,Bayer 04 Leverkusen
+656681,2023,SV Werder Bremen,Bayer 04 Leverkusen
+884810,2023,VfL Bochum,Borussia Dortmund
+819215,2023,FC Basel 1893,Borussia Dortmund
+388363,2023,Arminia Bielefeld,FC Augsburg
+371000,2023,NK Osijek,FC Augsburg
+569457,2023,Fortuna Düsseldorf,FC Augsburg
+557614,2023,Montpellier HSC,FC Augsburg
+247915,2023,Bayer 04 Leverkusen,Borussia Mönchengladbach
+544148,2023,Celtic FC,Borussia Mönchengladbach
+574201,2023,Eintracht Braunschweig,Borussia Mönchengladbach
+1073997,2023,Karlsruher SC,Borussia Mönchengladbach
+43824,2023,FC Schalke 04,1.FC Heidenheim 1846
+485747,2023,SG Dynamo Dresden,1.FC Heidenheim 1846
+1006916,2023,Fredrikstad FK,RB Leipzig
+368887,2023,Juventus FC,RB Leipzig
+726120,2023,1.FC Kaiserslautern,Eintracht Frankfurt
+571299,2023,Kocaelispor,Eintracht Frankfurt
+536482,2023,Stade Brestois 29,Eintracht Frankfurt
+448177,2023,Wolfsberger AC,Eintracht Frankfurt
+468539,2023,Southampton FC,Bayern Munich
+744729,2023,1.FC Nuremberg,Bayern Munich
+475413,2023,Galatasaray,Bayern Munich
+892973,2023,Grasshopper Club Zurich,Bayern Munich
+795762,2023,FC Blau-Weiss Linz,1.FC Köln
+542697,2023,Aarhus GF,1.FC Köln
+405687,2023,1.FC Köln,1.FSV Mainz 05
+279009,2023,SV Darmstadt 98,1.FSV Mainz 05
+263380,2023,Pogon Szczecin,TSG 1899 Hoffenheim
+371141,2023,1.FC Union Berlin,TSG 1899 Hoffenheim
+251309,2023,Aberdeen FC,TSG 1899 Hoffenheim
+574193,2023,SV 07 Elversberg,TSG 1899 Hoffenheim
+608832,2023,Everton FC,SC Freiburg
+337036,2023,Fortuna Düsseldorf,SC Freiburg
+392163,2023,Hannover 96,SC Freiburg
+452477,2023,Celtic FC,SC Freiburg
+800946,2023,SC Paderborn 07,VfB Stuttgart
+507345,2023,1.FC Heidenheim 1846,VfB Stuttgart
+943795,2023,SV Werder Bremen,VfB Stuttgart
+485965,2023,FC Nantes,VfL Wolfsburg
+503881,2023,US Sassuolo,VfL Wolfsburg
+407098,2023,1.FC Köln,VfL Wolfsburg
+855134,2023,Amiens SC,SV Werder Bremen
+75489,2023,SV Werder Bremen,West Ham United
+208167,2023,Hertha BSC,SV Werder Bremen
+698840,2023,SV Babelsberg 03,1.FC Union Berlin
+294791,2023,BSC Young Boys,1.FC Union Berlin
+550829,2024,PSV Eindhoven,Bayer 04 Leverkusen
+659813,2024,Arsenal FC,Bayer 04 Leverkusen
+656681,2024,SV Werder Bremen,Bayer 04 Leverkusen
+1000675,2024,Borussia Mönchengladbach,Bayer 04 Leverkusen
+884810,2024,VfL Bochum,Borussia Dortmund
+819215,2024,FC Basel 1893,Borussia Dortmund
+866579,2024,TSG 1899 Hoffenheim,Borussia Dortmund
+388363,2024,Arminia Bielefeld,FC Augsburg
+515624,2024,1.FC Nuremberg,FC Augsburg
+569457,2024,Fortuna Düsseldorf,FC Augsburg
+238639,2024,Alanyaspor,FC Augsburg
+247915,2024,Bayer 04 Leverkusen,Borussia Mönchengladbach
+696028,2024,1.FC Magdeburg,Borussia Mönchengladbach
+544148,2024,Celtic FC,Borussia Mönchengladbach
+574201,2024,Eintracht Braunschweig,Borussia Mönchengladbach
+1073997,2024,Karlsruher SC,Borussia Mönchengladbach
+43824,2024,FC Schalke 04,1.FC Heidenheim 1846
+485747,2024,SG Dynamo Dresden,1.FC Heidenheim 1846
+584254,2024,1.FC Magdeburg,1.FC Heidenheim 1846
+1006916,2024,Fredrikstad FK,RB Leipzig
+926694,2024,Olympique Marseille,RB Leipzig
+368887,2024,Juventus FC,RB Leipzig
+941177,2024,SV Sandhausen,RB Leipzig
+536482,2024,Stade Brestois 29,Eintracht Frankfurt
+471890,2024,1.FC Magdeburg,Holstein Kiel
+361575,2024,Sabah FK,Holstein Kiel
+468539,2024,Southampton FC,Bayern Munich
+744729,2024,1.FC Nuremberg,Bayern Munich
+475413,2024,Galatasaray,Bayern Munich
+257455,2024,Tottenham Hotspur,Bayern Munich
+829316,2024,Hertha BSC,Bayern Munich
+1069512,2024,Fulham FC,Bayern Munich
+501049,2024,Heracles Almelo,FC St. Pauli
+596821,2024,Barnsley FC,FC St. Pauli
+562948,2024,KAA Gent,1.FSV Mainz 05
+279009,2024,SV Darmstadt 98,1.FSV Mainz 05
+324811,2024,Stade Rennais FC,1.FSV Mainz 05
+875332,2024,FC Augsburg,TSG 1899 Hoffenheim
+371141,2024,1.FC Union Berlin,TSG 1899 Hoffenheim
+263380,2024,Pogon Szczecin,TSG 1899 Hoffenheim
+829838,2024,1.FC Heidenheim 1846,TSG 1899 Hoffenheim
+251309,2024,Aberdeen FC,TSG 1899 Hoffenheim
+203123,2024,Borussia Mönchengladbach,TSG 1899 Hoffenheim
+608832,2024,Everton FC,SC Freiburg
+337036,2024,Fortuna Düsseldorf,SC Freiburg
+392163,2024,Hannover 96,SC Freiburg
+452477,2024,Celtic FC,SC Freiburg
+800946,2024,SC Paderborn 07,VfB Stuttgart
+507345,2024,1.FC Heidenheim 1846,VfB Stuttgart
+684318,2024,Willem II Tilburg,VfL Bochum
+485965,2024,FC Nantes,VfL Wolfsburg
+1075579,2024,RSC Anderlecht,VfL Wolfsburg
+503881,2024,US Sassuolo,VfL Wolfsburg
+407098,2024,1.FC Köln,VfL Wolfsburg
+855134,2024,Amiens SC,SV Werder Bremen
+243188,2024,Kayserispor,1.FC Union Berlin
+838236,2024,Fortuna Düsseldorf,1.FC Union Berlin
+659813,2025,Arsenal FC,Bayer 04 Leverkusen
+656681,2025,SV Werder Bremen,Bayer 04 Leverkusen
+1000675,2025,Borussia Mönchengladbach,Bayer 04 Leverkusen
+819215,2025,FC Basel 1893,Borussia Dortmund
+866579,2025,TSG 1899 Hoffenheim,Borussia Dortmund
+342039,2025,FC Augsburg,VfB Stuttgart
+238639,2025,Alanyaspor,FC Augsburg
+247915,2025,Bayer 04 Leverkusen,Borussia Mönchengladbach
+574201,2025,Eintracht Braunschweig,Borussia Mönchengladbach
+43824,2025,FC Schalke 04,1.FC Heidenheim 1846
+485747,2025,SG Dynamo Dresden,1.FC Heidenheim 1846
+926694,2025,Olympique Marseille,RB Leipzig
+700106,2025,RB Leipzig,Brighton & Hove Albion
+368887,2025,Juventus FC,RB Leipzig
+448177,2025,Wolfsberger AC,Eintracht Frankfurt
+475413,2025,Galatasaray,Bayern Munich
+1069512,2025,Fulham FC,Bayern Munich
+501049,2025,Heracles Almelo,FC St. Pauli
+596821,2025,Barnsley FC,FC St. Pauli
+658116,2025,SG Dynamo Dresden,1.FSV Mainz 05
+324811,2025,Stade Rennais FC,1.FSV Mainz 05
+412935,2025,SV 07 Elversberg,Hamburger SV
+403177,2025,Maccabi Tel Aviv,Hamburger SV
+875332,2025,FC Augsburg,TSG 1899 Hoffenheim
+608832,2025,Everton FC,SC Freiburg
+452477,2025,Celtic FC,SC Freiburg
+507345,2025,1.FC Heidenheim 1846,VfB Stuttgart
+1075579,2025,RSC Anderlecht,VfL Wolfsburg
+855134,2025,Amiens SC,SV Werder Bremen
+838236,2025,Fortuna Düsseldorf,1.FC Union Berlin
