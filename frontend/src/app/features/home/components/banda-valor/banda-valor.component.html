@@ -18,11 +18,16 @@
   <h4 class="mt-5 text-xs font-semibold text-slate-500 uppercase tracking-wide dark:text-slate-400">
     Variables que más influyen
   </h4>
-  <ul class="mt-2 space-y-1.5">
-    @for (c of prediccion().contribuciones; track c.feature) {
-      <li class="flex items-center gap-2 text-xs">
-        <span class="w-40 shrink-0 truncate text-slate-600 dark:text-slate-400">{{ c.etiqueta }}</span>
-        <span class="relative h-2 flex-1 rounded bg-slate-100 dark:bg-slate-700">
+  <ul class="mt-2 space-y-2.5">
+    @for (c of contribucionesVisibles(); track c.feature) {
+      <li class="text-xs">
+        <div class="flex items-center justify-between gap-2">
+          <span class="text-slate-600 dark:text-slate-400">{{ c.etiqueta }}</span>
+          <span class="shrink-0 text-slate-500 dark:text-slate-400">{{
+            c.direccion === 'sube' ? '▲' : '▼'
+          }}</span>
+        </div>
+        <span class="relative mt-1 block h-2 rounded bg-slate-100 dark:bg-slate-700">
           <span
             class="absolute inset-y-0 left-0 rounded"
             [class.bg-emerald-500]="c.direccion === 'sube'"
@@ -30,9 +35,6 @@
             [style.width.%]="anchoBarra(c.contribucion_log)"
           ></span>
         </span>
-        <span class="w-10 shrink-0 text-right text-slate-500 dark:text-slate-400">{{
-          c.direccion === 'sube' ? '▲' : '▼'
-        }}</span>
       </li>
     }
   </ul>
