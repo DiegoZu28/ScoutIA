@@ -9,6 +9,26 @@ El valor de mercado siempre se muestra como **banda** (bajo/medio/alto), nunca c
 puntual, y la app nunca usa lenguaje de "comprar/vender" — es una herramienta de apoyo a la
 decisión de un scout humano, no un tasador ni un asesor de fichajes.
 
+## De dónde salen los datos (no es una API)
+
+Los datos **no vienen de una API que se actualiza sola** — son el resultado de web scraping
+propio, corrido una sola vez (septiembre de 2026) y congelado en este repo. Cada fila es una
+fotografía de ese momento, no un valor en vivo:
+
+- **FBref**: estadísticas de rendimiento por temporada, vía el paquete `soccerdata`
+  (`scripts/descargar_fbref.py`).
+- **Transfermarkt**: valor de mercado, posición, altura, edad — no tiene API pública, se
+  scrapea directo el HTML de las plantillas de cada club/temporada
+  (`scripts/descargar_transfermarkt.py`).
+- **Kaggle** ("EA Sports FC 24 complete player dataset"): vencimiento de contrato para
+  2021-2022 a 2023-2024.
+- **Wayback Machine**: vencimiento de contrato para 2024-2025 y 2025-2026 (Kaggle todavía no
+  cubre esas temporadas) — capturas archivadas de Transfermarkt, no el sitio en vivo.
+
+Para tener una foto más reciente hay que volver a correr los scripts de descarga y
+`scripts/build_model_artifacts.py` a mano — la app no vuelve a scrapear nada por su cuenta,
+ni tiene ningún proceso programado que la mantenga al día.
+
 ## Arquitectura
 
 El repo tiene tres partes independientes que se comunican entre sí, pero corren con

@@ -20,6 +20,16 @@ documento de arranque de ScoutIA).
 No mezclar estos tres mundos (no instalar paquetes de FastAPI en `.venv312`, no correr
 notebooks con el venv de `app/`, etc.).
 
+## Los datos son un scraping puntual, no una API en vivo
+
+Punto que el profesor marcó como importante dejar explícito (2026-09-28): FBref,
+Transfermarkt, Kaggle y Wayback Machine se scrapearon **una sola vez** (septiembre de 2026,
+ver `scripts/descargar_*.py`) y quedaron congelados en `data/`. La app nunca vuelve a pedirle
+nada a esas fuentes por su cuenta -- no hay cron, no hay refresco automático. "Actualizar los
+datos" significa correr los scripts de descarga a mano y volver a
+`scripts/build_model_artifacts.py`. Detalle de cada fuente en el README, sección "De dónde
+salen los datos".
+
 ## Reglas no negociables del producto (spec de ScoutIA)
 
 - El valor de mercado **siempre se presenta como banda** (`valor_bajo`/`valor_medio`/`valor_alto`),
