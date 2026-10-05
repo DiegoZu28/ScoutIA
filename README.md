@@ -119,16 +119,32 @@ AGENTS.md        # convenciones, decisiones de diseño y trampas encontradas (le
 El repo mezcla tres entornos a propósito separados — no instalar dependencias de uno en
 otro (detalle completo en `AGENTS.md`).
 
-### 1. Regenerar datos y modelo (opcional — ya vienen versionados los notebooks, no los artefactos)
+### 1. Notebooks (00 → 06, de punta a punta)
+
+Requiere **Python 3.12** (Linux, macOS o Windows). Todo lo que leen los notebooks ya viene
+versionado — datos crudos, intermedios, procesados y `models/` —, así que corren completos
+en un clon nuevo **sin internet y sin `OPENAI_API_KEY`**:
 
 ```bash
-python3.12 -m venv .venv312 && .venv312/bin/pip install -r requirements.txt
+python3.12 -m venv .venv312          # o: uv venv --python 3.12 --seed .venv312
+.venv312/bin/pip install -r requirements.txt    # Windows: .venv312\Scripts\pip
+cd notebooks
+../.venv312/bin/jupyter nbconvert --to notebook --execute --inplace 0*.ipynb
+```
+
+(o abrirlos en Jupyter/VS Code con el kernel de `.venv312` y "Run All", en orden 00 → 06.
+`04-modelado` es el más lento, ~5 min por la búsqueda de hiperparámetros.) Sin
+`OPENAI_API_KEY` en `.env`, `05-llm` corre igual y solo se salta la llamada real a OpenAI.
+
+### 1b. Regenerar el modelo servido (opcional — `models/` ya viene versionado)
+
+```bash
 .venv312/bin/python scripts/build_model_artifacts.py
 ```
 
 Lee `data/processed/fbref_tm_features.parquet` + `fbref_tm_eda.parquet` y escribe
 `models/*.joblib`, `models/metadata.json` y `data/processed/dataset.parquet` — lo que
-consume el backend. Sin esto, `app/` no tiene nada que servir.
+consume el backend.
 
 ### 2. Backend (FastAPI)
 

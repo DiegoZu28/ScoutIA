@@ -270,6 +270,15 @@ deploy en Vercel (ver sección de despliegue en el `README.md`).
   vigilar al actualizar numpy.
 - El merge `fbref_tm_eda.parquet` ↔ `fbref_tm_features.parquet` **no es un merge trivial**
   por los 735 grupos duplicados — ver la sección de arriba antes de tocar el script.
+- **Reproducibilidad de notebooks en otra máquina (2026-10-04)** — criterio de evaluación del
+  profe. Validado en un clon limpio + venv nuevo + sin internet + sin `.env`: 00→06 corren
+  completos y 01→03 regeneran los parquet byte a byte idénticos. Para lograrlo: `models/` se
+  versiona (04 y 05 lo leen; antes estaba en `.gitignore`), el mapeo FBref↔TM de
+  worldfootballR_data quedó congelado en `data/raw/fbref_tm_mapping/` (01 lo bajaba de la
+  rama `master` de GitHub), 05 ya no hace `assert` de `OPENAI_API_KEY` (solo salta la
+  llamada real), y `nvidia-nccl-cu13` lleva marcador `sys_platform == "linux"` en
+  `requirements.txt` (solo tiene wheels Linux; sin el marcador `pip install` fallaba en
+  Windows/macOS). Si se agrega un notebook o una lectura nueva, repetir esa prueba.
 - `Settings.model_config.env_file` lee primero el `.env` de la raíz del repo y después
   `app/.env` (que no existe todavía) — así el backend y los notebooks comparten el mismo
   `OPENAI_API_KEY` sin duplicar el secreto en dos archivos.

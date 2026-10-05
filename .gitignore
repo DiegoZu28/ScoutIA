@@ -25,6 +25,9 @@ __pycache__/
 !/data/raw/kaggle_fifa/**
 !/data/raw/wayback_contratos/
 !/data/raw/wayback_contratos/contratos.csv
+# mapeo FBref<->Transfermarkt de worldfootballR_data, congelado para que 01 no dependa de red
+!/data/raw/fbref_tm_mapping/
+!/data/raw/fbref_tm_mapping/fbref_to_tm_mapping.csv
 
 # 02-06: datasets intermedios/procesados que arman los notebooks
 !/data/interim/
@@ -32,9 +35,9 @@ __pycache__/
 !/data/processed/
 !/data/processed/**
 
-# artefactos
+# artefactos -- models/ SÍ se versiona (~80 KB): 04-modelado y 05-llm leen el Lasso
+# servido, y sin él no corren de punta a punta en un clon nuevo.
 /logs/
-/models/
 /downloaded_files/
 /soccerdata/
 
